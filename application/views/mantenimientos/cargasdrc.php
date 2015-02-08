@@ -23,7 +23,7 @@
                     <section class="panel">
                         <header class="panel-heading">
 
-                            <h2 class="panel-title">Cargas CSV</h2>
+                            <h2 class="panel-title">Cargas archivo CSV</h2>
                         </header>
                         <div class="panel-body">
 						  <form method="post" action="<?php echo base_url() ?>csv/importcsv" enctype="multipart/form-data">
