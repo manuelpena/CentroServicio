@@ -24,6 +24,7 @@
 
 		<!-- Specific Page Vendor CSS -->
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/pnotify/pnotify.custom.css" />
+
 		<!-- Theme CSS -->
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/stylesheets/theme.css" />
 
@@ -36,5 +37,4 @@
 		<!-- Head Libs -->
 		<script src="<?php echo base_url(); ?>assets/vendor/modernizr/modernizr.js"></script>
 
-	</head>
 		

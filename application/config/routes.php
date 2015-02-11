@@ -56,6 +56,7 @@ $route['reportes/dashboard'] = 'reportes/index';
 
 $route['ajax/ejemplo'] = 'ajax/index';
 $route['mantenimientos/cargasdrc'] = 'carga_csv/index';
+$route['operaciones/solicitudesconsejeras'] = 'solicitudesconsejeras/index';
 
 /*
 $route['admin/manufacturers'] = 'admin_manufacturers/index';

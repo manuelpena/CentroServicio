@@ -9,6 +9,7 @@ class carga_csv extends MX_Controller {
     {
         parent::__construct();
       $this->load->model('csv_model');
+	  
     }
  
     /**
@@ -23,7 +24,8 @@ class carga_csv extends MX_Controller {
 			$data['usuario'] = $this->session->userdata('usuario');
 			$data['rol'] = $this->session->userdata('rol');
 			$data['imagen'] = $this->session->userdata('imagen');
-			//Registros disponibles
+			//Registros disponibles				
+			
 			$data['addressbook'] = $this->csv_model->get_addressbook();
 			$this->load->view('includes/template', $data);  
         }else{

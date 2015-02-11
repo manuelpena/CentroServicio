@@ -17,7 +17,7 @@ Theme Version: 	1.1.0
 			text: 'Check me out! I\'m a notice.',
 			type: 'custom',
 			addclass: 'notification-primary',
-			icon: 'fa fa-twitter'
+			icon: 'fa fa-envelope-o'
 		});
 	});
 

@@ -1,5 +1,4 @@
 <?php
- 
 class csv extends CI_Controller {
  
     function __construct() {
@@ -26,7 +25,7 @@ class csv extends CI_Controller {
 		$fecha_post = $this->input->post('fecha_ingreso');		
 		$fecha_ingreso = date("Y-m-d", strtotime($fecha_post));		
 	
-        $data['addressbook'] = $this->csv_model->get_addressbook();
+       // $data['addressbook'] = $this->csv_model->get_addressbook();
         $data['error'] = '';    //initialize image upload error array to empty
  
         $config['upload_path'] = './uploads/';
@@ -41,7 +40,7 @@ class csv extends CI_Controller {
         if (!$this->upload->do_upload()) {
             $data['error'] = $this->upload->display_errors();
  
-            $this->load->view('csvindex', $data);
+            $this->load->view('mantenimientos/cargasdrc', $data);
         } else {
             $file_data = $this->upload->data();
             $file_path =  './uploads/'.$file_data['file_name'];
@@ -49,7 +48,8 @@ class csv extends CI_Controller {
             if ($this->csvimport->get_array($file_path)) {
                 $csv_array = $this->csvimport->get_array($file_path);
                 foreach ($csv_array as $row) {
-                    $datos_consejeras = array(
+                    
+					$datos_consejeras = array(
                         'codigo'=>$row['Codigo'],
 						'zona'=>$zona,
 						'sector'=>$row['Seccion'],
@@ -72,6 +72,8 @@ class csv extends CI_Controller {
 						'razon'=>$row['Razon'],
 						'comentarios'=>$row['Final'],
                         'fecha_ingreso'=>$fecha_ingreso,
+						'cajas'=>$row['Inicio'],
+						'ncaja'=>$row['Clave'],
 						'creado_por'=>$this->session->userdata('usuario_id'),
 						'fecha_creado'=>$fecha,
                     );
@@ -79,15 +81,21 @@ class csv extends CI_Controller {
                     $this->csv_model->insert_csv_pedidos($datos_pedido);
                 }
                 $this->session->set_flashdata('success', 'La información fue cargada exitosamente');
+				
+				//variables para obtener datos guardados
+				
 				$this->session->set_flashdata('campania', $campania);
+				$this->session->set_flashdata('anio', $anio);
+				$this->session->set_flashdata('zona', $zona);
+				$this->session->set_flashdata('fecha_ingreso', $fecha_ingreso);
 
 
-                redirect(base_url().'mantenimientos/cargasdrc');
+                redirect(base_url().'mantenimientos/cargasdrc/');
 				
                 //echo "<pre>"; print_r($insert_data);
             } else 
                 $data['error'] = "Error occured";
-                $this->load->view('csvindex', $data);
+                $this->load->view('mantenimientos/cargasdrc', $data);
             }
  
         } 

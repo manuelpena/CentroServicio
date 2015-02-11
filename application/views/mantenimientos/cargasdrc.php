@@ -1,4 +1,4 @@
-				<section role="main" class="content-body">
+			<section role="main" class="content-body">
 					<header class="page-header">
 						<h2>Blank Page</h2>
 					
@@ -152,44 +152,51 @@
                             <h2 class="panel-title">Solicitudes Buzones y Gerentes</h2>
                         </header>
                         <div class="panel-body">
-
-									<div class="table-responsive">
-										<table class="table mb-none">
-											<thead>
-												<tr>
-													<th>Caja</th>
+<table class="table table-bordered table-striped mb-none" id="datatable-default">
+								<thead>
+									<tr>
+													<th>Numero de Caja</th>
+													<th>Campaña</th>
 													<th>Zona</th>
 													<th>Codigo</th>
 													<th>Nombre Consejera</th>
-													<th>Estado</th>
-													<th>Accion</th>
-													
-												</tr>
-											</thead>
-											<tbody>
-											
-                    <?php if ($addressbook == FALSE): ?>
-                        <tr><td colspan="4">There are currently No Addresses</td></tr>
+													<th>Cajas</th>	
+													<th>LOS</th>	
+													<th>COD</th>	
+									</tr>
+								</thead>
+								<tbody>
+	                    <?php if ($addressbook == FALSE): ?>
+                      
                     <?php else: ?>
                         <?php foreach ($addressbook as $row): ?>
                             <tr>
-                                <td><?php echo $row['campania']; ?></td>
-                                <td><?php echo $row['lastname']; ?></td>
-                                <td><?php echo $row['phone']; ?></td>
-                                <td><?php echo $row['email']; ?></td>
+                                <td><?php echo $row['ncaja']; ?></td>
+								<td><?php echo $row['campania']; ?></td>
+								<td><?php echo $row['zona']; ?></td>
+                                <td><?php echo $row['codigo']; ?></td>
+                                <td><?php echo $row['nombres']; ?></td>
+                                <td><?php echo $row['los']; ?></td>
+								<td><?php echo $row['cajas']; ?></td>
+								<td><?php echo $row['cod']; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
 
-											</tbody>
-										</table>
-									</div>
+
+								</tbody>
+							</table>
+
+
 					
                     </section>
                 </div>
 
-            </section>
+            
         </div>					
-					
-					<!-- end: page -->
-				</section>
+</section>
+		
+
+
+				
+				
