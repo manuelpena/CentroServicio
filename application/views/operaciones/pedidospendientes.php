@@ -25,10 +25,53 @@
                         <header class="panel-heading">
 
                             <h2 class="panel-title">Solicitudes Consejera / Gerente de Zona</h2>
+									<div class="panel-actions">
+										<a href="#" class="fa fa-caret-down"></a>
+									</div>							
                         </header>
                         <div class="panel-body">
            
-<?php echo $this->table->generate(); ?>
+ <?php echo $tabla_consejeras ?>
+
+
+
+		   </div>
+					
+                    </section>
+                </div>
+
+				<div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+
+                            <h2 class="panel-title">Solicitudes Buzones</h2>
+									<div class="panel-actions">
+										<a href="#" class="fa fa-caret-down"></a>
+									</div>							
+                        </header>
+                        <div class="panel-body">
+           
+ <?php echo $tabla_buzones ?>
+
+
+
+		   </div>
+					
+                    </section>
+                </div>
+
+				<div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            <h2 class="panel-title">Solicitudes Despachadas</h2>
+									<div class="panel-actions">
+										<a href="#" class="fa fa-caret-down"></a>
+									</div>
+							
+                        </header>
+                        <div class="panel-body">
+           
+ <?php echo $tabla_despachadas ?>
 
 
 

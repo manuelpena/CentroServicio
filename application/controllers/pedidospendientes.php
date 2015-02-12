@@ -18,11 +18,31 @@ class PedidosPendientes extends MX_Controller {
     */
     public function index()
     {
+	
+		//datatable para consejeras
 		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="solicitudes_consejeras_tbl">' );
 		$this->table->set_template($tmpl); 
 
 		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Estado','Accion');
+
+		$data['tabla_consejeras'] = $this->table->generate();
+
+		$this->table->clear();
+		//datatable para gerentes
+		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="solicitudes_buzones_tbl">' );
+		$this->table->set_template($tmpl); 
 		
+		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Estado','Accion');
+		$data['tabla_buzones'] = $this->table->generate();	
+
+		//datatable para pedidos despachados
+		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="solicitudes_despachadas_tbl">' );
+		$this->table->set_template($tmpl); 
+		
+		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Estado','Accion');
+		$data['tabla_despachadas'] = $this->table->generate();	
+			
+			
 		if($this->session->userdata('is_logged_in')){
 			$data['main_content'] = 'operaciones/pedidospendientes';
 			$data['usuario'] = $this->session->userdata('usuario');
@@ -34,18 +54,49 @@ class PedidosPendientes extends MX_Controller {
         }
 
 
-    }//index
+    }
+	
+	//Consultas para Datatables
 
 	 function datatable_consejeras()
     {
         $this->datatables->select('id,ncaja,zona,codigo,nombres,estado')
             ->unset_column('id')
+			 ->where('tipo_solicitud',1)
+			 ->where('estado','Pendiente')
 			->add_column('Accion', '<i class="fa fa-save" onclick="despachar($1)"  style="cursor: pointer;"></i>','id')
 			//$1
             ->from('solicitudes_vista');
  
         echo $this->datatables->generate();
     }
+	
+	function datatable_buzones()
+    {
+        $this->datatables->select('id,ncaja,zona,codigo,nombres,estado,tipo_solicitud')
+            ->unset_column('id')
+			->unset_column('tipo_solicitud')			
+ 			->where('tipo_solicitud',2)
+			->where('estado','Pendiente')
+			->add_column('Accion', '<i class="fa fa-save" onclick="despachar($1)"  style="cursor: pointer;"></i>','id')
+            ->from('solicitudes_vista');
+        echo $this->datatables->generate();
+    }
+	
+	
+	function datatable_despachadas()
+    {
+        $this->datatables->select('id,ncaja,zona,codigo,nombres,estado,tipo_solicitud')
+            ->unset_column('id')
+			->unset_column('tipo_solicitud')			
+ 			->where('estado','Despachado')
+			->add_column('Accion', '<i class="fa fa-check-square"   style="cursor: pointer;"></i>','id')
+            ->from('solicitudes_vista');
+        echo $this->datatables->generate();
+    }
+	
+	
+	
 	
 		public function despachar($id)
     {

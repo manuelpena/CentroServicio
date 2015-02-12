@@ -41,6 +41,24 @@ $('#solicitudes_tbl').dataTable({
             }
 		});
 
+
+		$('#solicitudes_buzones_tbl').dataTable({
+			bProcessing: true,
+			bJQueryUI: true,
+			sAjaxSource: '<?php echo base_url(); ?>'+'pedidospendientes/datatable_buzones',           
+            bServerSide: true,
+			fnServerData: function (sSource, aoData, fnCallback) {
+                $.ajax
+                ({
+                    'dataType': 'json',
+                    'type': 'POST',
+                    'url': sSource,
+                    'data': aoData,
+                    'success': fnCallback
+                });
+            }
+		});
+
 		$('#solicitudes_consejeras_tbl').dataTable({
 			bProcessing: true,
 			bJQueryUI: true,
@@ -58,6 +76,26 @@ $('#solicitudes_tbl').dataTable({
             }
 		});
 
+		$('#solicitudes_despachadas_tbl').dataTable({
+			bProcessing: true,
+			bJQueryUI: true,
+			sAjaxSource: '<?php echo base_url(); ?>'+'pedidospendientes/datatable_despachadas',           
+            bServerSide: true,
+			fnServerData: function (sSource, aoData, fnCallback) {
+                $.ajax
+                ({
+                    'dataType': 'json',
+                    'type': 'POST',
+                    'url': sSource,
+                    'data': aoData,
+                    'success': fnCallback
+                });
+            }
+		});
+
+		
+		
+		
 		/*		
 		$('#checkboxExample').click(function(){
         $('#BotonModal').trigger('click');
