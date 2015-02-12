@@ -43,5 +43,31 @@ class SolicitudesModel extends CI_Model {
 	
 	}	
 	
+	function cancelar_solicitud($id)
+	{
+	
+	$data = array(
+               'estado' => 3,
+    );
+
+	$this->db->where('id', $id);
+	$this->db->update('solicitudes', $data); 
+	
+	
+	}	
+
+	function despachar($id)
+	{
+	
+	$data = array(
+               'estado' => 2,
+    );
+
+	$this->db->where('id', $id);
+	$this->db->update('solicitudes', $data); 
+	
+	
+	}	
+	
 }
 

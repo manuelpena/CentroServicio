@@ -10,7 +10,6 @@ class SolicitudesConsejeras extends MX_Controller {
         parent::__construct();
         $this->load->model('SolicitudesModel');
 		$this->load->library('Datatables');
-		$this->load->database();
     }
  
     /**
@@ -56,33 +55,6 @@ class SolicitudesConsejeras extends MX_Controller {
     {
 		if ($this->input->is_ajax_request()) {		
 		
-		/*
-		
-		$this->form_validation->set_rules('nombres','Nombres','required|max_length[45]');
-		$this->form_validation->set_rules('apellidos','Apellidos','required|max_length[45]');
-		
-		$this->form_validation->set_rules('salario','Salarios','required|less_than[100000]|greater_than[10]');
-		
-		$this->form_validation->set_message('less_than','El Campo %s debe ser menor a 100000');
-		$this->form_validation->set_message('greater_than','El Campo %s debe ser mayor a 10');
-		
-		$this->form_validation->set_message('required','El Campo %s es requerido');
-		$this->form_validation->set_message('max_length','El Campo %s debe ser menor a 45 caracteres');
-		*/ 
-	/*	if($this->form_validation->run()==false){
-		$error = json_encode(validation_errors());
-		$error = str_replace('"',"",$error);
-		$error = str_replace('<\/p>\n',"",$error);
-		echo $error;
-		
-		
-		}else{
-		$this->AjaxModel->guardar_empleado();
-		echo "Guardado con Exito";
-		}
-		}else {
-		redirect('404');
-		}*/
 		
 	$this->SolicitudesModel->guardar_solicitud();
 	echo "Guardado con Exito";	
@@ -91,14 +63,28 @@ class SolicitudesConsejeras extends MX_Controller {
 	
     }
 	
+		public function cancelar_solicitud($id)
+    {
+		if ($this->input->is_ajax_request()) {
+
+    
+		$data = $this->SolicitudesModel->cancelar_solicitud($id);
+
+		echo 'Solicitud cancelada con exito';	 
 	
+		}else {
+		redirect('404');
+		}
+    }
+
+
 	
 	
 	 function datatable()
     {
         $this->datatables->select('id,ncaja,zona,codigo,nombres,estado')
             ->unset_column('id')
-			->add_column('Accion', '<i class="fa fa-trash-o" href="#"></i>','id')
+			->add_column('Accion', '<i class="fa fa-trash-o" onclick="cancelar_solicitud($1)"  style="cursor: pointer;"></i>','id')
 			//$1
             ->from('solicitudes_vista');
  

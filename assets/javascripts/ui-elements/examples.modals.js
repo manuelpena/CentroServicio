@@ -73,7 +73,7 @@ Theme Version: 	1.1.0
 
 	/*
 	Modal Confirm
-	*/
+	
 	$(document).on('click', '.modal-confirm', function (e) {
 		e.preventDefault();
 		$.magnificPopup.close();
@@ -84,7 +84,7 @@ Theme Version: 	1.1.0
 			type: 'success'
 		});
 	});
-
+*/
 	/*
 	Form
 	*/

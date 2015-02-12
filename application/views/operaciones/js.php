@@ -41,6 +41,23 @@ $('#solicitudes_tbl').dataTable({
             }
 		});
 
+		$('#solicitudes_consejeras_tbl').dataTable({
+			bProcessing: true,
+			bJQueryUI: true,
+			sAjaxSource: '<?php echo base_url(); ?>'+'pedidospendientes/datatable_consejeras',           
+            bServerSide: true,
+			fnServerData: function (sSource, aoData, fnCallback) {
+                $.ajax
+                ({
+                    'dataType': 'json',
+                    'type': 'POST',
+                    'url': sSource,
+                    'data': aoData,
+                    'success': fnCallback
+                });
+            }
+		});
+
 		/*		
 		$('#checkboxExample').click(function(){
         $('#BotonModal').trigger('click');
@@ -107,7 +124,43 @@ var codigo = $( this ).val();
 		  
 		  
 		});
-	
+		
+		function cancelar_solicitud(id){
+		
+		  if (confirm("¿Desea Cancelar Solicitud?") == true) {
+       			$.ajax({
+			url:'<?php echo base_url(); ?>'+'solicitudesconsejeras/cancelar_solicitud/'+id,
+			type: 'POST',
+			data:id,
+			success: function(respuesta){
+		
+					alert(respuesta)
+					location.reload();
+			}
+			});
+	   
+   
+			} else {
+			}		
+		}
+
+		function despachar(id){
+		
+       			$.ajax({
+			url:'<?php echo base_url(); ?>'+'pedidospendientes/despachar/'+id,
+			type: 'POST',
+			data:id,
+			success: function(respuesta){
+		
+					alert(respuesta)
+					location.reload();
+			}
+			});
+	   
+		}
+		
+
+
 		</script>
 		
 		<script src="<?php echo base_url(); ?>assets/javascripts/tables/examples.datatables.default.js"></script>
