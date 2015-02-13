@@ -41,8 +41,14 @@ Theme Version: 	1.1.0
 		},
 
 		build: function() {
+		//define cantidad de columnas en el datatable 
 			this.datatable = this.$table.DataTable({
 				aoColumns: [
+					null,
+					null,
+					null,
+					null,
+					null,
 					null,
 					null,
 					null,
@@ -61,7 +67,6 @@ Theme Version: 	1.1.0
 			this.$table
 				.on('click', 'a.save-row', function( e ) {
 					e.preventDefault();
-
 					_self.rowSave( $(this).closest( 'tr' ) );
 				})
 				.on('click', 'a.cancel-row', function( e ) {
@@ -133,7 +138,8 @@ Theme Version: 	1.1.0
 				'<a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>'
 			].join(' ');
 
-			data = this.datatable.row.add([ '', '', '', actions ]);
+			data = this.datatable.row.add(['','','','', '', '', '', '', actions ]);
+
 			$row = this.datatable.row( data[0] ).nodes().to$();
 
 			$row
@@ -180,7 +186,34 @@ Theme Version: 	1.1.0
 				if ( $this.hasClass('actions') ) {
 					_self.rowSetActionsEditing( $row );
 				} else {
-					$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '"/>' );
+	switch(i) {
+    case 0:
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="codigo_consejera" onchange="busqueda_consejera(this)"/>' );
+        break;  
+	case 1:
+  	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_nombre"/ disabled>' ); 
+        break;
+    case 2:
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_zona"/ disabled>' );	
+        break;
+	case 3:
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="solicitante"/>' );		
+        break;
+	case 4:
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_cod"/ disabled>' );				
+        break;	
+	case 5:
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="autorizacion"/ >' );					
+        break;	
+	case 6:
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="observacion"/ >' );						
+        break;
+	case 7:
+		$this.html( '<select><option>Apopa</option><option>Santa Tecla</option></select>' );						
+		break;
+}			
+		
+					
 				}
 			});
 		},
@@ -202,7 +235,11 @@ Theme Version: 	1.1.0
 					_self.rowSetActionsDefault( $row );
 					return _self.datatable.cell( this ).data();
 				} else {
+				if(typeof  $this.find('select').val() == 'undefined'){
 					return $.trim( $this.find('input').val() );
+					}else{
+					return $.trim( $this.find('select').val() );
+					}
 				}
 			});
 

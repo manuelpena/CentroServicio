@@ -76,7 +76,7 @@ $('#solicitudes_tbl').dataTable({
             }
 		});
 
-		$('#solicitudes_despachadas_tbl').dataTable({
+	$('#solicitudes_despachadas_tbl').dataTable({
 			bProcessing: true,
 			bJQueryUI: true,
 			sAjaxSource: '<?php echo base_url(); ?>'+'pedidospendientes/datatable_despachadas',           
@@ -102,7 +102,8 @@ $('#solicitudes_tbl').dataTable({
           });
 		  */
 	  $('#codigo').change(function(){
-var codigo = $( this ).val();
+	  
+	var codigo = $( this ).val();
 			$.ajax({
 			url:'<?php echo base_url(); ?>'+'solicitudesconsejeras/datos_consejera/'+codigo,
 			dataType:'json',
@@ -205,5 +206,7 @@ var codigo = $( this ).val();
 		<script src="<?php echo base_url(); ?>assets/javascripts/ui-elements/examples.modals.js"></script>
 		<!-- Examples -->
 		<script src="<?php echo base_url(); ?>assets/javascripts/ui-elements/examples.notifications.js"></script>		
+		<script src="<?php echo base_url(); ?>assets/javascripts/tables/examples.datatables.editable.js"></script>	
+
 		</body>
 </html>

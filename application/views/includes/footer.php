@@ -14,9 +14,15 @@
 		<script src="<?php echo base_url(); ?>assets/vendor/pnotify/pnotify.custom.js"></script>	
 		<script src="<?php echo base_url(); ?>assets/vendor/select2/select2.js"></script>
 		
-		<script src="<?php echo base_url(); ?>assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
-		<script src="<?php echo base_url(); ?>assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
 		
+		
+
+		<script src="<?php echo base_url(); ?>assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>		
+		<?php if($this->uri->segment(2)=='solicitudesbuzones'){		?>
+		<script src="<?php echo base_url(); ?>assets/vendor/jquery-datatables/media/js/jquery.dataTables-editable.js"></script>
+		<? }else{?>
+		<script src="<?php echo base_url(); ?>assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
+		<?}?>
 						
 		<!-- Theme Base, Components and Settings -->
 		<script src="<?php echo base_url(); ?>assets/javascripts/theme.js"></script>
@@ -25,7 +31,6 @@
 		<script src="<?php echo base_url(); ?>assets/javascripts/theme.custom.js"></script>
 		
 		<!-- Theme Initialization Files -->
-		<script src="<?php echo base_url(); ?>assets/javascripts/theme.init.js"></script>
-		<script src="<?php echo base_url(); ?>assets/javascripts/forms/examples.wizard.js"></script>
+		<script src="<?php echo base_url(); ?>assets/javascripts/theme.init.js"></script>		
 		</body>
 </html>
