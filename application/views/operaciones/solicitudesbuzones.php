@@ -36,6 +36,7 @@
 										<th>Codigo</th>
 										<th>Nombre</th>
 										<th>Zona</th>
+										<th>Pedido</th>
 										<th>Solicitante </th>
 										<th>COD</th>
 										<th>Autorizacion</th>
@@ -57,7 +58,7 @@
 								</div>
 								<div class="col-sm-6">
 									<div class="mb-md">
-										<button id="addToTable" class="btn btn-success">Guardar Todo<i class="fa fa-plus"></i></button>
+										<button id="addToTable" class="btn btn-success" onclick="guardar_solicitudes();">Guardar Todo<i class="fa fa-plus"></i></button>
 									</div>
 								</div>
 							</div>
@@ -73,44 +74,9 @@
                             <h2 class="panel-title">Solicitudes Buzones y Gerentes</h2>
                         </header>
                         <div class="panel-body">
-
-									<div class="table-responsive">
-										<table class="table mb-none">
-											<thead>
-												<tr>
-													<th>Caja</th>
-													<th>Zona</th>
-													<th>Codigo</th>
-													<th>Nombre Consejera</th>
-													<th>Estado</th>
-													<th>Accion</th>
-													
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>12</td>
-													<td>224</td>
-													<td>2321</td>
-													<td>Juana Ernestina Gonzalez</td>
-													<td>Pendiente</td>
-													<td><a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
-
-</td>
-												</tr>	
-												<tr>
-													<td>12</td>
-													<td>224</td>
-													<td>2321</td>
-													<td>Juana Ernestina Gonzalez</td>
-													<td>Pendiente</td>
-													<td><a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
-</td>
-												</tr>
-
-											</tbody>
-										</table>
-									</div>
+ <?php echo $tabla_buzones ?>
+ 
+ </div>
 					
                     </section>
                 </div>
@@ -131,11 +97,43 @@
 		$('#consejera_nombre').val(respuesta[i].nombres)
 		$('#consejera_zona').val(respuesta[i].zona)
 		$('#consejera_cod').val(respuesta[i].cod)
+		$('#pedido_id').val(respuesta[i].pedido_id)
 		
 		}
 		$('#nombres').focus();
 		
 			}
 			});
+		}
+		
+		function guardar_solicitudes(){
+		
+		var datos = new Array();
+        var rows = $("#datatable-editable").dataTable().fnGetNodes();
+		
+		
+        for(var i=0;i<rows.length;i++)
+        {            // Get HTML of 3rd column (for example)
+		var pedido_id  = $(rows[i]).find("td:eq(3)").html();
+		var solicitante = $(rows[i]).find("td:eq(4)").html();
+		var autorizacion = $(rows[i]).find("td:eq(7)").html();
+		var observacion = $(rows[i]).find("td:eq(8)").html();
+		var buzon = $(rows[i]).find("td:eq(9)").html();
+		var tipo_solicitud = 1
+
+		
+		$.ajax({
+			url:'<?php echo base_url(); ?>'+'solicitudesbuzones/guardar_solicitud_buzones/',
+			type: 'POST',
+			data:"pedido_id="+pedido_id+"&solicitante="+solicitante+"&autorizacion="+autorizacion+"&buzon="+buzon,
+			success: function(respuesta){
+
+				console.log(respuesta)
+		
+			}
+		});		
+
+	        }
+		
 		}
 </script>				

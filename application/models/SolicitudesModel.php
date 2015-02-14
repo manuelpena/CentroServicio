@@ -43,6 +43,8 @@ class SolicitudesModel extends CI_Model {
 	
 	}	
 	
+	
+	
 	function cancelar_solicitud($id)
 	{
 	
@@ -68,6 +70,37 @@ class SolicitudesModel extends CI_Model {
 	
 	
 	}	
+	
+	function guardar_solicitudes_buzones()
+	{
+	
+	
+	
+	//guardado de solicitud
+	$this->db->insert('solicitudes', array(
+	'pedido_id'=>$this->input->post('pedido_id',true),
+	'solicitante'=>$this->input->post('solicitante',true),
+	'autorizacion'=>$this->input->post('autorizacion',true),
+	'tipo_solicitud'=>2,
+	'bodegaje'=>1,
+	'estado'=>1,
+	'exoneracion'=>1,
+	'creado_por'=>$this->session->userdata('usuario_id'),
+	'fecha_creado'=>date('Y-m-d H:i:s'),
+	));
+	
+	//cambio de estado de pedido 
+	
+	$data = array(
+               'estado' => 2,
+    );
+
+	$this->db->where('id', $this->input->post('pedido_id',true));
+	$this->db->update('pedidos', $data); 
+	
+	
+	}	
+	
 	
 }
 

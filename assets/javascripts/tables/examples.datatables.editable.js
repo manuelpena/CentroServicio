@@ -51,6 +51,7 @@ Theme Version: 	1.1.0
 					null,
 					null,
 					null,
+					null,	
 					null,
 					{ "bSortable": false }
 				]
@@ -138,7 +139,7 @@ Theme Version: 	1.1.0
 				'<a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>'
 			].join(' ');
 
-			data = this.datatable.row.add(['','','','', '', '', '', '', actions ]);
+			data = this.datatable.row.add(['','','','','', '', '', '', '', actions ]);
 
 			$row = this.datatable.row( data[0] ).nodes().to$();
 
@@ -197,18 +198,21 @@ Theme Version: 	1.1.0
 	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_zona"/ disabled>' );	
         break;
 	case 3:
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="pedido_id"/ disabled>' );		
+	break;
+	case 4:
 	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="solicitante"/>' );		
         break;
-	case 4:
+	case 5:
 	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_cod"/ disabled>' );				
         break;	
-	case 5:
+	case 6:
 	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="autorizacion"/ >' );					
         break;	
-	case 6:
+	case 7:
 	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="observacion"/ >' );						
         break;
-	case 7:
+	case 8:
 		$this.html( '<select><option>Apopa</option><option>Santa Tecla</option></select>' );						
 		break;
 }			

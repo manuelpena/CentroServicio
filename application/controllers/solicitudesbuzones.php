@@ -8,7 +8,7 @@ class SolicitudesBuzones extends MX_Controller {
     public function __construct()
     {
         parent::__construct();
- /*       $this->load->model('products_model');*/
+      $this->load->model('SolicitudesModel');
     }
  
     /**
@@ -19,6 +19,13 @@ class SolicitudesBuzones extends MX_Controller {
     {
 
 		if($this->session->userdata('is_logged_in')){
+		
+		//datatable para gerentes y buzones
+		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="solicitudes_buzones_tbl">' );
+		$this->table->set_template($tmpl); 
+		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Estado','Accion');
+		$data['tabla_buzones'] = $this->table->generate();	
+		
 			$data['main_content'] = 'operaciones/solicitudesbuzones';
 			$data['usuario'] = $this->session->userdata('usuario');
 			$data['rol'] = $this->session->userdata('rol');
@@ -29,7 +36,23 @@ class SolicitudesBuzones extends MX_Controller {
         }
 
 
-    }//index
+    }
+	
+	public function guardar_solicitud_buzones()
+    {
+	
+
+		if ($this->input->is_ajax_request()) {		
+		
+		
+		$this->SolicitudesModel->guardar_solicitudes_buzones();
+		echo "Guardado con Exito";	
+	
+    }
+	
+	
+	}
+	
 
 
 }

@@ -28,7 +28,7 @@ class PedidosPendientes extends MX_Controller {
 		$data['tabla_consejeras'] = $this->table->generate();
 
 		$this->table->clear();
-		//datatable para gerentes
+		//datatable para gerentes y buzones
 		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="solicitudes_buzones_tbl">' );
 		$this->table->set_template($tmpl); 
 		
