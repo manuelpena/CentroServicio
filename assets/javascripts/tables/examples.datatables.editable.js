@@ -213,7 +213,9 @@ Theme Version: 	1.1.0
 	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="observacion"/ >' );						
         break;
 	case 8:
-		$this.html( '<select><option>Apopa</option><option>Santa Tecla</option></select>' );						
+		var listado = listado_buzones()
+
+		$this.html(listado);						
 		break;
 }			
 		

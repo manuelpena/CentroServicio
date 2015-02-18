@@ -43,9 +43,11 @@ class SolicitudesConsejeras extends MX_Controller {
 
     
 		$data = $this->SolicitudesModel->obtener_consejera($codigo);
-
+		if(count($data)>0){
 		echo json_encode($data);	 
-	
+	}else{
+
+	}
 		}else {
 		redirect('404');
 		}

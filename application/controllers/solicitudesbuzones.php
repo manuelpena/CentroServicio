@@ -9,6 +9,7 @@ class SolicitudesBuzones extends MX_Controller {
     {
         parent::__construct();
       $this->load->model('SolicitudesModel');
+	  $this->load->model('ConsultasVarias');
     }
  
     /**
@@ -47,6 +48,22 @@ class SolicitudesBuzones extends MX_Controller {
 		
 		$this->SolicitudesModel->guardar_solicitudes_buzones();
 		echo "Guardado con Exito";	
+	
+    }
+	
+	
+	}
+
+	public function listado_buzones()
+    {
+	
+
+		if ($this->input->is_ajax_request()) {		
+		
+		
+		$data = $this->ConsultasVarias->listado_buzones();
+		
+		echo json_encode($data);	
 	
     }
 	

@@ -41,7 +41,7 @@
 										<th>COD</th>
 										<th>Autorizacion</th>
 										<th>Observacion</th>
-										<th>Buzon</th>
+										<th>Envio</th>
 										<th>Accion</th>
 									</tr>
 								</thead>
@@ -85,6 +85,7 @@
         </div>
 <script>
 		function busqueda_consejera(consejera){
+
 		var codigo = consejera.value
 			$.ajax({
 			url:'<?php echo base_url(); ?>'+'solicitudesconsejeras/datos_consejera/'+codigo,
@@ -94,14 +95,23 @@
 			success: function(respuesta){
 
 		for (var i = 0; i < respuesta.length; i++) {
+		
 		$('#consejera_nombre').val(respuesta[i].nombres)
 		$('#consejera_zona').val(respuesta[i].zona)
 		$('#consejera_cod').val(respuesta[i].cod)
 		$('#pedido_id').val(respuesta[i].pedido_id)
 		
 		}
+		
 		$('#nombres').focus();
 		
+			},
+			error: function(){
+				new PNotify({
+					title: 'Atención',
+					text: 'Codigo de consejera no existe, \o tiene ya solicitud!',
+					type: 'error',
+				});
 			}
 			});
 		}
@@ -112,28 +122,61 @@
         var rows = $("#datatable-editable").dataTable().fnGetNodes();
 		
 		
-        for(var i=0;i<rows.length;i++)
-        {            // Get HTML of 3rd column (for example)
+        for(var i=0;i<rows.length;i++){
 		var pedido_id  = $(rows[i]).find("td:eq(3)").html();
 		var solicitante = $(rows[i]).find("td:eq(4)").html();
 		var autorizacion = $(rows[i]).find("td:eq(7)").html();
 		var observacion = $(rows[i]).find("td:eq(8)").html();
-		var buzon = $(rows[i]).find("td:eq(9)").html();
-		var tipo_solicitud = 1
-
+		var buzon = $(rows[i]).find("td:eq(8)").html();
 		
+		//validacion de tipo de solicitud
+		if(buzon=='Gerente'){
+		var tipo_solicitud = 2;
+		var buzon = 0;
+		}else{
+		var tipo_solicitud = 3;
+		}
+		
+		console.log("pedido_id="+pedido_id+"&solicitante="+solicitante+"&autorizacion="+autorizacion+"&buzon="+buzon+"&tipo_solicitud="+tipo_solicitud)
 		$.ajax({
 			url:'<?php echo base_url(); ?>'+'solicitudesbuzones/guardar_solicitud_buzones/',
 			type: 'POST',
-			data:"pedido_id="+pedido_id+"&solicitante="+solicitante+"&autorizacion="+autorizacion+"&buzon="+buzon,
+			data:"pedido_id="+pedido_id+"&solicitante="+solicitante+"&autorizacion="+autorizacion+"&buzon="+buzon+"&tipo_solicitud="+tipo_solicitud,
 			success: function(respuesta){
 
 				console.log(respuesta)
 		
 			}
-		});		
-
+		});	
+		location.reload();
+}
 	        }
+
+		function listado_buzones(){
+		var	select_buzones="";		
+
+		
+			$.ajax({
+			url:'<?php echo base_url(); ?>'+'solicitudesbuzones/listado_buzones/',
+			type: 'POST',
+			dataType:'json',
+			    async:false,
+			success: function(respuesta){
+
+		
+			select_buzones +='<select id="buzones">';
+				select_buzones +='<option>Gerente</option>';
+		for (var i = 0; i < respuesta.length; i++) {
+		
+		select_buzones +='<option>'+respuesta[i].descripcion+'</option>';
 		
 		}
+				select_buzones +='</select>';
+
+			}
+		});	
+		return select_buzones;
+		
+		}
+		
 </script>				

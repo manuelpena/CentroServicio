@@ -76,7 +76,7 @@ class PedidosPendientes extends MX_Controller {
         $this->datatables->select('id,ncaja,zona,codigo,nombres,estado,tipo_solicitud')
             ->unset_column('id')
 			->unset_column('tipo_solicitud')			
- 			->where('tipo_solicitud',2)
+ 			->where('tipo_solicitud >=',2)
 			->where('estado','Pendiente')
 			->add_column('Accion', '<i class="fa fa-save" onclick="despachar($1)"  style="cursor: pointer;"></i>','id')
             ->from('solicitudes_vista');
