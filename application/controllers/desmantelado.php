@@ -38,7 +38,7 @@ class Desmantelado extends MX_Controller {
     
 		$data = $this->DesmanteladosModel->generar_desmantelado();
 
-		echo 'Desmantelado generado con éxito';	 
+		echo $this->db->affected_rows();	 
 	
 		}else {
 		redirect('404');

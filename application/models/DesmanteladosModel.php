@@ -2,8 +2,9 @@
 class DesmanteladosModel extends CI_Model {
 	
 
-	function generar_desmantelado($codigo)
+	function generar_desmantelado()
     {
+	
 		$zona		=$this->input->post('zona',true);
 		$anio		=$this->input->post('anio',true);
 		$campania	=$this->input->post('campania',true);

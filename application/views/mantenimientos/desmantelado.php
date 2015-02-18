@@ -134,10 +134,10 @@
 			type: 'POST',
 			data:info,
 			success: function(respuesta){
-
+			console.log(respuesta)
 				new PNotify({
 					title: 'Mensaje',
-					text: 'Desmantelado generado con Exito',
+					text: 'Desmantelado generado con Exito\ se modificaron '+respuesta+' registros',
 					type: 'success',
 				});
 			},
