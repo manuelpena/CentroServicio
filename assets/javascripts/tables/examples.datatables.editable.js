@@ -85,27 +85,8 @@ Theme Version: 	1.1.0
 
 					var $row = $(this).closest( 'tr' );
 
-					$.magnificPopup.open({
-						items: {
-							src: '#dialog',
-							type: 'inline'
-						},
-						preloader: false,
-						modal: true,
-						callbacks: {
-							change: function() {
-								_self.dialog.$confirm.on( 'click', function( e ) {
-									e.preventDefault();
-
-									_self.rowRemove( $row );
-									$.magnificPopup.close();
-								});
-							},
-							close: function() {
-								_self.dialog.$confirm.off( 'click' );
-							}
-						}
-					});
+				_self.rowRemove( $row );
+	
 				});
 
 			this.$addButton.on( 'click', function(e) {

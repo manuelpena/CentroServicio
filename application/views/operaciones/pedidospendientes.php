@@ -24,7 +24,7 @@
                     <section class="panel">
                         <header class="panel-heading">
 
-                            <h2 class="panel-title">Solicitudes Consejera / Gerente de Zona</h2>
+                            <h2 class="panel-title">Solicitudes Consejera</h2>
 									<div class="panel-actions">
 										<a href="#" class="fa fa-caret-down"></a>
 									</div>							
@@ -44,7 +44,7 @@
                     <section class="panel">
                         <header class="panel-heading">
 
-                            <h2 class="panel-title">Solicitudes Buzones</h2>
+                            <h2 class="panel-title">Solicitudes Buzones  / Gerente de Zona</h2>
 									<div class="panel-actions">
 										<a href="#" class="fa fa-caret-down"></a>
 									</div>							

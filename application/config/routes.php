@@ -60,6 +60,7 @@ $route['mantenimientos/desmantelado'] = 'desmantelado/index';
 $route['operaciones/solicitudesconsejeras'] = 'solicitudesconsejeras/index';
 $route['operaciones/pedidospendientes'] = 'pedidospendientes/index';
 $route['operaciones/solicitudesbuzones'] = 'solicitudesbuzones/index';
+$route['consultas/consultaconsejera'] = 'consultaconsejera/index';
 
 
 

@@ -85,8 +85,8 @@
 										</a>
 										<ul class="nav nav-children">
 											<li>
-												<a href="layouts-default.html">
-													 Default
+												<a href="<?php echo base_url(); ?>consultas/consultaconsejera">
+													 Consultas de Consejeras
 												</a>
 											</li>
 										</ul>
@@ -106,22 +106,6 @@
 									</li>
 								</ul>
 							</nav>
-				
-							<hr class="separator" />
-				
-							<div class="sidebar-widget widget-tasks">
-								<div class="widget-header">
-									<h6>Projects</h6>
-									<div class="widget-toggle">+</div>
-								</div>
-								<div class="widget-content">
-									<ul class="list-unstyled m-none">
-										<li><a href="#">Porto HTML5 Template</a></li>
-										<li><a href="#">Tucson Template</a></li>
-										<li><a href="#">Porto Admin</a></li>
-									</ul>
-								</div>
-							</div>
 				
 							<hr class="separator" />
 				
