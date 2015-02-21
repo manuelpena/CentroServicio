@@ -31,20 +31,17 @@
 										</a>
 										<ul class="nav nav-children">
 											<li>
-												<a href="<?php echo base_url(); ?>operaciones/solicitudesbuzones">
-													 Solicitudes de Buzones/Gerentes
-												</a>
-											</li>
-											<li>
 												<a href="<?php echo base_url(); ?>operaciones/solicitudesconsejeras">
 													 Solicitudes de Consejeras
 												</a>
 											</li>	
-											<li>
-												<a href="<?php echo base_url(); ?>operaciones/pedidospendientes">
-													 Pedidos Pendientes
+										<li>
+												<a href="<?php echo base_url(); ?>operaciones/solicitudesbuzones">
+													 Solicitudes de Buzones/Gerentes
 												</a>
-											</li>											
+											</li>
+
+
 										</ul>
 									</li>
 									<li class="nav-parent">
@@ -54,10 +51,10 @@
 										</a>
 										<ul class="nav nav-children">
 											<li>
-												<a href="layouts-default.html">
-													 Default
+												<a href="<?php echo base_url(); ?>operaciones/pedidospendientes">
+													 Pedidos Pendientes
 												</a>
-											</li>
+											</li>											
 										</ul>
 									</li>
 									<li class="nav-parent">
