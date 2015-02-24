@@ -196,26 +196,6 @@
 	   
 		}
 
-		function calculo_bodegaje(tipo_solicitud,pedido_id){
-		
-		
-       	var info = "tipo_solicitud="+tipo_solicitud+"&pedido_id="+pedido_id
-
-	
-		$.ajax({
-			url:'<?php echo base_url(); ?>'+'solicitudesconsejeras/calculo_bodegaje/',
-			type: 'POST',
-			dataType: 'json',
-			data:info,
-			success: function(respuesta){
-
-		for (var i = 0; i < respuesta.length; i++) {
-		$('#bodegaje').val(respuesta[i].Cobro)
-		}
-			}
-			});
-	
-		}
 		
 
 

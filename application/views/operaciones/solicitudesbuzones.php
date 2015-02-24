@@ -42,6 +42,7 @@
 										<th>Autorizacion</th>
 										<th>Observacion</th>
 										<th>Envio</th>
+										<th>Bodegaje</th>
 										<th>Accion</th>
 									</tr>
 								</thead>
@@ -100,7 +101,7 @@
 		$('#consejera_zona').val(respuesta[i].zona)
 		$('#consejera_cod').val(respuesta[i].cod)
 		$('#pedido_id').val(respuesta[i].pedido_id)
-		
+		calculo_bodegaje(2,respuesta[i].pedido_id)
 		}
 		
 		$('#nombres').focus();
@@ -128,20 +129,23 @@
 		var autorizacion = $(rows[i]).find("td:eq(7)").html();
 		var observacion = $(rows[i]).find("td:eq(8)").html();
 		var buzon = $(rows[i]).find("td:eq(8)").html();
-		
+
+
 		//validacion de tipo de solicitud
 		if(buzon=='Gerente'){
 		var tipo_solicitud = 2;
+		var cobro = $(rows[i]).find("td:eq(9)").html();
 		var buzon = 0;
 		}else{
 		var tipo_solicitud = 3;
+		var cobro = 0;
 		}
 		
-		console.log("pedido_id="+pedido_id+"&solicitante="+solicitante+"&autorizacion="+autorizacion+"&buzon="+buzon+"&tipo_solicitud="+tipo_solicitud)
+		console.log("pedido_id="+pedido_id+"&solicitante="+solicitante+"&autorizacion="+autorizacion+"&buzon="+buzon+"&tipo_solicitud="+tipo_solicitud+"&cobro="+cobro)
 		$.ajax({
 			url:'<?php echo base_url(); ?>'+'solicitudesbuzones/guardar_solicitud_buzones/',
 			type: 'POST',
-			data:"pedido_id="+pedido_id+"&solicitante="+solicitante+"&autorizacion="+autorizacion+"&buzon="+buzon+"&tipo_solicitud="+tipo_solicitud,
+			data:"pedido_id="+pedido_id+"&solicitante="+solicitante+"&autorizacion="+autorizacion+"&buzon="+buzon+"&tipo_solicitud="+tipo_solicitud+"&cobro="+cobro,
 			success: function(respuesta){
 
 				console.log(respuesta)
@@ -180,5 +184,24 @@
 		}
 		
 		
+		function calculo_bodegaje(tipo_solicitud,pedido_id){
+		
+       	var info = "tipo_solicitud="+tipo_solicitud+"&pedido_id="+pedido_id
+
+	
+		$.ajax({
+			url:'<?php echo base_url(); ?>'+'solicitudesconsejeras/calculo_bodegaje/',
+			type: 'POST',
+			dataType: 'json',
+			data:info,
+			success: function(respuesta){
+
+		for (var i = 0; i < respuesta.length; i++) {
+		$('#bodegaje').val(respuesta[i].Cobro)
+		}
+			}
+			});
+	
+		}
 		
 </script>				

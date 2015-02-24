@@ -108,7 +108,7 @@ class SolicitudesModel extends CI_Model {
 	function guardar_solicitudes_buzones()
 	{	
 	
-	
+
 	
 		$this->db->select('id');
 		$this->db->from('solicitudes');
@@ -119,10 +119,8 @@ class SolicitudesModel extends CI_Model {
 		
 	if($query->num_rows()>0){
 	return;
-	}else{
-	
+	}else{	
 	if($this->input->post('tipo_solicitud',true)==3){
-
 	
 		$this->db->select('id');
 		$this->db->from('buzones');
@@ -132,11 +130,12 @@ class SolicitudesModel extends CI_Model {
 		{
 			
 		$buzon =  $row->id;
-		echo $buzon;
 		
 		}
+	$bodegaje=0;	
 	}else{
 	$buzon = $this->input->post('buzon',true);
+	$bodegaje=$this->input->post('cobro',true);	
 	}
 	
 	
@@ -147,7 +146,7 @@ class SolicitudesModel extends CI_Model {
 	'solicitante'=>$this->input->post('solicitante',true),
 	'autorizacion'=>$this->input->post('autorizacion',true),
 	'tipo_solicitud'=>$this->input->post('tipo_solicitud',true),
-	'bodegaje'=>1,
+	'bodegaje'=>$bodegaje,
 	'buzon_id'=>$buzon,
 	'estado'=>1,
 	'exoneracion'=>1,

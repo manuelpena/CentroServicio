@@ -53,6 +53,7 @@ Theme Version: 	1.1.0
 					null,
 					null,	
 					null,
+					null,
 					{ "bSortable": false }
 				]
 			});
@@ -120,7 +121,7 @@ Theme Version: 	1.1.0
 				'<a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>'
 			].join(' ');
 
-			data = this.datatable.row.add(['','','','','', '', '', '', '', actions ]);
+			data = this.datatable.row.add(['','','','','', '', '', '', '', '', actions ]);
 
 			$row = this.datatable.row( data[0] ).nodes().to$();
 
@@ -173,31 +174,35 @@ Theme Version: 	1.1.0
 	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="codigo_consejera" onchange="busqueda_consejera(this)"/>' );
         break;  
 	case 1:
-  	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_nombre"/ disabled>' ); 
+  	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_nombre"/ readonly>' ); 
         break;
     case 2:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_zona"/ disabled>' );	
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_zona"/ readonly>' );	
         break;
 	case 3:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="pedido_id"/ disabled>' );		
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="pedido_id" readonly/>' );		
 	break;
 	case 4:
 	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="solicitante"/>' );		
         break;
 	case 5:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_cod"/ disabled>' );				
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_cod" readonly/>' );				
         break;	
 	case 6:
 	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="autorizacion"/ >' );					
         break;	
 	case 7:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="observacion"/ >' );						
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="observacion"/ > ' );						
         break;
 	case 8:
 		var listado = listado_buzones()
 
 		$this.html(listado);						
 		break;
+	case 9:
+	$this.html( '<input type="text" class="form-control input-block" id="bodegaje" readonly/>' );						
+	/*<input type="checkbox" checked="checked" value="1" id="exonerar_bodegaje" name="exonerar_bodegaje"></input>*/
+	break;		
 }			
 		
 					
