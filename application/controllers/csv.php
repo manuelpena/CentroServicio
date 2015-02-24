@@ -76,6 +76,7 @@ class csv extends CI_Controller {
 						'ncaja'=>$row['Clave'],
 						'creado_por'=>$this->session->userdata('usuario_id'),
 						'fecha_creado'=>$fecha,
+						'tipo_pedido'=>$tipo_pedido,
                     );
 					
                     $this->csv_model->insert_csv_pedidos($datos_pedido);

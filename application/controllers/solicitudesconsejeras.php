@@ -9,6 +9,7 @@ class SolicitudesConsejeras extends MX_Controller {
     {
         parent::__construct();
         $this->load->model('SolicitudesModel');
+		$this->load->model('ConsultasVarias');
 		$this->load->library('Datatables');
     }
  
@@ -22,7 +23,7 @@ class SolicitudesConsejeras extends MX_Controller {
 		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="solicitudes_tbl">' );
 		$this->table->set_template($tmpl); 
 
-		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Estado','Accion');
+		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Tipo Solicitud','Estado','Accion');
 		
 		if($this->session->userdata('is_logged_in')){
 			$data['main_content'] = 'operaciones/solicitudesconsejeras';
@@ -77,6 +78,20 @@ class SolicitudesConsejeras extends MX_Controller {
 		}else {
 		redirect('404');
 		}
+    }	
+
+	public function calculo_bodegaje()
+    {
+		if ($this->input->is_ajax_request()) {
+
+    
+		$data = $this->ConsultasVarias->calculo_bodegaje();
+
+		echo json_encode($data);	 
+	
+		}else {
+		redirect('404');
+		}
     }
 
 
@@ -84,7 +99,7 @@ class SolicitudesConsejeras extends MX_Controller {
 	
 	 function datatable()
     {
-        $this->datatables->select('id,ncaja,zona,codigo,nombres,estado')
+        $this->datatables->select('id,ncaja,zona,codigo,nombres,descripcion_solicitud,estado')
             ->unset_column('id')
 			->add_column('Accion', '<i class="fa fa-trash-o" onclick="cancelar_solicitud($1)"  style="cursor: pointer;"></i>','id')
 			//$1

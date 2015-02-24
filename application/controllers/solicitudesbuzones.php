@@ -24,7 +24,7 @@ class SolicitudesBuzones extends MX_Controller {
 		//datatable para gerentes y buzones
 		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="solicitudes_buzones_tbl">' );
 		$this->table->set_template($tmpl); 
-		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Estado','Accion');
+		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Tipo Solicitud','Estado','Accion');
 		$data['tabla_buzones'] = $this->table->generate();	
 		
 			$data['main_content'] = 'operaciones/solicitudesbuzones';

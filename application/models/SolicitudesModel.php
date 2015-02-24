@@ -20,6 +20,16 @@ class SolicitudesModel extends CI_Model {
 	
 	function guardar_solicitud()
 	{
+		
+	if ($this->input->post('exonerar_bodegaje',true)==1) {
+	
+	$bodegaje = 0;
+
+	} else {
+
+	$bodegaje = $this->input->post('bodegaje',true);
+	
+	}
 	
 	//guardado de solicitud
 	$this->db->insert('solicitudes', array(
@@ -28,7 +38,7 @@ class SolicitudesModel extends CI_Model {
 	'documento'=>$this->input->post('documento',true),
 	'autorizacion'=>$this->input->post('autorizacion',true),
 	'tipo_solicitud'=>1,
-	'bodegaje'=>1,
+	'bodegaje'=>$bodegaje,
 	'estado'=>1,
 	'exoneracion'=>1,
 	'creado_por'=>$this->session->userdata('usuario_id'),
@@ -51,14 +61,7 @@ class SolicitudesModel extends CI_Model {
 	
 	function cancelar_solicitud($id)
 	{
-	//Cambia de estado la solicitud
-	$data = array(
-               'estado' => 3,
-    );
 
-	$this->db->where('id', $id);
-	$this->db->update('solicitudes', $data); 
-	
 	
 	//Obtiene el ID del pedido de la solicitud
 		$this->db->select('pedido_id');
@@ -71,6 +74,11 @@ class SolicitudesModel extends CI_Model {
 
 		$pedido_id =  $row->pedido_id;
 		}
+		
+	//Elimina la solicitud
+
+	$this->db->where('id', $id);
+	$this->db->delete('solicitudes'); 
 	
 	
 	//Cambia de estado el pedido	
@@ -100,7 +108,21 @@ class SolicitudesModel extends CI_Model {
 	function guardar_solicitudes_buzones()
 	{	
 	
+	
+	
+		$this->db->select('id');
+		$this->db->from('solicitudes');
+		$this->db->where('pedido_id', $this->input->post('pedido_id',true));
+		$estados = array(1,2,3);
+		$this->db->where_in('estado', $estados);		
+		$query = $this->db->get();
+		
+	if($query->num_rows()>0){
+	return;
+	}else{
+	
 	if($this->input->post('tipo_solicitud',true)==3){
+
 	
 		$this->db->select('id');
 		$this->db->from('buzones');
@@ -111,10 +133,13 @@ class SolicitudesModel extends CI_Model {
 			
 		$buzon =  $row->id;
 		echo $buzon;
+		
 		}
 	}else{
 	$buzon = $this->input->post('buzon',true);
 	}
+	
+	
 	
 	//guardado de solicitud
 	$this->db->insert('solicitudes', array(
@@ -142,6 +167,6 @@ class SolicitudesModel extends CI_Model {
 	
 	}	
 	
-	
+	}
 }
 

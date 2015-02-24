@@ -49,29 +49,29 @@
                             <div class="row form-group">
                                 <label class="col-md-1 control-label">Nombres</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" id="nombres" name="nombres" disabled>
+                                    <input type="text" class="form-control" id="nombres" name="nombres" readonly>
 
                                 </div>
 
                                 <label class="col-md-1 control-label">Zona</label>
                                 <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="zona" name="zona" disabled>
+                                    <input type="text" class="form-control" id="zona" name="zona" readonly>
 
                                 </div>
                                 <label class="col-md-1 control-label">Sector</label>
                                 <div class="col-sm-1">
-                                 <input type="text" class="form-control" id="sector" name="sector" disabled>
+                                 <input type="text" class="form-control" id="sector" name="sector" readonly>
 
                                 </div>                                <label class="col-md-1 control-label">Campaña</label>
                                 <div class="col-sm-1">
-                                 <input type="text" class="form-control" id="campania" name="campania" disabled>
+                                 <input type="text" class="form-control" id="campania" name="campania" readonly>
 
                                 </div>
                             </div>                    
 							<div class="row form-group">
                                 <label class="col-md-1 control-label">Direccion</label>
-                                <div class="col-sm-4">
-                   <textarea class="form-control" rows="2" id="direccion" name="direccion" disabled></textarea>
+                                <div class="col-sm-5">
+                   <textarea class="form-control" rows="2" id="direccion" name="direccion" readonly></textarea>
 
 
                                 </div>
@@ -80,20 +80,20 @@
 		                     <div class="row form-group">		
 <label class="col-md-2 control-label"><h4>Datos del Pedido</h4></label>        
                         <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="pedido_id" name="pedido_id">
+                                    <input type="text" class="form-control" id="pedido_id" name="pedido_id" readonly>
 
                                 </div>
  </div>
                            <div class="row form-group">
                                 <label class="col-md-1 control-label">Cajas</label>
                                 <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="cajas" name="cajas" disabled>
+                                    <input type="text" class="form-control" id="cajas" name="cajas" readonly>
 
                                 </div>
 
                                 <label class="col-md-1 control-label">Observaciones</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="comentarios" name="comentarios" disabled>
+                                    <input type="text" class="form-control" id="comentarios" name="comentarios" readonly>
 
                                 </div>
 
@@ -101,13 +101,13 @@
 							<div class="row form-group">
                                 <label class="col-md-1 control-label">COD</label>
                                 <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="cod" name="cod" disabled>
+                                    <input type="text" class="form-control" id="cod" name="cod" readonly>
 
                                 </div>
 
                                 <label class="col-md-1 control-label">POD</label>
                                 <div class="col-sm-2">
-                                    <input type="text" class="form-control" id="pod" name="pod" disabled>
+                                    <input type="text" class="form-control" id="pod" name="pod" readonly>
 
                                 </div>
                                 <label class="col-md-1 control-label">Autorizacion</label>
@@ -118,29 +118,29 @@
 
                       		
                                 <label class="col-md-1 control-label">A pagar</label>
-                                <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="total_pagar" name="total_pagar" disabled>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="total_pagar" name="total_pagar" readonly>
 
                                 </div> </div>								
  <div class="row form-group">		
                      <label class="col-md-1 control-label">Bodegaje</label>
                                 <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="bodegaje" name="bodegaje" disabled>
+                                    <input type="text" class="form-control" id="bodegaje" name="bodegaje" readonly>
 
                                 </div> 
 <a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-default" href="#modalSM" id="BotonModal" hidden="hidden" style=" visibility: hidden;" ></a> 
                                 <label class="col-md-1 control-label">Exonerar Bodegaje</label>
                                 <div class="col-sm-1">
 								<div class="checkbox-custom checkbox-primary">
-															<input type="checkbox"  id="checkboxExample"></input>
-															<label for="checkboxExample2"></label>
+															<input type="checkbox" value="1" id="exonerar_bodegaje" name="exonerar_bodegaje"></input>
+															<label for="exonerar_bodegaje"></label>
 														</div>
 
 
 
                                 </div>      
-								<div class="col-sm-2">
-									<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary btn-lg btn-block" id="despachar">Despachar</button>
+								<div class="col-sm-3">
+									<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary btn-lg btn-block" id="despachar">Enviar a Bodega</button>
 
 
                                 </div>

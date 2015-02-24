@@ -107,8 +107,8 @@
 						<label class="col-md-1 control-label">Tipo</label>
                                 <div class="col-sm-2">
                                     <select class="form-control mb-md" id="tipo_pedido" name="tipo_pedido">
-									<option value="Normal">Normal</option>
-									<option value="Tardio">Tardio</option>
+									<option value="1">Normal</option>
+									<option value="2">Tardio</option>
 									</select>								
                                 </div>								
                             </div>

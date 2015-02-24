@@ -1,28 +1,6 @@
 		<script>
 		$(function() {
-		
 
-	/*
-$('#solicitudes_tbl').dataTable({
-            "bProcessing": true,
-            "bServerSide": true,
-            "sAjaxSource": '<?php echo base_url(); ?>'+'solicitudesconsejeras/datatable',
-            "iDisplayStart ": 20,
-            "fnInitComplete": function () {
-                //oTable.fnAdjustColumnSizing();
-            },
-            'fnServerData': function (sSource, aoData, fnCallback) {
-                $.ajax
-                ({
-                    'dataType': 'json',
-                    'type': 'POST',
-                    'url': sSource,
-                    'data': aoData,
-                    'success': fnCallback
-                });
-            }
-        });	
-*/
 
 	$('#solicitudes_tbl').dataTable({
 			bProcessing: true,
@@ -124,12 +102,32 @@ $('#solicitudes_tbl').dataTable({
 		$('#comentarios').val(respuesta[i].comentarios)
 		$('#cod').val(respuesta[i].cod)
 		$('#pod').val(respuesta[i].pod)
-		
+		calculo_bodegaje(1,respuesta[i].pedido_id)
 		}
 		$('#nombres').focus();
 		
+			},
+			error: function(){
+				new PNotify({
+					title: 'Atención',
+					text: 'Codigo de consejera no existe, \o tiene ya solicitud en proceso!',
+					type: 'error',
+				});
 			}
 			});
+
+          });	
+		  
+		  
+
+		  $('#autorizacion').change(function(){
+		
+		var autorizacion = parseFloat($(this).val()).toFixed(2)
+		var COD = parseFloat($('#cod').val()).toFixed(2)
+
+		total = COD-autorizacion;		
+		
+		$('#total_pagar').val(total)
 
           });
 		
@@ -166,7 +164,7 @@ $('#solicitudes_tbl').dataTable({
 		
 		function cancelar_solicitud(id){
 		
-		  if (confirm("¿Desea Cancelar Solicitud?") == true) {
+		  if (confirm("¿Desea Eliminar la Solicitud?") == true) {
        			$.ajax({
 			url:'<?php echo base_url(); ?>'+'solicitudesconsejeras/cancelar_solicitud/'+id,
 			type: 'POST',
@@ -196,6 +194,27 @@ $('#solicitudes_tbl').dataTable({
 			}
 			});
 	   
+		}
+
+		function calculo_bodegaje(tipo_solicitud,pedido_id){
+		
+		
+       	var info = "tipo_solicitud="+tipo_solicitud+"&pedido_id="+pedido_id
+
+	
+		$.ajax({
+			url:'<?php echo base_url(); ?>'+'solicitudesconsejeras/calculo_bodegaje/',
+			type: 'POST',
+			dataType: 'json',
+			data:info,
+			success: function(respuesta){
+
+		for (var i = 0; i < respuesta.length; i++) {
+		$('#bodegaje').val(respuesta[i].Cobro)
+		}
+			}
+			});
+	
 		}
 		
 

@@ -73,6 +73,11 @@
 													 Desmantelado
 												</a>
 											</li>
+											<li>
+											<a href="<?php echo base_url(); ?>mantenimientos/diaslaborales">
+													 Dias Laborales
+												</a>
+											</li>
 										</ul>
 									</li>
 									<li class="nav-parent">
