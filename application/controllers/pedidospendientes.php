@@ -95,7 +95,17 @@ class PedidosPendientes extends MX_Controller {
         echo $this->datatables->generate();
     }
 	
-	
+		function datatable_buzones_desp()
+    {
+        $this->datatables->select('id,ncaja,zona,codigo,nombres,descripcion_solicitud,estado,tipo_solicitud')
+            ->unset_column('id')
+			->unset_column('tipo_solicitud')			
+ 			->where('tipo_solicitud >=',2)
+			->where('estado','Pendiente')
+			->add_column('Accion', '<i class="fa fa-trash-o" onclick="cancelar_solicitud($1)"  style="cursor: pointer;"></i>','id')
+            ->from('solicitudes_vista');
+        echo $this->datatables->generate();
+    }
 	
 	
 		public function despachar($id)

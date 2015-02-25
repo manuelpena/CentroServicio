@@ -42,13 +42,13 @@ Theme Version: 	1.1.0
 				left: 'title',
 				right: 'prev,today,next,basicDay,basicWeek,month'
 			},
-
+			lang: 'es',
 			timeFormat: 'h:mm',
 
 			titleFormat: {
-				month: 'MMMM yyyy',      // September 2009
-			    week: "MMM d yyyy",      // Sep 13 2009
-			    day: 'dddd, MMM d, yyyy' // Tuesday, Sep 8, 2009
+				month: 'MMMM YYYY',      // September 2009
+			    week: "MMM d YYYY",      // Sep 13 2009
+			    day: 'dddd, MMM d, YYYY' // Tuesday, Sep 8, 2009
 			},
 
 			themeButtonIcons: {

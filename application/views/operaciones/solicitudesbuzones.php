@@ -75,7 +75,7 @@
                             <h2 class="panel-title">Solicitudes Buzones y Gerentes</h2>
                         </header>
                         <div class="panel-body">
- <?php echo $tabla_buzones ?>
+ <?php echo $datatable_buzones ?>
  
  </div>
 					
@@ -102,6 +102,7 @@
 		$('#consejera_cod').val(respuesta[i].cod)
 		$('#pedido_id').val(respuesta[i].pedido_id)
 		calculo_bodegaje(2,respuesta[i].pedido_id)
+		listado_buzones(respuesta[i].zona)
 		}
 		
 		$('#nombres').focus();
@@ -156,30 +157,27 @@
 }
 	        }
 
-		function listado_buzones(){
-		var	select_buzones="";		
-
+		function listado_buzones(zona){
 		
+	
+		var info ="zona="+zona
+		info
 			$.ajax({
 			url:'<?php echo base_url(); ?>'+'solicitudesbuzones/listado_buzones/',
 			type: 'POST',
 			dataType:'json',
-			    async:false,
+			data:info,
+			async:false,
 			success: function(respuesta){
 
-		
-			select_buzones +='<select id="buzones">';
-				select_buzones +='<option>Gerente</option>';
+		var select = $("#buzones");
 		for (var i = 0; i < respuesta.length; i++) {
 		
-		select_buzones +='<option>'+respuesta[i].descripcion+'</option>';
-		
+		select.append($("<option />").val(respuesta[i].descripcion).text(respuesta[i].descripcion));
 		}
-				select_buzones +='</select>';
 
 			}
 		});	
-		return select_buzones;
 		
 		}
 		

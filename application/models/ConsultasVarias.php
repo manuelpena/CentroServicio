@@ -6,6 +6,7 @@ class ConsultasVarias extends CI_Model {
     {
 		$this->db->select('descripcion');
 		$this->db->from('buzones');
+		$this->db->where('zona', $this->input->post('zona',true));
 		$query = $this->db->get();
 
         return $query->result_array();

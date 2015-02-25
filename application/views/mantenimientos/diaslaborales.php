@@ -27,7 +27,7 @@
 									<div id="calendar"></div>
 								</div>
 								<div class="col-md-3">
-									<p class="h4 text-light">Arrastrar Evento</p>
+									<p class="h4 text-light">Dia Laboral</p>
 
 									<hr />
 

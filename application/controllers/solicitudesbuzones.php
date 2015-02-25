@@ -10,6 +10,7 @@ class SolicitudesBuzones extends MX_Controller {
         parent::__construct();
       $this->load->model('SolicitudesModel');
 	  $this->load->model('ConsultasVarias');
+	  $this->load->library('Datatables');
     }
  
     /**
@@ -22,10 +23,10 @@ class SolicitudesBuzones extends MX_Controller {
 		if($this->session->userdata('is_logged_in')){
 		
 		//datatable para gerentes y buzones
-		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="solicitudes_buzones_tbl">' );
+		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="solicitudes_buzones_desp">' );
 		$this->table->set_template($tmpl); 
 		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Tipo Solicitud','Estado','Accion');
-		$data['tabla_buzones'] = $this->table->generate();	
+		$data['datatable_buzones'] = $this->table->generate();	
 		
 			$data['main_content'] = 'operaciones/solicitudesbuzones';
 			$data['usuario'] = $this->session->userdata('usuario');

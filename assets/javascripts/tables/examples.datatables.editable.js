@@ -195,13 +195,10 @@ Theme Version: 	1.1.0
 	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="observacion"/ > ' );						
         break;
 	case 8:
-		var listado = listado_buzones()
-
-		$this.html(listado);						
+		$this.html('<select id="buzones"></select>');						
 		break;
 	case 9:
 	$this.html( '<input type="text" class="form-control input-block" id="bodegaje" readonly/>' );						
-	/*<input type="checkbox" checked="checked" value="1" id="exonerar_bodegaje" name="exonerar_bodegaje"></input>*/
 	break;		
 }			
 		

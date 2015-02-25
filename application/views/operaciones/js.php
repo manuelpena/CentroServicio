@@ -37,6 +37,23 @@
             }
 		});
 
+		$('#solicitudes_buzones_desp').dataTable({
+			bProcessing: true,
+			bJQueryUI: true,
+			sAjaxSource: '<?php echo base_url(); ?>'+'pedidospendientes/datatable_buzones_desp',           
+            bServerSide: true,
+			fnServerData: function (sSource, aoData, fnCallback) {
+                $.ajax
+                ({
+                    'dataType': 'json',
+                    'type': 'POST',
+                    'url': sSource,
+                    'data': aoData,
+                    'success': fnCallback
+                });
+            }
+		});
+
 		$('#solicitudes_consejeras_tbl').dataTable({
 			bProcessing: true,
 			bJQueryUI: true,
