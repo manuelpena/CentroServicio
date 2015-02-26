@@ -53,6 +53,22 @@ class SolicitudesConsejeras extends MX_Controller {
 		redirect('404');
 		}
     }
+
+	public function datos_consejera_consulta($codigo)
+    {
+		if ($this->input->is_ajax_request()) {
+
+    
+		$data = $this->SolicitudesModel->obtener_consejera_consulta($codigo);
+		if(count($data)>0){
+		echo json_encode($data);	 
+	}else{
+
+	}
+		}else {
+		redirect('404');
+		}
+    }
 	
 		public function guardar_solicitud()
     {

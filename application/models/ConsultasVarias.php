@@ -42,7 +42,57 @@ class ConsultasVarias extends CI_Model {
 		
     }	
 	
+	function historial_consejera_pedidos()
 	
+    {
+		$codigo		=$this->input->post('codigo',true);
+		
+		$query= $this->db->query("(SELECT 
+		  a.id as 'id',
+		  a.`anio`,
+		  a.`campania`,
+		  a.`fecha_ingreso` as 'fecha_ingreso',
+		  IFNULL(date((SELECT 
+			c.fecha_despachado 
+		  FROM
+			solicitudes c 
+		  WHERE c.pedido_id = a.id 
+			AND c.estado = 2)),'') AS 'despachado' ,
+		IF(a.estado = 3,'SI','NO') AS 'desmantelado'
+		FROM
+		  pedidos a 
+		WHERE a.`codigo` = '$codigo')
+						");
+
+        return $query->result_array();
+		
+    }	
+
+	function consulta_pedido()
+	
+    {
+		$codigo		=$this->input->post('codigo',true);
+		
+		$query= $this->db->query("(SELECT 
+		  a.id as 'id',
+		  a.`anio`,
+		  a.`campania`,
+		  a.`fecha_ingreso` as 'fecha_ingreso',
+		  IFNULL(date((SELECT 
+			c.fecha_despachado 
+		  FROM
+			solicitudes c 
+		  WHERE c.pedido_id = a.id 
+			AND c.estado = 2)),'') AS 'despachado' ,
+		IF(a.estado = 3,'SI','NO') AS 'desmantelado'
+		FROM
+		  pedidos a 
+		WHERE a.`codigo` = '$codigo')
+						");
+
+        return $query->result_array();
+		
+    }	
 	
 }
 

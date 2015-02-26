@@ -17,6 +17,21 @@ class SolicitudesModel extends CI_Model {
 		
 		
     }	
+
+	function obtener_consejera_consulta($codigo)
+    {
+	
+
+		$this->db->select('b.id pedido_id, a.`codigo` codigo,a.`nombres`,a.`direccion`,a.`zona`,a.`sector`,b.`cajas`,b.`campania`,b.`comentarios`,b.`cod`,b.`pod`');
+		$this->db->from('consejeras a');
+		$this->db->join('pedidos b', 'b.codigo = a.codigo', 'LEFT');
+		$this->db->where('a.codigo', $codigo);
+		$query = $this->db->get();
+
+        return $query->result_array();
+		
+		
+    }	
 	
 	function guardar_solicitud()
 	{
@@ -97,6 +112,7 @@ class SolicitudesModel extends CI_Model {
 	
 	$data = array(
                'estado' => 2,
+			   'fecha_despachado' =>date('Y-m-d H:i:s'),
     );
 
 	$this->db->where('id', $id);

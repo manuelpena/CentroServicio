@@ -8,7 +8,7 @@ class ConsultaConsejera extends MX_Controller {
     public function __construct()
     {
         parent::__construct();
- /*       $this->load->model('products_model');*/
+		$this->load->model('ConsultasVarias');
     }
  
     /**
@@ -30,6 +30,36 @@ class ConsultaConsejera extends MX_Controller {
 
 
     }//index
+	public function historial_consejera()
+    {
+		if ($this->input->is_ajax_request()) {
 
+    
+		$data = $this->ConsultasVarias->historial_consejera_pedidos();
+		if(count($data)>0){
+		echo json_encode($data);	 
+	}else{
+
+	}
+		}else {
+		redirect('404');
+		}
+    }
+
+	public function consulta_pedido()
+    {
+		if ($this->input->is_ajax_request()) {
+
+    
+		$data = $this->ConsultasVarias->consulta_pedido();
+		if(count($data)>0){
+		echo json_encode($data);	 
+	}else{
+
+	}
+		}else {
+		redirect('404');
+		}
+    }
 
 }

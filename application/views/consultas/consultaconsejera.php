@@ -138,10 +138,13 @@
                                 </div>   
       </div>
 	  </form>
-	  					<hr class="separator" />
-						<label class="col-md-2 control-label"><h4>Historial de Pedidos</h4></label>     
+	  			
+						<label class="col-md-2 control-label"><h4>Historial de Pedidos</h4></label>    
+		<hr class="separator" />
+						
+  <div class="col-md-8">						
 <div class="table-responsive">
-										<table class="table mb-none">
+										<table class="table mb-none" id="historial_consejera">
 											<thead>
 												<tr>
 													<th>Año</th>
@@ -153,26 +156,9 @@
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-												<td>2015</td>
-												<td>1</td>
-												<td>28/02/2015</td>
-												<td></td>
-												<td>28/02/2015</td>
-												<td><i class="fa fa-search" onclick="cancelar_solicitud($1)"  style="cursor: pointer;"></i></td>
-												</tr>
-												<tr>
-												<td>2015</td>
-												<td>1</td>
-												<td>28/02/2015</td>
-												<td></td>
-												<td>28/02/2015</td>
-												<td><i class="fa fa-search" onclick="cancelar_solicitud($1)"  style="cursor: pointer;"></i></td>
-												</tr>
 											</tbody>
 										</table>
-									</div>
-
+									</div></div>
 	  
 		   </div>
 					
@@ -180,4 +166,63 @@
                 </div>
 
             </section>
+			
+			<script>
+function generar_historial(consejera){
+
+		var codigo = consejera
+		
+		var info ="codigo="+codigo;
+	console.log(info)
+		$.ajax({
+			url:'<?php echo base_url(); ?>'+'consultaconsejera/historial_consejera/',
+			dataType:'json',
+			type: 'POST',
+		data:info,
+			success: function(respuesta){
+		var table = $("#historial_consejera tbody");
+		table.empty();
+		for (var i = 0; i < respuesta.length; i++) {
+		table.append("<tr><td>"+respuesta[i].anio+"</td><td>"+respuesta[i].campania
+		+"</td><td>"+respuesta[i].fecha_ingreso+"</td>"+"<td>"+respuesta[i].despachado+"</td><td>"+respuesta[i].desmantelado+"</td><td><a href='#' onclick='ver_pedido("
+		+respuesta[i].id+")'><i class='fa fa-search'></i></a></td>"
+		);
+
+		}
+		
+			},
+			error: function(){
+				new PNotify({
+					title: 'Atención',
+					text: 'No existen consejeras con los parametros ingresados',
+					type: 'error',
+				});
+			}
+			});
+
+}				
+	function ver_pedido (id){
+	
+	var info="pedido_id="+id
+	
+	$.ajax({
+			url:'<?php echo base_url(); ?>'+'consultaconsejera/consulta_pedido/',
+			dataType:'json',
+			type: 'POST',
+		data:info,
+			success: function(respuesta){
+
+		
+			},
+			error: function(){
+				new PNotify({
+					title: 'Atención',
+					text: 'No existen consejeras con los parametros ingresados',
+					type: 'error',
+				});
+			}
+			});
+	
+	}		
+			</script>
 			

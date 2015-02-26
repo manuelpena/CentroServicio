@@ -5,7 +5,7 @@
 	$('#codigo').change(function(){
 	var codigo = $( this ).val();
 			$.ajax({
-			url:'<?php echo base_url(); ?>'+'solicitudesconsejeras/datos_consejera/'+codigo,
+			url:'<?php echo base_url(); ?>'+'solicitudesconsejeras/datos_consejera_consulta/'+codigo,
 			dataType:'json',
 			type: 'POST',
 			data:codigo,
@@ -18,6 +18,7 @@
 		$('#sector').val(respuesta[i].sector)
 		$('#campania').val(respuesta[i].campania)
 		$('#direccion').val(respuesta[i].direccion)
+		generar_historial(respuesta[i].codigo)
 		}
 		$('#codigo').focus();
 		
