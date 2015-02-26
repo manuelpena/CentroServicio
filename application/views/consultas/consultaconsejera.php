@@ -1,6 +1,6 @@
             <section role="main" class="content-body">
                 <header class="page-header">
-                    <h2>Solicitudes Consejeras</h2>
+                    <h2>Consultas Consejeras</h2>
 
                     <div class="right-wrapper pull-right">
                         <ol class="breadcrumbs">
@@ -11,7 +11,7 @@
                             </li>
                             <li><span>Operaciones</span>
                             </li>
-                            <li><span>Solicitudes Consejeras</span>
+                            <li><span>Consultas Consejeras</span>
                             </li>
                         </ol>
 
