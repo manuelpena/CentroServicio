@@ -1,6 +1,6 @@
 			<section role="main" class="content-body">
 					<header class="page-header">
-						<h2>Blank Page</h2>
+						<h2>Generacion de Desmantelado</h2>
 					
 						<div class="right-wrapper pull-right">
 							<ol class="breadcrumbs">
@@ -9,8 +9,8 @@
 										<i class="fa fa-home"></i>
 									</a>
 								</li>
-								<li><span>Pages</span></li>
-								<li><span>Blank Page</span></li>
+								<li><span>Mantenimientos</span></li>
+								<li><span>Generacion de Desmantelado</span></li>
 							</ol>
 					
 							<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
@@ -57,62 +57,35 @@
 									<option value="19">19</option>
 									</select>								
                                 </div>
-								<label class="col-md-1 control-label">Zona</label>
-                                <div class="col-sm-2">
-                                    <select class="form-control mb-md" id="zona" name="zona">
-									<option value="201">201</option>
-									<option value="202">202</option>
-									<option value="203">203</option>
-									<option value="204">204</option>
-									<option value="205">205</option>
-									<option value="206">206</option>
-									<option value="207">207</option>
-									<option value="208">208</option>
-									<option value="209">209</option>
-									<option value="210">210</option>
-									<option value="211">211</option>
-									<option value="212">212</option>
-									<option value="213">213</option>
-									<option value="214">214</option>
-									<option value="215">215</option>
-									<option value="216">216</option>
-									<option value="217">217</option>
-									<option value="218">218</option>
-									<option value="219">219</option>
-									<option value="220">220</option>
-									<option value="221">221</option>
-									<option value="222">222</option>
-									<option value="223">223</option>
-									<option value="224">224</option>
-									<option value="225">225</option>
-									<option value="226">226</option>
-									<option value="227">227</option>
-									<option value="228">228</option>
-									<option value="229">229</option>
-									<option value="230">230</option>
-									<option value="231">231</option>
-									<option value="232">232</option>
-									<option value="233">233</option>
-									<option value="234">234</option>
-									<option value="235">235</option>
-									<option value="236">236</option>
-									<option value="237">237</option>
-									<option value="238">238</option>
-									<option value="239">239</option>
-									<option value="240">240</option>
-									<option value="241">241</option>
-									</select>								
-                                </div>
-     								
-							
-                            </div>
-								<div class="row form-group">
-                                    <div class="col-sm-4">
-                    <input  value="Generar" class="btn btn-primary" onclick="generar_desmantelado()">
+								<label>
+	                           <div class="col-sm-2">
+                    <input  value="Buscar" class="btn btn-primary" onclick="buscar_zonas()">
                
-								</div> 		</div> 						
- </form> 
-		
+								</div> 								
+                            </div>
+         				
+ </form>
+ 	
+						<label class="col-md-3 control-label"><h4>Generacion de Desmantelado</h4></label>   <hr class="separator" /><br>
+						<div class="col-md-5">
+
+								<div class="table-responsive">
+										<table class="table mb-none" id="zonas_cargadas_tbl">
+											<thead>
+												<tr>
+													<th>Año</th>
+													<th>Campaña</th>
+													<th>Zona</th>
+													<th>Pedidos Activos</th>
+													<th>Desmantelar</th>
+													<th>Revertir</th>
+												</tr>
+											</thead>
+											<tbody>
+
+											</tbody>
+										</table>
+									</div>	</div>	
 						</div>
 					
                     </section>
@@ -120,11 +93,11 @@
 </section>
 		
 		<script>
-		function generar_desmantelado(){
+		function generar_desmantelado(dato_anio, dato_campania, dato_zona){
 	
-		var anio = $('#anio').val();
-		var campania = $('#campania').val();
-		var zona =$('#zona').val();
+		var anio = dato_anio;
+		var campania = dato_campania;
+		var zona =dato_zona;
 		
 		var info = "anio="+anio+"&campania="+campania+"&zona="+zona
 		console.log(info)
@@ -140,18 +113,90 @@
 					text: 'Desmantelado generado con Exito\ se modificaron '+respuesta+' registros',
 					type: 'success',
 				});
+				 buscar_zonas();
 			},
 			
 			error: function(){
 				new PNotify({
 					title: 'Atención',
-					text: 'Codigo de consejera no existe, \o tiene ya solicitud!',
+					text: 'Pedidos ya fueron desmantelado',
 					type: 'error',
 				});
 			}
 			});
 			
-		}		
+		}	
+
+function buscar_zonas(dato_anio, dato_campania, dato_zona){
+
+		var anio = $('#anio').val();
+		var campania = $('#campania').val();
+		var zona =$('#zona').val();
+		var info = "anio="+anio+"&campania="+campania
+		
+
+		$.ajax({
+			url:'<?php echo base_url(); ?>'+'desmantelado/zonas_cargadas/',
+			dataType:'json',
+			type: 'POST',
+		data:info,
+			success: function(respuesta){
+		var table = $("#zonas_cargadas_tbl tbody");
+		table.empty();
+		for (var i = 0; i < respuesta.length; i++) {
+		table.append("<tr><td>"+respuesta[i].anio+"</td><td>"+respuesta[i].campania
+		+"</td><td>"+respuesta[i].zona+"</td><td>"+respuesta[i].activos
+		+"</td><td><a href='#' onclick='generar_desmantelado("+respuesta[i].anio+","+respuesta[i].campania+","+respuesta[i].zona+")'><i class='fa fa-dropbox'></i>desmantelar</a></td>"
+		+"<td><a href='#' onclick='revertir_desmantelado("+respuesta[i].anio+","+respuesta[i].campania+","+respuesta[i].zona+")'><i class='fa fa-dropbox'></i>revertir</a></td></tr>"
+		);
+
+		}
+		
+			},
+			error: function(){
+				new PNotify({
+					title: 'Atención',
+					text: 'No hay zonas cargadas con los parametros ingresados',
+					type: 'error',
+				});
+			}
+			});
+
+}	
+
+function revertir_desmantelado(dato_anio, dato_campania, dato_zona){
+
+		var anio = dato_anio;
+		var campania = dato_campania;
+		var zona =dato_zona;
+		
+		var info = "anio="+anio+"&campania="+campania+"&zona="+zona
+		console.log(info)
+		$.ajax({
+			url:'<?php echo base_url(); ?>'+'desmantelado/revertir_desmantelado/',
+			dataType:'json',
+			type: 'POST',
+			data:info,
+			success: function(respuesta){
+			console.log(respuesta)
+				new PNotify({
+					title: 'Mensaje',
+					text: 'Desmantelado revertido con Exito\ se modificaron '+respuesta+' registros',
+					type: 'success',
+				});
+				 buscar_zonas();			
+		
+			},
+			error: function(){
+				new PNotify({
+					title: 'Atención',
+					text: 'No hay zonas cargadas con los parametros ingresados',
+					type: 'error',
+				});
+			}
+			});
+
+}		
 		</script>
 
 

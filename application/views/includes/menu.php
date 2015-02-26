@@ -18,7 +18,7 @@
 							<nav id="menu" class="nav-main" role="navigation">
 								<ul class="nav nav-main">
 									<li>
-										<a href="index.html">
+										<a href="<?php echo base_url(); ?>inicio/inicio">
 											<i class="fa fa-home" aria-hidden="true"></i>
 											<span>Inicio</span>
 										</a>

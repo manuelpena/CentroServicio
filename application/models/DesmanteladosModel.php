@@ -23,7 +23,81 @@ class DesmanteladosModel extends CI_Model {
 		");
 		
     }	
+
+	function revertir_desmantelado()
+    {
 	
+		$zona		=$this->input->post('zona',true);
+		$anio		=$this->input->post('anio',true);
+		$campania	=$this->input->post('campania',true);
+		$this->db->query("UPDATE  
+		pedidos a SET  a.estado = 1 
+		WHERE a.anio = '$anio'   
+		AND a.campania = '$campania'   
+		AND a.estado = 3  
+		AND a.codigo IN   
+		(SELECT 
+		b.codigo 
+		FROM
+		consejeras b 
+		WHERE b.zona = '$zona') ;
+
+		");
+		
+    }	
+	
+	function zonas_cargadas()
+    {
+		$zona		=$this->input->post('zona',true);
+		$anio		=$this->input->post('anio',true);
+		$campania	=$this->input->post('campania',true);	
+	$query = $this->db->query("SELECT 
+				  b.anio,
+				  b.campania,
+				  a.zona,
+				  (SELECT 
+				  COUNT(*) 
+				  from pedidos c
+				  where b.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
+				  ) as activos
+				FROM
+				consejeras a 
+				JOIN pedidos b 
+				ON b.codigo = a.codigo 
+				WHERE b.anio = '$anio' AND b.campania = '$campania'
+				GROUP BY b.anio, b.campania, a.zona 
+
+		");
+
+        return $query->result_array();
+		
+		
+    }	
+
+	function posibles_zonas()
+    {
+
+	$query = $this->db->query("SELECT 
+				  b.anio,
+				  b.campania,
+				  a.zona,
+				  (SELECT 
+				  COUNT(*) 
+				  from pedidos c
+				  where b.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
+				  ) as activos
+				FROM
+				consejeras a 
+				JOIN pedidos b 
+				ON b.codigo = a.codigo 
+				GROUP BY b.anio, b.campania, a.zona 
+
+		");
+
+        return $query->result_array();
+		
+		
+    }	
 	function guardar_solicitud()
 	{
 	

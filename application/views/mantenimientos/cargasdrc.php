@@ -1,6 +1,6 @@
 			<section role="main" class="content-body">
 					<header class="page-header">
-						<h2>Blank Page</h2>
+						<h2>Cargas DRC</h2>
 					
 						<div class="right-wrapper pull-right">
 							<ol class="breadcrumbs">
@@ -9,8 +9,8 @@
 										<i class="fa fa-home"></i>
 									</a>
 								</li>
-								<li><span>Pages</span></li>
-								<li><span>Blank Page</span></li>
+								<li><span>Mantenimientos</span></li>
+								<li><span>Cargas DRC</span></li>
 							</ol>
 					
 							<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>

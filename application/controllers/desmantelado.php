@@ -31,7 +31,7 @@ class Desmantelado extends MX_Controller {
 
     }
 	
-			public function generar_desmantelado()
+	public function generar_desmantelado()
     {
 		if ($this->input->is_ajax_request()) {
 
@@ -39,6 +39,48 @@ class Desmantelado extends MX_Controller {
 		$data = $this->DesmanteladosModel->generar_desmantelado();
 
 		echo $this->db->affected_rows();	 
+	
+		}else {
+		redirect('404');
+		}
+    }
+
+	public function revertir_desmantelado()
+    {
+		if ($this->input->is_ajax_request()) {
+
+    
+		$data = $this->DesmanteladosModel->revertir_desmantelado();
+
+		echo $this->db->affected_rows();	 
+	
+		}else {
+		redirect('404');
+		}
+    }
+
+	public function zonas_cargadas()
+    {
+		if ($this->input->is_ajax_request()) {
+
+    
+		$data = $this->DesmanteladosModel->zonas_cargadas();
+
+		echo json_encode($data);	 
+	
+		}else {
+		redirect('404');
+		}
+    }
+
+	public function posibles_zonas()
+    {
+		if ($this->input->is_ajax_request()) {
+
+    
+		$data = $this->DesmanteladosModel->posibles_zonas();
+
+		echo json_encode($data);	 
 	
 		}else {
 		redirect('404');
