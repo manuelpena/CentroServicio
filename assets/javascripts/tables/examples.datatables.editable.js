@@ -195,7 +195,7 @@ Theme Version: 	1.1.0
 	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="observacion"/ > ' );						
         break;
 	case 8:
-		$this.html('<select id="buzones"></select>');						
+		$this.html('<select id="buzones"><option>GERENTE</option></select>');						
 		break;
 	case 9:
 	$this.html( '<input type="text" class="form-control input-block" id="bodegaje" readonly/>' );						

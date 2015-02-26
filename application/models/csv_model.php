@@ -1,5 +1,4 @@
 <?php
- 
 class csv_model extends CI_Model {
  
     function __construct() {
@@ -7,7 +6,7 @@ class csv_model extends CI_Model {
  
     }
  
-    function get_addressbook() {     
+    function carga_csv() {     
 
 		$anio = $this->session->flashdata('anio');
 		$campania = $this->session->flashdata('campania');
@@ -38,14 +37,40 @@ class csv_model extends CI_Model {
         }
     }
  
-    function insert_csv_consejeras($data) {
-	
+    function insert_csv_consejeras($data) {	
         $this->db->insert('consejeras', $data);
     }
 
     function insert_csv_pedidos($data) {
-	
-        $this->db->insert('pedidos', $data);
+	    $this->db->insert('pedidos', $data);
     }
+	
+	function busqueda_consejera($data){
+		
+		$this->db->select('id');
+		$this->db->from('consejeras');
+		$this->db->where('codigo', $data);
+		$query = $this->db->get();
+		return $query->num_rows();
+		
+	}
+
+	function actualizacion_consejera($data , $codigo){
+	
+		$this->db->where('codigo', $codigo);
+		$this->db->update('consejeras', $data); 
+	
+	}
+	
+	function busqueda_pedido($codigo ,$anio,$campania){
+		$this->db->select('id');
+		$this->db->where(array('codigo'=>$codigo,'anio'=>$anio,'campania'=>$campania));
+		$this->db->from('pedidos'); 
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+	
+	
+	
+	
 }
-/*END OF FILE*/

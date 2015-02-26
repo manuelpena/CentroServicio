@@ -49,7 +49,25 @@ class csv extends CI_Controller {
                 $csv_array = $this->csvimport->get_array($file_path);
                 foreach ($csv_array as $row) {
                     
-					$datos_consejeras = array(
+					
+				$consejera_existente = $this->csv_model->busqueda_consejera($row['Codigo']);	
+					
+
+				if($consejera_existente>0){
+				
+				$datos_consejeras = array(
+						'zona'=>$zona,
+						'sector'=>$row['Seccion'],
+                        'nombres'=>$row['Nombre'],
+                        'telefono_1'=>$row['Telefono'],
+						'telefono_2'=>$row['TelCelular'],
+                        'los'=>$row['Los'],
+						'direccion'=>$row['Direccion1'].$row['Direccion2'].$row['Direccion3']
+                    );	
+					 $this->csv_model->actualizacion_consejera($datos_consejeras,$row['Codigo']);
+				}else{
+				
+				$datos_consejeras = array(
                         'codigo'=>$row['Codigo'],
 						'zona'=>$zona,
 						'sector'=>$row['Seccion'],
@@ -60,11 +78,17 @@ class csv extends CI_Controller {
 						'direccion'=>$row['Direccion1'].$row['Direccion2'].$row['Direccion3'],
 						'creado_por'=>$this->session->userdata('usuario_id'),
 						'fecha_creado'=>$fecha,
-                    );
-					
-                    $this->csv_model->insert_csv_consejeras($datos_consejeras);
+                    );				
+					 $this->csv_model->insert_csv_consejeras($datos_consejeras);
+				}
 
-                    $datos_pedido = array(
+					
+                $pedido_existente = $this->csv_model->busqueda_pedido($row['Codigo'],$anio,$campania);	
+				if($pedido_existente>0){
+
+				}else{
+				
+                $datos_pedido = array(
                         'codigo'=>$row['Codigo'],
 						'anio'=>$anio,
 						'campania'=>$campania,
@@ -79,7 +103,9 @@ class csv extends CI_Controller {
 						'tipo_pedido'=>$tipo_pedido,
                     );
 					
-                    $this->csv_model->insert_csv_pedidos($datos_pedido);
+                    $this->csv_model->insert_csv_pedidos($datos_pedido);				
+				}	
+					
                 }
                 $this->session->set_flashdata('success', 'La información fue cargada exitosamente');
 				

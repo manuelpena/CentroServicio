@@ -133,7 +133,7 @@
 
 
 		//validacion de tipo de solicitud
-		if(buzon=='Gerente'){
+		if(buzon=='GERENTE'){
 		var tipo_solicitud = 2;
 		var cobro = $(rows[i]).find("td:eq(9)").html();
 		var buzon = 0;

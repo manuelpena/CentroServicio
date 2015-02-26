@@ -26,7 +26,7 @@ class carga_csv extends MX_Controller {
 			$data['imagen'] = $this->session->userdata('imagen');
 			//Registros disponibles				
 			
-			$data['addressbook'] = $this->csv_model->get_addressbook();
+			$data['addressbook'] = $this->csv_model->carga_csv();
 			$this->load->view('includes/template', $data);  
         }else{
         	$this->load->view('login');	
