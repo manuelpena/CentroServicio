@@ -5,4 +5,10 @@
 <?php $this->load->view($main_content); ?>
 <?php $this->load->view('includes/header_user'); ?>
 <?php $this->load->view('includes/footer'); ?>
-<?php $this->load->view($this->uri->segment(1).'/js'); ?>
+<?php 
+if($this->uri->segment(1)=='mantenimientos'){
+$this->load->view($this->uri->segment(1).'/'.$this->uri->segment(2).'_js'); 
+}else{
+$this->load->view($this->uri->segment(1).'/js'); 
+}
+?>

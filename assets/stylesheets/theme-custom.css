@@ -1,1 +1,4 @@
 /* Add here all your CSS customizations */
+.datepicker.dropdown-menu {
+	z-index: 10002 !important;
+}

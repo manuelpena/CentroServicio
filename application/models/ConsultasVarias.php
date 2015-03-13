@@ -13,6 +13,16 @@ class ConsultasVarias extends CI_Model {
 		
     }	
 
+	function listado_bancos()
+    {
+		$this->db->select('id, descripcion');
+		$this->db->from('bancos');
+		$query = $this->db->get();
+
+        return $query->result_array();
+		
+    }	
+
 	function calculo_bodegaje()
     {
 		$tipo_solicitud		=$this->input->post('tipo_solicitud',true);
@@ -71,23 +81,23 @@ class ConsultasVarias extends CI_Model {
 	function consulta_pedido()
 	
     {
-		$codigo		=$this->input->post('codigo',true);
+		$pedido_id		=$this->input->post('pedido_id',true);
 		
 		$query= $this->db->query("(SELECT 
-		  a.id as 'id',
-		  a.`anio`,
-		  a.`campania`,
-		  a.`fecha_ingreso` as 'fecha_ingreso',
-		  IFNULL(date((SELECT 
-			c.fecha_despachado 
-		  FROM
-			solicitudes c 
-		  WHERE c.pedido_id = a.id 
-			AND c.estado = 2)),'') AS 'despachado' ,
-		IF(a.estado = 3,'SI','NO') AS 'desmantelado'
-		FROM
-		  pedidos a 
-		WHERE a.`codigo` = '$codigo')
+			  a.`cajas`,
+			  a.`comentarios`,
+			  a.`cod`,
+			  a.`pod`,
+			  b.`bodegaje`,
+			  b.`autorizacion`,
+			  if(b.`exoneracion`=1,'SI','NO') as exoneracion,
+			  b.`solicitante`,
+			  b.`documento`
+			FROM
+			  pedidos a 
+			  LEFT JOIN solicitudes b 
+				ON b.`pedido_id` = a.`id` 
+				WHERE a.`id` = '$pedido_id')
 						");
 
         return $query->result_array();

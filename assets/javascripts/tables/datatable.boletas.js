@@ -50,10 +50,6 @@ Theme Version: 	1.1.0
 					null,
 					null,
 					null,
-					null,
-					null,	
-					null,
-					null,
 					{ "bSortable": false }
 				]
 			});
@@ -121,7 +117,7 @@ Theme Version: 	1.1.0
 				'<a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>'
 			].join(' ');
 
-			data = this.datatable.row.add(['','','','','', '', '', '', '', '', actions ]);
+			data = this.datatable.row.add(['','','','','','',actions ]);
 
 			$row = this.datatable.row( data[0] ).nodes().to$();
 
@@ -140,7 +136,8 @@ Theme Version: 	1.1.0
 				$actions,
 				i,
 				data;
-
+					var pedido_id =$("#pedido_id").val();
+					bancosDb.webdb.deleteBoletas(pedido_id);
 			if ( $row.hasClass('adding') ) {
 				this.rowRemove( $row );
 			} else {
@@ -171,35 +168,27 @@ Theme Version: 	1.1.0
 				} else {
 	switch(i) {
     case 0:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="codigo_consejera" onchange="busqueda_consejera(this)"/>' );
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" onchange="busqueda_consejera(this)"id="codigo"/>' );
         break;  
 	case 1:
-  	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_nombre"/ readonly>' ); 
+  	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="nombre" readonly/>' ); 
         break;
     case 2:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_zona"/ readonly>' );	
-        break;
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="pedido_id" readonly/>' );	
+        break;  
 	case 3:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="pedido_id" readonly/>' );		
-	break;
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="cod" readonly/>' );	
+        break;
 	case 4:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="solicitante"/>' );		
-        break;
+		$this.html('<button type="button" class="mb-xs mt-xs mr-xs btn btn-sm btn-primary" onclick="cargar_modal()"><i class="fa fa-bank"></i> Agregar bancos</button>');
+
+		//listado_bancos();			
+	break;
 	case 5:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_cod" readonly/>' );				
+	$this.html( '<input type="text" class="form-control" value="' + data[i] + '" id="datos" readonly/>');	
+	
         break;	
-	case 6:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="autorizacion"/ >' );					
-        break;	
-	case 7:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="observacion"/ > ' );						
-        break;
-	case 8:
-		$this.html('<select id="buzones" ><option>GERENTE</option></select>');						
-		break;
-	case 9:
-	$this.html( '<input type="text" class="form-control input-block" id="bodegaje" readonly/>' );						
-	break;		
+		
 }			
 		
 					
@@ -246,8 +235,10 @@ Theme Version: 	1.1.0
 			if ( $row.hasClass('adding') ) {
 				this.$addButton.removeAttr( 'disabled' );
 			}
-
-			this.datatable.row( $row.get(0) ).remove().draw();
+			//elimina las boletas de Web SQL
+         var pedido_id = $row.find("td:eq(2)").html();
+		bancosDb.webdb.deleteBoletas(pedido_id)
+		this.datatable.row( $row.get(0) ).remove().draw()
 		},
 
 		rowSetActionsEditing: function( $row ) {

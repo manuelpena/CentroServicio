@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html class="fixed sidebar-left-collapsed">
 	<head>
 
@@ -24,7 +25,8 @@
 
 		<!-- Specific Page Vendor CSS -->
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/pnotify/pnotify.custom.css" />
-
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/select2/select2.css" />
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/jquery-datatables-bs3/assets/css/datatables.css" />
 		<!-- Theme CSS -->
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/stylesheets/theme.css" />
 
@@ -37,4 +39,4 @@
 		<!-- Head Libs -->
 		<script src="<?php echo base_url(); ?>assets/vendor/modernizr/modernizr.js"></script>
 
-		
+		</head>

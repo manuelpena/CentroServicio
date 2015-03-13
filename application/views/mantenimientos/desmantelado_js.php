@@ -1,7 +1,6 @@
 <script>
 $( document ).ready(function() {
-
-		$.ajax({
+	$.ajax({
 			url:'<?php echo base_url(); ?>'+'desmantelado/posibles_zonas/',
 			dataType:'json',
 			type: 'POST',
@@ -9,6 +8,7 @@ $( document ).ready(function() {
 		var table = $("#zonas_cargadas_tbl tbody");
 
 		for (var i = 0; i < respuesta.length; i++) {
+		
 		table.append("<tr><td>"+respuesta[i].anio+"</td><td>"+respuesta[i].campania
 		+"</td><td>"+respuesta[i].zona+"</td><td>"+respuesta[i].activos
 		+"</td><td><a href='#' onclick='generar_desmantelado("+respuesta[i].anio+","+respuesta[i].campania+","+respuesta[i].zona+")'><i class='fa fa-dropbox'></i>desmantelar</a></td>"
@@ -25,6 +25,10 @@ $( document ).ready(function() {
 				});
 			}
 			});
+	//funciones;
+
+	
+	
 
 });
 

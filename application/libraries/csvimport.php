@@ -127,14 +127,14 @@ class Csvimport {
                 {
                     foreach ($this->column_headers as $key => $value)
                     {
-                        $column_headers[$key] = trim($value);
+                        $column_headers[$key] = utf8_encode(trim($value));
                     }
                 }
                 else // Parse first row for column_headers to use
                 {
                     foreach ($data as $key => $value)
                     {
-                        $column_headers[$key] = trim($value);
+                        $column_headers[$key] = utf8_encode(trim($value));
                     }                
                 }          
             }

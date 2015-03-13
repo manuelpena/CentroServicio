@@ -57,6 +57,38 @@
 											</li>											
 										</ul>
 									</li>
+								<li class="nav-parent">
+										<a>
+											<i class="fa fa-file-text-o" aria-hidden="true"></i>
+											<span>Boletas</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="<?php echo base_url(); ?>boletas/datosboletas">
+													 Ingreso de Boletas
+												</a>
+											</li>
+
+										<li>
+												<a href="<?php echo base_url(); ?>boletas/consultasboletas">
+													 Boletas Ingresadas
+												</a>
+											</li>											
+										</ul>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-group" aria-hidden="true"></i>
+											<span>Pilotos</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="<?php echo base_url(); ?>pilotos/cuadrepilotos">
+													Cuadre de Pilotos
+												</a>
+											</li>											
+										</ul>
+									</li>	
 									<li class="nav-parent">
 										<a>
 											<i class="fa fa-cog" aria-hidden="true"></i>
@@ -78,6 +110,11 @@
 													 Dias Laborales
 												</a>
 											</li>
+											<li>
+											<a href="<?php echo base_url(); ?>mantenimientos/bancos">
+													Bancos
+												</a>
+											</li>
 										</ul>
 									</li>
 									<li class="nav-parent">
@@ -90,7 +127,7 @@
 												<a href="<?php echo base_url(); ?>consultas/consultaconsejera">
 													 Consultas de Consejeras
 												</a>
-											</li>
+											</li>											
 										</ul>
 									</li>
 									<li class="nav-parent">

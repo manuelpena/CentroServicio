@@ -27,7 +27,7 @@
                             <h2 class="panel-title">Datos de Consejera</h2>
                         </header>
                         <div class="panel-body">
-<form id="form_solicitudes">
+<form id="form_consejera">
                             <div class="row form-group">
                                 <label class="col-md-1 control-label">Codigo</label>
                                 <div class="col-sm-3">
@@ -39,36 +39,38 @@
                             <div class="row form-group">
                                 <label class="col-md-1 control-label">Nombres</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" id="nombres" name="nombres" disabled>
+                                    <input type="text" class="form-control" id="nombres" name="nombres" readonly>
 
                                 </div>
 
                                 <label class="col-md-1 control-label">Zona</label>
                                 <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="zona" name="zona" disabled>
+                                    <input type="text" class="form-control" id="zona" name="zona" readonly>
 
                                 </div>
                                 <label class="col-md-1 control-label">Sector</label>
                                 <div class="col-sm-1">
-                                 <input type="text" class="form-control" id="sector" name="sector" disabled>
+                                 <input type="text" class="form-control" id="sector" name="sector" readonly>
 
                                 </div>                                <label class="col-md-1 control-label">Campaña</label>
                                 <div class="col-sm-1">
-                                 <input type="text" class="form-control" id="campania" name="campania" disabled>
+                                 <input type="text" class="form-control" id="campania" name="campania" readonly>
 
                                 </div>
                             </div>                    
 							<div class="row form-group">
                                 <label class="col-md-1 control-label">Direccion</label>
                                 <div class="col-sm-4">
-                   <textarea class="form-control" rows="2" id="direccion" name="direccion" disabled></textarea>
+                   <textarea class="form-control" rows="2" id="direccion" name="direccion" readonly></textarea>
 
 
                                 </div>
 
                             </div>
+							  </form>
+							  <form id="form_pedido">
 		                     <div class="row form-group">		
-<label class="col-md-4 control-label"><h4>Datos del Pedido <b>C01/2015</b></h4></label>        
+<label class="col-md-4 control-label"><h4>Datos del Pedido</h4></label>        
                         <div class="col-sm-1">
 
 
@@ -77,13 +79,13 @@
                            <div class="row form-group">
                                 <label class="col-md-1 control-label">Cajas</label>
                                 <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="cajas" name="cajas" disabled>
+                                    <input type="text" class="form-control" id="cajas" name="cajas" readonly>
 
                                 </div>
 
                                 <label class="col-md-1 control-label">Observaciones</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="comentarios" name="comentarios" disabled>
+                                    <input type="text" class="form-control" id="comentarios" name="comentarios" readonly>
 
                                 </div>
 
@@ -91,58 +93,56 @@
 							<div class="row form-group">
                                 <label class="col-md-1 control-label">COD</label>
                                 <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="cod" name="cod" disabled>
+                                    <input type="text" class="form-control" id="cod" name="cod" readonly>
 
                                 </div>
 
                                 <label class="col-md-1 control-label">POD</label>
                                 <div class="col-sm-2">
-                                    <input type="text" class="form-control" id="pod" name="pod" disabled>
+                                    <input type="text" class="form-control" id="pod" name="pod" readonly>
 
                                 </div>
                                 <label class="col-md-1 control-label">Autorizacion</label>
                                 <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="autorizacion" name="autorizacion" disabled>
+                                    <input type="text" class="form-control" id="autorizacion" name="autorizacion" readonly>
 
                                 </div>
 
                       		
                                 <label class="col-md-1 control-label">A pagar</label>
                                 <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="total_pagar" name="total_pagar" disabled>
+                                    <input type="text" class="form-control" id="total_pagar" name="total_pagar" readonly>
 
                                 </div> </div>								
  <div class="row form-group">		
                      <label class="col-md-1 control-label">Cobro</label>
                                 <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="bodegaje" name="bodegaje" disabled>
+                                    <input type="text" class="form-control" id="cobro" name="cobro" readonly>
 
                                 </div> 
-<a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-default" href="#modalSM" id="BotonModal" hidden="hidden" style=" visibility: hidden;" ></a> 
                                 <label class="col-md-1 control-label">Bodegaje Exonerado</label>
                                 <div class="col-sm-1">
-								<div class="checkbox-custom checkbox-primary">
-  <input type="text" class="form-control" id="bodegaje" name="bodegaje" disabled value="Si">
-														</div>
+  <input type="text" class="form-control" id="exoneracion" name="exoneracion" readonly>
+												
 
 
 
                                 </div>                                   <label class="col-md-1 control-label">Solicitado por</label>
                                 <div class="col-sm-2">
-                                    <input type="text" class="form-control" id="total_pagar" name="total_pagar" disabled>
+                                    <input type="text" class="form-control" id="solicitante" name="solicitante" readonly>
 
                                 </div>                         <label class="col-md-1 control-label">Documento</label>
                                 <div class="col-sm-2">
-                                    <input type="text" class="form-control" id="total_pagar" name="total_pagar" disabled>
+                                    <input type="text" class="form-control" id="documento" name="documento" readonly>
 
                                 </div>   
       </div>
-	  </form>
+	</form>
 	  			
 						<label class="col-md-2 control-label"><h4>Historial de Pedidos</h4></label>    
 		<hr class="separator" />
 						
-  <div class="col-md-8">						
+  <div class="col-md-7">						
 <div class="table-responsive">
 										<table class="table mb-none" id="historial_consejera">
 											<thead>
@@ -169,17 +169,20 @@
 			
 			<script>
 function generar_historial(consejera){
-
+	
 		var codigo = consejera
 		
-		var info ="codigo="+codigo;
+		var info ="codigo="+codigo; 
+
 	console.log(info)
 		$.ajax({
 			url:'<?php echo base_url(); ?>'+'consultaconsejera/historial_consejera/',
 			dataType:'json',
 			type: 'POST',
 		data:info,
-			success: function(respuesta){
+			success: function(respuesta){		
+			
+
 		var table = $("#historial_consejera tbody");
 		table.empty();
 		for (var i = 0; i < respuesta.length; i++) {
@@ -204,15 +207,26 @@ function generar_historial(consejera){
 	function ver_pedido (id){
 	
 	var info="pedido_id="+id
-	
+	 $('#form_pedido')[0].reset();
 	$.ajax({
 			url:'<?php echo base_url(); ?>'+'consultaconsejera/consulta_pedido/',
 			dataType:'json',
 			type: 'POST',
 		data:info,
 			success: function(respuesta){
-
-		
+	for (var i = 0; i < respuesta.length; i++) {
+	$('#cajas').val(respuesta[i].cajas)
+	$('#comentarios').val(respuesta[i].comentarios)
+	$('#cod').val(respuesta[i].cod)
+	$('#pod').val(respuesta[i].pod)
+	$('#autorizacion').val(respuesta[i].autorizacion)
+	$('#total_pagar').val(respuesta[i].cod-respuesta[i].autorizacion)
+	$('#solicitante').val(respuesta[i].solicitante)
+	$('#documento').val(respuesta[i].documento)
+	$('#cobro').val(respuesta[i].bodegaje)
+	$('#exoneracion').val(respuesta[i].exoneracion)
+	$('#cajas').val(respuesta[i].cajas)
+		}
 			},
 			error: function(){
 				new PNotify({

@@ -71,6 +71,8 @@ Theme Version: 	1.1.0
 		$.magnificPopup.close();
 	});
 
+
+
 	/*
 	Modal Confirm
 	

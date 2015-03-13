@@ -3,13 +3,19 @@
 		
 	
 	$('#codigo').change(function(){
-	var codigo = $( this ).val();
+	var codigo = $( this ).val();		
+	
+	
+		$('#form_consejera')[0].reset();	
+		$('#form_pedido')[0].reset();
+		$("#historial_consejera > tbody").html("");
 			$.ajax({
 			url:'<?php echo base_url(); ?>'+'solicitudesconsejeras/datos_consejera_consulta/'+codigo,
 			dataType:'json',
 			type: 'POST',
 			data:codigo,
 			success: function(respuesta){
+
 		for (var i = 0; i < respuesta.length; i++) {		
 		$('#pedido_id').val(respuesta[i].pedido_id)
 		$('#codigo').val(respuesta[i].codigo)
@@ -22,6 +28,13 @@
 		}
 		$('#codigo').focus();
 		
+			},
+			error: function(){
+				new PNotify({
+					title: 'Atención',
+					text: 'No existen consejeras con los parametros ingresados',
+					type: 'error',
+				});
 			}
 			});
 

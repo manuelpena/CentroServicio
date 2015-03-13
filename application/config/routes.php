@@ -62,6 +62,11 @@ $route['operaciones/solicitudesconsejeras'] = 'solicitudesconsejeras/index';
 $route['operaciones/pedidospendientes'] = 'pedidospendientes/index';
 $route['operaciones/solicitudesbuzones'] = 'solicitudesbuzones/index';
 $route['consultas/consultaconsejera'] = 'consultaconsejera/index';
+$route['boletas/datosboletas'] = 'datosboletas/index';
+$route['boletas/consultasboletas'] = 'consultasboletas/index';
+$route['pilotos/cuadrepilotos'] = 'cuadrepilotos/index';
+
+$route['mantenimientos/bancos'] = 'bancos/index';
 
 
 

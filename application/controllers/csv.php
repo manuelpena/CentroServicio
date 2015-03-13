@@ -47,6 +47,7 @@ class csv extends CI_Controller {
  
             if ($this->csvimport->get_array($file_path)) {
                 $csv_array = $this->csvimport->get_array($file_path);
+				
                 foreach ($csv_array as $row) {
                     
 					
@@ -60,7 +61,7 @@ class csv extends CI_Controller {
 						'sector'=>$row['Seccion'],
                         'nombres'=>$row['Nombre'],
                         'telefono_1'=>$row['Telefono'],
-						'telefono_2'=>$row['TelCelular'],
+						'telefono_2'=>$row['Tel Celular'],
                         'los'=>$row['Los'],
 						'direccion'=>$row['Direccion1'].$row['Direccion2'].$row['Direccion3']
                     );	
@@ -73,7 +74,7 @@ class csv extends CI_Controller {
 						'sector'=>$row['Seccion'],
                         'nombres'=>$row['Nombre'],
                         'telefono_1'=>$row['Telefono'],
-						'telefono_2'=>$row['TelCelular'],
+						'telefono_2'=>$row['Tel Celular'],
                         'los'=>$row['Los'],
 						'direccion'=>$row['Direccion1'].$row['Direccion2'].$row['Direccion3'],
 						'creado_por'=>$this->session->userdata('usuario_id'),
@@ -93,7 +94,7 @@ class csv extends CI_Controller {
 						'anio'=>$anio,
 						'campania'=>$campania,
                         'cod'=>$row['Cod'],
-						'razon'=>$row['Razon'],
+						'razon'=>utf8_decode($row['Razón']),
 						'comentarios'=>$row['Final'],
                         'fecha_ingreso'=>$fecha_ingreso,
 						'cajas'=>$row['Inicio'],
