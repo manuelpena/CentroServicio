@@ -67,6 +67,12 @@ $route['boletas/consultasboletas'] = 'consultasboletas/index';
 $route['pilotos/cuadrepilotos'] = 'cuadrepilotos/index';
 
 $route['mantenimientos/bancos'] = 'bancos/index';
+$route['mantenimientos/agencias'] = 'agencias/index';
+$route['mantenimientos/adicionales'] = 'adicionales/index';
+$route['mantenimientos/buzones'] = 'buzones/index';
+$route['mantenimientos/bodegaje'] = 'bodegaje/index';
+$route['mantenimientos/roles'] = 'roles/index';
+$route['mantenimientos/usuarios'] = 'usuarios/index';
 
 
 

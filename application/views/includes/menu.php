@@ -115,6 +115,30 @@
 													Bancos
 												</a>
 											</li>
+											<li>
+											<a href="<?php echo base_url(); ?>mantenimientos/adicionales">
+													Adicionales
+												</a>
+											</li>
+											<li>
+											<a href="<?php echo base_url(); ?>mantenimientos/agencias">
+													Agencias
+												</a>
+											</li>		
+											<li>
+											<a href="<?php echo base_url(); ?>mantenimientos/bodegaje">
+													Bodegaje
+												</a>
+											</li>
+											<li>
+											<a href="<?php echo base_url(); ?>mantenimientos/usuarios">
+													Usuarios
+												</a>
+											</li>											<li>
+											<a href="<?php echo base_url(); ?>mantenimientos/roles">
+													Roles
+												</a>
+											</li>
 										</ul>
 									</li>
 									<li class="nav-parent">
