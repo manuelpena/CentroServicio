@@ -64,6 +64,7 @@ class UsuariosModel extends CI_Model {
 		$id = $this->input->post('id',true);
 		$usuario = $this->input->post('usuario',true);
 		$descripcion = $this->input->post('descripcion_usuario',true);
+
 		$estado = $this->input->post('estado',true);
 		$rol = $this->input->post('rol',true);
 		$fecha  = date('Y-m-d H:i:s');
@@ -110,10 +111,20 @@ class UsuariosModel extends CI_Model {
 			$this->db->update('detalle_rol', $data_rol); 			
 
 				}else{
-				$this->db->insert('adicionales', array(
+				$contrasenia = $this->input->post('contrasenia',true);				
+				$this->db->insert('usuarios', array(
+				'usuario'=>$usuario,
+				'password'=>md5($contrasenia),
 				'descripcion'=>$descripcion,
-				'anio'=>$anio,
-				'campania'=>$campania,
+				'estado'=>$estado,
+				'creado_por'=>$this->session->userdata('usuario_id'),
+				'fecha_creado'=>date('Y-m-d H:i:s'),
+				));	
+
+				$this->db->insert('detalle_rol', array(
+				'id_rol'=>$rol,
+				'usuarios_id'=> $this->db->insert_id(),
+				'id_sistema'=> 1,
 				'creado_por'=>$this->session->userdata('usuario_id'),
 				'fecha_creado'=>date('Y-m-d H:i:s'),
 				));			
@@ -122,25 +133,21 @@ class UsuariosModel extends CI_Model {
     }	
 
 	
-	function eliminar_adicional()
+	function cambiar_contrasenia()
     {
 		$usuario_id = $this->session->userdata('usuario_id');
 		$id = $this->input->post('id',true);
+		$contrasenia = $this->input->post('contrasenia',true);
+		$fecha  = date('Y-m-d H:i:s');
+			$data_rol = array(
+						   'password' => md5($contrasenia),
+						   'modificado_por' => $usuario_id,
+						   'fecha_modificado' => $fecha
+						);
 
-		$query_id= $this->db->query("(SELECT
-			a.`adicional_id`
-			FROM
-			adicionales_pilotos a
-			WHERE a.`adicional_id` = '$id')
-						");
-
-     		if($query_id->num_rows()>0){
-			return;
-				}else{
-
-				$this->db->delete('adicionales', array('id' => $id)); 
-
-				}
+			$this->db->where('id', $id);
+			$this->db->update('usuarios', $data_rol); 	
+			
 		return $this->db->affected_rows();
     }	
 	

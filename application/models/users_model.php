@@ -14,12 +14,11 @@ class Users_model extends CI_Model {
 
         $this->db->select('u.id');
         $this->db->from('usuarios u');
-        $this->db->join('detalle_rol dt', 'dt.id = u.id', 'LEFT');
-		$this->db->join('sistema st', 'st.id = dt.id', 'LEFT');
-		$this->db->join('rol r', 'r.id = dt.id', 'LEFT');
+        $this->db->join('detalle_rol dt', 'dt.usuarios_id = u.id', 'LEFT');
+		$this->db->join('sistema st', 'st.id = dt.id_sistema', 'LEFT');
+		$this->db->join('rol r', 'r.id = dt.id_rol', 'LEFT');
 		$this->db->where('u.usuario', $user_name);
 		$this->db->where('u.password', $password);
-		$this->db->where('dt.id',1);
         $query = $this->db->get();
 		
 		
@@ -39,11 +38,10 @@ class Users_model extends CI_Model {
 	
         $this->db->select('u.id id, u.usuario usuario, dt.id, r.detalle detalle, u.imagen_url, u.descripcion');
         $this->db->from('usuarios u');
-        $this->db->join('detalle_rol dt', 'dt.id = u.id', 'LEFT');
-		$this->db->join('sistema st', 'st.id = dt.id', 'LEFT');
-		$this->db->join('rol r', 'r.id = dt.id', 'LEFT');
+        $this->db->join('detalle_rol dt', 'dt.usuarios_id = u.id', 'LEFT');
+		$this->db->join('sistema st', 'st.id = dt.id_sistema', 'LEFT');
+		$this->db->join('rol r', 'r.id = dt.id_rol', 'LEFT');
 		$this->db->where('u.usuario', $user_name);
-		$this->db->where('dt.id',1);
         $result = $this->db->get();	
 
 		return $result->result_array();

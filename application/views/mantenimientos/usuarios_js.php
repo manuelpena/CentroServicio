@@ -103,7 +103,7 @@ function guardar_usuario(accion){
 	var rol = $("#rol").val();
 
 	if(accion==1){
-	var info ="id="+0+"&usuario="+usuario+"&descripcion_usuario="+descripcion_usuario+"&rol="+rol+"&estado="+estado
+	var info ="id="+0+"&usuario="+usuario+"&descripcion_usuario="+descripcion_usuario+"&rol="+rol+"&estado="+estado+"&contrasenia="+contrasenia
 	}else{
 	var info ="id="+id+"&usuario="+usuario+"&descripcion_usuario="+descripcion_usuario+"&rol="+rol+"&estado="+estado
 	}
@@ -135,18 +135,19 @@ function guardar_usuario(accion){
 			});
 }
 
-function eliminar_adicional(id){
-
-	var info ="id="+id
+function cambiar_contrasenia(){
+	var contrasenia = $("#contrasenia").val();
+	var id = $("#usuario_id").val();
+	
+	var info ="id="+id+"&contrasenia="+contrasenia
+	console.log(info)
 		$.ajax({
-			url:'<?php echo base_url(); ?>'+'adicionales/eliminar_adicional/',
+			url:'<?php echo base_url(); ?>'+'usuarios/cambiar_contrasenia/',
 			dataType:'json',
 			type: 'POST',
 			data:info,
 			success: function(respuesta){
 
-		
-		mostrar_adicionales();
 			new PNotify({
 					title: 'Mensaje',
 					text: 'Se guardó la información correctamente',
@@ -155,10 +156,11 @@ function eliminar_adicional(id){
 
 		
 			},
-			error: function(){
+			error: function(error){
+			console.log(error)
 				new PNotify({
 					title: 'Atención',
-					text: 'No existen adicionales con los parametros ingresados',
+					text: 'No usuarios adicionales con los parametros ingresados',
 					type: 'error',
 				});
 			}

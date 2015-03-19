@@ -57,7 +57,7 @@
 
                     </div>        
 					<div class="col-sm-1">
-									<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary"><i class="fa fa-refresh"></i> </button>
+									<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary" onclick="cambiar_contrasenia();"><i class="fa fa-refresh"></i> </button>
 
 		
 

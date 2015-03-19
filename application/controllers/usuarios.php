@@ -89,4 +89,18 @@ class Usuarios extends MX_Controller {
 		redirect('404');
 		}
     }	
+
+	public function cambiar_contrasenia()
+    {
+		if ($this->input->is_ajax_request()) {
+
+    
+		$data = $this->UsuariosModel->cambiar_contrasenia();
+
+		echo json_encode($data);	 
+
+		}else {
+		redirect('404');
+		}
+    }	
 }
