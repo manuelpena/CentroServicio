@@ -39,11 +39,12 @@ class SolicitudesModel extends CI_Model {
 	if ($this->input->post('exonerar_bodegaje',true)==1) {
 	
 	$bodegaje = 0;
+	$exoneracion = 1;
 
 	} else {
 
 	$bodegaje = $this->input->post('bodegaje',true);
-	
+	$exoneracion = 0;
 	}
 	
 	//guardado de solicitud
@@ -55,7 +56,7 @@ class SolicitudesModel extends CI_Model {
 	'tipo_solicitud'=>1,
 	'bodegaje'=>$bodegaje,
 	'estado'=>1,
-	'exoneracion'=>1,
+	'exoneracion'=>$exoneracion,
 	'creado_por'=>$this->session->userdata('usuario_id'),
 	'fecha_creado'=>date('Y-m-d H:i:s'),
 	));
