@@ -61,12 +61,12 @@ class Usuarios extends MX_Controller {
 		}
     }
 	
-	public function guardar_adicional()
+	public function buscar_usuario()
     {
 		if ($this->input->is_ajax_request()) {
 
     
-		$data = $this->AdicionalesModel->guardar_adicional();
+		$data = $this->UsuariosModel->buscar_usuario();
 
 		echo json_encode($data);	 
 
@@ -76,12 +76,12 @@ class Usuarios extends MX_Controller {
     }
 
 	
-	public function eliminar_adicional()
+	public function guardar_usuario()
     {
 		if ($this->input->is_ajax_request()) {
 
     
-		$data = $this->AdicionalesModel->eliminar_adicional();
+		$data = $this->UsuariosModel->guardar_usuario();
 
 		echo json_encode($data);	 
 

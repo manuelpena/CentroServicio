@@ -2,7 +2,6 @@
 $( document ).ready(function() {
 
 mostrar_usuarios();
-
 cargar_roles();
 
 });
@@ -14,20 +13,19 @@ function mostrar_usuarios(){
 			url:'<?php echo base_url(); ?>'+'usuarios/listado_usuarios/',
 			dataType:'json',
 			type: 'POST',
-			data:info,
 			success: function(respuesta){
 		var table = $("#tabla_usuarios tbody");
 		table.empty();
 		for (var i = 0; i < respuesta.length; i++) {
 		
 		table.append("<tr><td>"+respuesta[i].id+"</td><td>"+respuesta[i].descripcion+"</td><td>"+respuesta[i].detalle+"</td><td>"+respuesta[i].estado+"</td><td><a href='#' onclick='buscar_usuario("
-		+respuesta[i].id+")'><i class='fa fa-edit'></i></a> <a href='#' onclick='eliminar_usuario("
-		+respuesta[i].id+")'><i class='fa fa-trash-o'></i></a></td>"
+		+respuesta[i].id+")'><i class='fa fa-edit'></i></a></td>"
 		);
 		}
 		
 			},
-			error: function(){
+			error: function(error){
+			console.log(error)
 				new PNotify({
 					title: 'Atención',
 					text: 'No hay usuarios cargados con los parametros ingresados',
@@ -74,9 +72,13 @@ function buscar_usuario(id){
 			data:info,
 			success: function(respuesta){
 		for (var i = 0; i < respuesta.length; i++) {
+		$("#usuario_id").val(respuesta[i].id)
+		$("#usuario").val(respuesta[i].usuario)		
+		$("#descripcion_usuario").val(respuesta[i].descripcion)
+		$("#contrasenia").val(respuesta[i].password)
+		$("#estado").val(respuesta[i].estado)
+		$("#rol").val(respuesta[i].rol_id)
 		
-		$("#adicional").val(respuesta[i].descripcion)
-		$("#adicional_id").val(respuesta[i].id)
 
 		}
 		
@@ -91,26 +93,30 @@ function buscar_usuario(id){
 			});
 }
 
-function guardar_adicional(accion){
+function guardar_usuario(accion){
 	
-	var descripcion = $("#adicional").val();
-	var adicional_id = $("#adicional_id").val();
-	var anio = $("#anio").val();
-	var campania = $("#campania").val();
+	var id = $("#usuario_id").val();
+	var usuario = $("#usuario").val();
+	var descripcion_usuario = $("#descripcion_usuario").val();
+	var contrasenia = $("#contrasenia").val();
+	var estado = $("#estado").val();
+	var rol = $("#rol").val();
 
 	if(accion==1){
-	var info ="id="+0+"&descripcion="+descripcion+"&anio="+anio+"&campania="+campania
+	var info ="id="+0+"&usuario="+usuario+"&descripcion_usuario="+descripcion_usuario+"&rol="+rol+"&estado="+estado
 	}else{
-	var info ="id="+adicional_id+"&descripcion="+descripcion+"&anio="+anio+"&campania="+campania
+	var info ="id="+id+"&usuario="+usuario+"&descripcion_usuario="+descripcion_usuario+"&rol="+rol+"&estado="+estado
 	}
 	console.log(info)
 		$.ajax({
-			url:'<?php echo base_url(); ?>'+'adicionales/guardar_adicional/',
+			url:'<?php echo base_url(); ?>'+'usuarios/guardar_usuario/',
 			dataType:'json',
 			type: 'POST',
 			data:info,
 			success: function(respuesta){
-		mostrar_adicionales();
+
+		mostrar_usuarios();
+		buscar_usuario(id);
 			new PNotify({
 					title: 'Mensaje',
 					text: 'Se guardó la información correctamente',
@@ -118,10 +124,11 @@ function guardar_adicional(accion){
 				});
 
 			},
-			error: function(){
+			error: function(respuesta){
+						console.log(respuesta)
 				new PNotify({
 					title: 'Atención',
-					text: 'Adicional ya existe en base de datos',
+					text: 'Usuario ya existe en base de datos',
 					type: 'error',
 				});
 			}

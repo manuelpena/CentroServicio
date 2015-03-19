@@ -23,7 +23,7 @@ class UsuariosModel extends CI_Model {
         return $query->result_array();
 		
     }	
-	
+
 	function listado_roles()
     {
 	
@@ -33,31 +33,53 @@ class UsuariosModel extends CI_Model {
 
         return $query->result_array();
 		
+    }		
+	function buscar_usuario()
+    {
+			$id = $this->input->post('id',true);
+		$query= $this->db->query("(SELECT
+				a.`id`,
+				a.`usuario`,
+				a.`descripcion`,
+				a.`password`,
+				c.`id` rol_id,
+				c.`detalle`,
+				a.estado
+				FROM 
+				usuarios a
+				INNER JOIN detalle_rol b ON b.`usuarios_id` = a.`id`
+				INNER JOIN rol c ON c.`id` = b.`id_rol`
+						WHERE a.id= '$id'
+				)
+				");
+
+
+        return $query->result_array();
+		
     }	
 
-	function guardar_adicional()
+	function guardar_usuario()
     {
 		$usuario_id = $this->session->userdata('usuario_id');
 		$id = $this->input->post('id',true);
-		$anio = $this->input->post('anio',true);
-		$campania = $this->input->post('campania',true);
-		$descripcion = $this->input->post('descripcion',true);
+		$usuario = $this->input->post('usuario',true);
+		$descripcion = $this->input->post('descripcion_usuario',true);
+		$estado = $this->input->post('estado',true);
+		$rol = $this->input->post('rol',true);
 		$fecha  = date('Y-m-d H:i:s');
 		
 		$this->db->select('id');
-		$this->db->from('adicionales');
+		$this->db->from('usuarios');
 		$this->db->where('id', $id);
 		$query_id = $this->db->get();	
-
+		if($id==0){
 		$this->db->select('id');
-		$this->db->from('adicionales');
-		$this->db->where('descripcion', $descripcion);
-		$this->db->where('anio', $anio);
-		$this->db->where('campania', $campania);
+		$this->db->from('usuarios');
+		$this->db->where('usuario', $usuario);
 		$query_nombre = $this->db->get();
 			if($query_nombre->num_rows()>0){
 			return false;
-			}
+			}}
 /*
 		$query_id= $this->db->query("(SELECT
 			a.`banco_id`
@@ -68,13 +90,24 @@ class UsuariosModel extends CI_Model {
 */
      		if($query_id->num_rows()>0){
 			$data = array(
-						   'descripcion' => $descripcion,
+						   'usuario' => $usuario,	
+						   'descripcion' => $descripcion,		
+						   'estado' => $estado,		
 						   'modificado_por' => $usuario_id,
 						   'fecha_modificado' => $fecha
 						);
 
 			$this->db->where('id', $id);
-			$this->db->update('adicionales', $data); 			
+			$this->db->update('usuarios', $data); 	
+
+			$data_rol = array(
+						   'id_rol' => $rol,
+						   'modificado_por' => $usuario_id,
+						   'fecha_modificado' => $fecha
+						);
+
+			$this->db->where('usuarios_id', $id);
+			$this->db->update('detalle_rol', $data_rol); 			
 
 				}else{
 				$this->db->insert('adicionales', array(
