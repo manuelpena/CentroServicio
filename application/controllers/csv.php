@@ -51,32 +51,32 @@ class csv extends CI_Controller {
                 foreach ($csv_array as $row) {
                     
 					
-				$consejera_existente = $this->csv_model->busqueda_consejera($row['Codigo']);	
+				$consejera_existente = $this->csv_model->busqueda_consejera($row['codigo_consejera']);	
 					
 
 				if($consejera_existente>0){
 				
 				$datos_consejeras = array(
-						'zona'=>$zona,
-						'sector'=>$row['Seccion'],
-                        'nombres'=>$row['Nombre'],
-                        'telefono_1'=>$row['Telefono'],
-						'telefono_2'=>$row['Tel Celular'],
-                        'los'=>$row['Los'],
-						'direccion'=>$row['Direccion1'].$row['Direccion2'].$row['Direccion3']
+						'zona'=>$row['codigo_zona'],
+						'sector'=>$row['seccion'],
+                        'nombres'=>$row['nombre_consejera'],
+                        'telefono_1'=>$row['telefono_consejera'],
+						'telefono_2'=>$row['telefono_celular'],
+                        'los'=>$row['los'],
+						'direccion'=>$row['direccion1'].$row['direccion2']
                     );	
-					 $this->csv_model->actualizacion_consejera($datos_consejeras,$row['Codigo']);
+					 $this->csv_model->actualizacion_consejera($datos_consejeras,$row['codigo_consejera']);
 				}else{
 				
 				$datos_consejeras = array(
-                        'codigo'=>$row['Codigo'],
-						'zona'=>$zona,
-						'sector'=>$row['Seccion'],
-                        'nombres'=>$row['Nombre'],
-                        'telefono_1'=>$row['Telefono'],
-						'telefono_2'=>$row['Tel Celular'],
-                        'los'=>$row['Los'],
-						'direccion'=>$row['Direccion1'].$row['Direccion2'].$row['Direccion3'],
+                        'codigo'=>$row['codigo_consejera'],
+						'zona'=>$row['codigo_zona'],
+						'sector'=>$row['seccion'],
+                        'nombres'=>$row['nombre_consejera'],
+                        'telefono_1'=>$row['telefono_consejera'],
+						'telefono_2'=>$row['telefono_celular'],
+                        'los'=>$row['los'],
+						'direccion'=>$row['direccion1'].$row['direccion2'],
 						'creado_por'=>$this->session->userdata('usuario_id'),
 						'fecha_creado'=>$fecha,
                     );				
@@ -84,21 +84,21 @@ class csv extends CI_Controller {
 				}
 
 					
-                $pedido_existente = $this->csv_model->busqueda_pedido($row['Codigo'],$anio,$campania);	
+                $pedido_existente = $this->csv_model->busqueda_pedido($row['codigo_consejera'],$anio,$campania);	
 				if($pedido_existente>0){
 
 				}else{
 				
                 $datos_pedido = array(
-                        'codigo'=>$row['Codigo'],
+                        'codigo'=>$row['codigo_consejera'],
 						'anio'=>$anio,
 						'campania'=>$campania,
-                        'cod'=>$row['Cod'],
-						'razon'=>utf8_decode($row['Razón']),
-						'comentarios'=>$row['Final'],
+                        'cod'=>$row['monto_cod'],
+						'razon'=>utf8_decode($row['descripcion_razon']),
+						'comentarios'=>$row['descripcion'],
                         'fecha_ingreso'=>$fecha_ingreso,
-						'cajas'=>$row['Inicio'],
-						'ncaja'=>$row['Clave'],
+						'cajas'=>$row['cajas'],
+						'ncaja'=>$row['clave'],
 						'creado_por'=>$this->session->userdata('usuario_id'),
 						'fecha_creado'=>$fecha,
 						'tipo_pedido'=>$tipo_pedido,
