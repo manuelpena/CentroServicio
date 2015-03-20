@@ -14,6 +14,16 @@ class PilotosModel extends CI_Model {
         return $query->result_array();
 		
     }	
+	function listado_agencias()
+    {
+	
+		$this->db->select('id,descripcion');
+		$this->db->from('agencias');
+		$query = $this->db->get();
+
+        return $query->result_array();
+		
+    }	
 	function eliminar_detalle()
     {
 	

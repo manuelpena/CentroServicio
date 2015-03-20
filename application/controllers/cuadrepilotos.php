@@ -53,6 +53,22 @@ class CuadrePilotos extends MX_Controller {
 		}
     }
 
+	public function obtener_agencias()
+    {
+		if ($this->input->is_ajax_request()) {
+
+    
+		$data = $this->PilotosModel->listado_agencias();
+		if(count($data)>0){
+		echo json_encode($data);	 
+			}else{
+
+			}
+		}else {
+		redirect('404');
+		}
+    }
+
 	public function guardar_piloto()
     {
 		if ($this->input->is_ajax_request()) {

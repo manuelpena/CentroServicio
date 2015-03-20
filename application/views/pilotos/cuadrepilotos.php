@@ -200,9 +200,7 @@
                                 </div>   								
 								<label class="col-md-1 control-label">Agencia</label>
                                 <div class="col-sm-3">
-									<select name="campania" class="form-control" id="agencia">
-									<option value="1">COMTEC</option>									
-									<option value="2">DHL</option>									
+									<select name="agencia" class="form-control" id="agencia">						
 									</select>
 
                                 </div> 	
@@ -224,7 +222,7 @@
 
                                 </div> 	
 								</div> 	
-         <div class="row form-group">								
+					<div class="row form-group">								
 								<label class="col-md-1 control-label">Entrada</label>
                                 <div class="col-sm-2">
                                     <input type="text" data-plugin-timepicker class="form-control" id="entrada">
@@ -234,8 +232,6 @@
 								<label class="col-md-1 control-label">Salida</label>
                                 <div class="col-sm-2">
                       <input type="text" data-plugin-timepicker class="form-control" id="salida">
-
-
                                 </div>   
 								<label class="col-md-2 control-label">Observaciones</label>
                                 <div class="col-sm-3">

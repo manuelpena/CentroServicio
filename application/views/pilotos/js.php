@@ -42,9 +42,36 @@ $( "#busqueda" ).click(function() {
   }
   
 });
+	cargar_agencias();
 
 });
+function cargar_agencias(){
 
+
+		$.ajax({
+			url:'<?php echo base_url(); ?>'+'cuadrepilotos/obtener_agencias/',
+			dataType:'json',
+			type: 'POST',
+			success: function(respuesta){
+	
+		var select = $("#agencia");
+		for (var i = 0; i < respuesta.length; i++) {
+		
+		select.append($("<option />").val(respuesta[i].id).text(respuesta[i].descripcion));
+		
+		}
+		
+			},
+			error: function(error){
+			console.log(error)
+				new PNotify({
+					title: 'Atención',
+					text: 'No hay roles cargados con los parametros ingresados',
+					type: 'error',
+				});
+			}
+			});
+}
 function pilotos_ingresados(){
 
   var anio = $('#anio').val();
