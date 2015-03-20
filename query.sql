@@ -186,7 +186,7 @@ CREATE TABLE `ci_sessions` (
 
 /*Data for the table `ci_sessions` */
 
-insert  into `ci_sessions`(`session_id`,`ip_address`,`user_agent`,`last_activity`,`user_data`) values ('1268da223a5dafcf23357a8768e84b10','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0',1426745911,'a:6:{s:9:\"user_data\";s:0:\"\";s:7:\"usuario\";N;s:10:\"usuario_id\";N;s:3:\"rol\";N;s:6:\"imagen\";N;s:12:\"is_logged_in\";b:1;}'),('2a33607ff7ae2c5d9de1d11060650c4f','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36',1426746493,'a:6:{s:9:\"user_data\";s:0:\"\";s:7:\"usuario\";s:12:\"Manuel Peña\";s:10:\"usuario_id\";s:1:\"3\";s:3:\"rol\";s:8:\"operador\";s:6:\"imagen\";N;s:12:\"is_logged_in\";b:1;}');
+insert  into `ci_sessions`(`session_id`,`ip_address`,`user_agent`,`last_activity`,`user_data`) values ('94c6de5015dfce6ba435c7c23f40524c','127.0.0.1','Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36',1426855309,'a:6:{s:9:\"user_data\";s:0:\"\";s:7:\"usuario\";s:11:\"Alex Guzman\";s:10:\"usuario_id\";s:1:\"3\";s:3:\"rol\";s:8:\"operador\";s:6:\"imagen\";s:34:\"images/perfiles/mario.valencia.jpg\";s:12:\"is_logged_in\";b:1;}');
 
 /*Table structure for table `consejeras` */
 
@@ -207,9 +207,11 @@ CREATE TABLE `consejeras` (
   `modificado_por` int(11) default NULL,
   `fecha_modificado` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `consejeras` */
+
+insert  into `consejeras`(`id`,`codigo`,`zona`,`sector`,`nombres`,`direccion`,`telefono_1`,`telefono_2`,`los`,`creado_por`,`fecha_creado`,`modificado_por`,`fecha_modificado`) values (1,496613,210,1,'ANA CLARINEC GUZMAN RIVERA','CASERIO 1CASA 1','51000000','51005115',21,1,'2015-03-20 07:32:52',NULL,NULL),(2,447502,210,1,'CANDELARIA  LARA MORENO','CASERIO 2CASA 2','52000000','51222222',46,1,'2015-03-20 07:32:52',NULL,NULL),(3,531469,210,3,'ELIZABETH  ARGUETA ESCOBAR','CASERIO 3CASA 3','53000000','530000',2,1,'2015-03-20 07:32:52',NULL,NULL),(4,492775,210,3,'EVELYN MARICELA CENTENO  DE MAJANO','CASERIO 4CASA 4','54000000','54000',22,1,'2015-03-20 07:32:52',NULL,NULL),(5,529403,210,3,'LINDA BEATRIZ RIVERA PINEDA','CASERIO 5CASA 5','55000000','5111111',3,1,'2015-03-20 07:32:52',NULL,NULL),(6,524891,210,3,'ROXANA ELIZABETH GUEVARA CHICAS','CASERIO 6CASA 6','56000000','560000',6,1,'2015-03-20 07:32:52',NULL,NULL),(7,526430,210,3,'SONIA ISABEL YOJCOM OCHOA','CASERIO 7CASA 7','57000000','57000000',5,1,'2015-03-20 07:32:52',NULL,NULL),(8,512592,210,4,'JOSUE RAMON MEDRANO JIMENEZ','CASERIO 8CASA 8','58000000','580000',11,1,'2015-03-20 07:32:52',NULL,NULL);
 
 /*Table structure for table `cuadre_pilotos` */
 
@@ -260,7 +262,7 @@ CREATE TABLE `detalle_rol` (
 
 /*Data for the table `detalle_rol` */
 
-insert  into `detalle_rol`(`id`,`usuarios_id`,`id_rol`,`id_sistema`,`creado_por`,`fecha_creado`,`modificado_por`,`fecha_modificado`) values (1,1,14,1,NULL,NULL,1,'2015-03-18 22:54:01'),(2,3,1,1,1,'2015-03-18 23:49:33',1,'2015-03-18 23:49:50');
+insert  into `detalle_rol`(`id`,`usuarios_id`,`id_rol`,`id_sistema`,`creado_por`,`fecha_creado`,`modificado_por`,`fecha_modificado`) values (1,1,1,1,NULL,NULL,3,'2015-03-20 07:42:21'),(2,3,1,1,1,'2015-03-18 23:49:33',3,'2015-03-20 07:42:27');
 
 /*Table structure for table `dias_laborales` */
 
@@ -284,12 +286,13 @@ CREATE TABLE `menus` (
   `id` int(11) NOT NULL auto_increment,
   `descripcion` varchar(100) default NULL,
   `url` varchar(100) default NULL,
+  `clase` varchar(250) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `menus` */
 
-insert  into `menus`(`id`,`descripcion`,`url`) values (1,'Operaciones','http://localhost:8080/CentroServicio/operaciones/'),(2,'Bodega','http://localhost:8080/CentroServicio/bodega/'),(3,'Boletas','http://localhost:8080/CentroServicio/boletas/'),(4,'Pilotos','http://localhost:8080/CentroServicio/pilotos/'),(5,'Mantenimientos','http://localhost:8080/CentroServicio/mantenimientos/'),(6,'Consultas','http://localhost:8080/CentroServicio/consultas/'),(7,'Reportes','http://localhost:8080/CentroServicio/operaciones/');
+insert  into `menus`(`id`,`descripcion`,`url`,`clase`) values (1,'Operaciones','http://localhost:8080/CentroServicio/operaciones/','	<i class=\"fa fa-shopping-cart\" aria-hidden=\"true\"></i>'),(2,'Bodega','http://localhost:8080/CentroServicio/bodega/','<i class=\"fa fa-dropbox\" aria-hidden=\"true\"></i>'),(3,'Boletas','http://localhost:8080/CentroServicio/boletas/','<i class=\"fa fa-file-text-o\" aria-hidden=\"true\"></i>'),(4,'Pilotos','http://localhost:8080/CentroServicio/pilotos/','<i class=\"fa fa-group\" aria-hidden=\"true\"></i>'),(5,'Mantenimientos','http://localhost:8080/CentroServicio/mantenimientos/','<i class=\"fa fa-cog\" aria-hidden=\"true\"></i>'),(6,'Consultas','http://localhost:8080/CentroServicio/consultas/','<i class=\"fa fa-search\" aria-hidden=\"true\"></i>'),(7,'Reportes','http://localhost:8080/CentroServicio/operaciones/','<i class=\"fa fa-bar-chart-o\" aria-hidden=\"true\"></i>');
 
 /*Table structure for table `paginas` */
 
@@ -301,11 +304,11 @@ CREATE TABLE `paginas` (
   `descripcion` varchar(100) default NULL,
   `url` varchar(100) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 /*Data for the table `paginas` */
 
-insert  into `paginas`(`id`,`menu_id`,`descripcion`,`url`) values (1,1,'Solicitudes Consejera','solicitudesconsejeras'),(2,1,'Solicitudes Buzones y Gerentes','solicitudesbuzones'),(3,2,'Pedidos Pendientes','pedidospendientes'),(4,3,'Boletas','datosboletas'),(5,3,'Consulta de Boletas','consultasboletas'),(6,4,'Cuadre Pilotos','cuadrepilotos'),(7,5,'Cargas DRC','cargasdrc'),(8,5,'Desmantelado','desmantelado'),(9,5,'Dias Laborales','diaslaborales'),(10,5,'Bancos','bancos'),(11,5,'Adicionales','adicionales'),(12,5,'Agencias','agencias'),(13,5,'Bodegaje','bodegaje'),(14,6,'Consultas Consejera','consultasconsejera'),(15,7,'Reportes','reportes');
+insert  into `paginas`(`id`,`menu_id`,`descripcion`,`url`) values (1,1,'Solicitudes Consejera','solicitudesconsejeras'),(2,1,'Solicitudes Buzones y Gerentes','solicitudesbuzones'),(3,2,'Pedidos Pendientes','pedidospendientes'),(4,3,'Boletas','datosboletas'),(5,3,'Consulta de Boletas','consultasboletas'),(6,4,'Cuadre Pilotos','cuadrepilotos'),(7,5,'Cargas DRC','cargasdrc'),(8,5,'Desmantelado','desmantelado'),(9,5,'Dias Laborales','diaslaborales'),(10,5,'Bancos','bancos'),(11,5,'Adicionales','adicionales'),(12,5,'Agencias','agencias'),(13,5,'Bodegaje','bodegaje'),(14,6,'Consultas Consejera','consultasconsejera'),(15,7,'Reportes','reportes'),(16,5,'Usuarios','usuarios'),(17,5,'Roles','roles');
 
 /*Table structure for table `pedidos` */
 
@@ -330,9 +333,11 @@ CREATE TABLE `pedidos` (
   `razon` varchar(50) default NULL,
   `estado` tinyint(4) NOT NULL default '1' COMMENT '1:activo, 2:En Solicitud, 3:Desmantelado',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `pedidos` */
+
+insert  into `pedidos`(`id`,`codigo`,`anio`,`campania`,`cod`,`pod`,`comentarios`,`cajas`,`fecha_ingreso`,`tipo_pedido`,`creado_por`,`fecha_creado`,`modificado_por`,`fecha_modificado`,`ncaja`,`razon`,`estado`) values (1,496613,2015,2,0,0,'',1,'2015-03-12',1,1,'2015-03-20 07:32:52',NULL,NULL,1,'NO TIENA DINERO',1),(2,447502,2015,2,20.03,0,'',1,'2015-03-12',1,1,'2015-03-20 07:32:52',NULL,NULL,2,'NO TIENA DINERO',1),(3,531469,2015,2,46.92,0,'',1,'2015-03-12',1,1,'2015-03-20 07:32:52',NULL,NULL,3,'NO TIENA DINERO',1),(4,492775,2015,2,207.86,0,'',3,'2015-03-12',1,1,'2015-03-20 07:32:52',NULL,NULL,4,'NO TIENA DINERO',1),(5,529403,2015,2,57.47,0,'',1,'2015-03-12',1,1,'2015-03-20 07:32:52',NULL,NULL,5,'NO TIENA DINERO',1),(6,524891,2015,2,62.03,0,'',1,'2015-03-12',1,1,'2015-03-20 07:32:52',NULL,NULL,6,'NO TIENA DINERO',1),(7,526430,2015,2,129.73,0,'',1,'2015-03-12',1,1,'2015-03-20 07:32:52',NULL,NULL,7,'NO TIENA DINERO',1),(8,512592,2015,2,49.4,0,'',1,'2015-03-12',1,1,'2015-03-20 07:32:52',NULL,NULL,8,'NO TIENA DINERO',1);
 
 /*Table structure for table `rol` */
 
@@ -365,11 +370,11 @@ CREATE TABLE `roles_paginas` (
   `modificado_por` int(11) default NULL,
   `fecha_modificado` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 /*Data for the table `roles_paginas` */
 
-insert  into `roles_paginas`(`id`,`pagina_id`,`rol_id`,`creado_por`,`fecha_creado`,`modificado_por`,`fecha_modificado`) values (1,3,1,1,'2015-03-18 08:49:13',NULL,NULL),(2,5,1,1,'2015-03-18 08:49:19',NULL,NULL),(3,1,14,1,'2015-03-18 08:50:40',NULL,NULL),(4,2,1,1,'2015-03-18 08:50:44',NULL,NULL),(5,1,1,1,'2015-03-18 08:50:52',NULL,NULL),(6,6,1,1,'2015-03-18 08:50:57',NULL,NULL),(7,7,1,1,'2015-03-18 08:51:02',NULL,NULL),(8,8,1,1,'2015-03-18 08:51:05',NULL,NULL),(9,9,1,1,'2015-03-18 08:51:07',NULL,NULL),(10,12,1,1,'2015-03-18 08:51:12',NULL,NULL),(11,11,1,1,'2015-03-18 08:51:15',NULL,NULL);
+insert  into `roles_paginas`(`id`,`pagina_id`,`rol_id`,`creado_por`,`fecha_creado`,`modificado_por`,`fecha_modificado`) values (1,3,1,1,'2015-03-18 08:49:13',NULL,NULL),(2,5,1,1,'2015-03-18 08:49:19',NULL,NULL),(3,1,14,1,'2015-03-18 08:50:40',NULL,NULL),(4,2,1,1,'2015-03-18 08:50:44',NULL,NULL),(5,1,1,1,'2015-03-18 08:50:52',NULL,NULL),(6,6,1,1,'2015-03-18 08:50:57',NULL,NULL),(7,7,1,1,'2015-03-18 08:51:02',NULL,NULL),(8,8,1,1,'2015-03-18 08:51:05',NULL,NULL),(9,9,1,1,'2015-03-18 08:51:07',NULL,NULL),(10,12,1,1,'2015-03-18 08:51:12',NULL,NULL),(13,11,14,2,'2015-03-19 16:54:17',NULL,NULL),(14,11,1,1,'2015-03-20 00:41:57',NULL,NULL),(15,16,14,1,'2015-03-20 00:41:57',NULL,NULL),(16,17,14,1,'2015-03-20 00:41:57',NULL,NULL),(17,13,1,3,'2015-03-20 07:41:04',NULL,NULL),(18,16,1,3,'2015-03-20 07:41:07',NULL,NULL),(19,17,1,3,'2015-03-20 07:41:09',NULL,NULL),(20,10,1,3,'2015-03-20 07:41:27',NULL,NULL),(21,14,1,3,'2015-03-20 07:41:30',NULL,NULL),(22,15,1,3,'2015-03-20 07:41:34',NULL,NULL);
 
 /*Table structure for table `sistema` */
 
@@ -432,7 +437,7 @@ CREATE TABLE `usuarios` (
 
 /*Data for the table `usuarios` */
 
-insert  into `usuarios`(`id`,`usuario`,`password`,`imagen_url`,`descripcion`,`estado`,`creado_por`,`fecha_creado`,`modificado_por`,`fecha_modificado`) values (1,'admin2','202cb962ac59075b964b07152d234b70','images/perfiles/mario.valencia.jpg','os23',1,NULL,NULL,1,'2015-03-18 22:54:01'),(3,'Alex','81dc9bdb52d04dc20036dbd8313ed055','images/perfiles/mario.valencia.jpg','Alex Guzman',2,1,'2015-03-18 23:49:33',1,'2015-03-18 23:57:08');
+insert  into `usuarios`(`id`,`usuario`,`password`,`imagen_url`,`descripcion`,`estado`,`creado_por`,`fecha_creado`,`modificado_por`,`fecha_modificado`) values (1,'admin','202cb962ac59075b964b07152d234b70','images/perfiles/mario.valencia.jpg','Mario',1,NULL,NULL,3,'2015-03-20 07:42:21'),(3,'Alex','81dc9bdb52d04dc20036dbd8313ed055','images/perfiles/mario.valencia.jpg','Alex Guzman',2,1,'2015-03-18 23:49:33',3,'2015-03-20 07:42:27');
 
 /*Table structure for table `boletas_vista` */
 

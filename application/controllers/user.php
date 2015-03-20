@@ -47,7 +47,7 @@ class User extends CI_Controller {
 		$rol_usuario = $datos[0]['detalle'];
 		$imagen_url = $datos[0]['imagen_url'];
 		$usuario_descripcion = $datos[0]['descripcion'];
-		$usuario_id = $datos[0]['id'];
+		$usuario_id = $datos[0]['id_usuario'];
 		
 			$data = array(
 				'usuario' => $usuario_descripcion,				

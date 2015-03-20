@@ -17,7 +17,6 @@ class csv extends CI_Controller {
     function importcsv() {
 		//variables
 		$tipo_pedido = $this->input->post('tipo_pedido');
-		$zona = $this->input->post('zona');
 		$anio = $this->input->post('anio');
 		$campania = $this->input->post('campania');
 		$fecha = date("Y-m-d H:i:s");
@@ -106,15 +105,15 @@ class csv extends CI_Controller {
 					
                     $this->csv_model->insert_csv_pedidos($datos_pedido);				
 				}	
-					
+				$zona   = 	$row['codigo_zona'];
                 }
                 $this->session->set_flashdata('success', 'La información fue cargada exitosamente');
 				
 				//variables para obtener datos guardados
 				
 				$this->session->set_flashdata('campania', $campania);
-				$this->session->set_flashdata('anio', $anio);
 				$this->session->set_flashdata('zona', $zona);
+				$this->session->set_flashdata('anio', $anio);
 				$this->session->set_flashdata('fecha_ingreso', $fecha_ingreso);
 
 

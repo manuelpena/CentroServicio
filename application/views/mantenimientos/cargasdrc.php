@@ -57,52 +57,6 @@
 									<option value="19">19</option>
 									</select>								
                                 </div>
-								<label class="col-md-1 control-label">Zona</label>
-                                <div class="col-sm-2">
-                                    <select class="form-control mb-md" id="zona" name="zona">
-									<option value="201">201</option>
-									<option value="202">202</option>
-									<option value="203">203</option>
-									<option value="204">204</option>
-									<option value="205">205</option>
-									<option value="206">206</option>
-									<option value="207">207</option>
-									<option value="208">208</option>
-									<option value="209">209</option>
-									<option value="210">210</option>
-									<option value="211">211</option>
-									<option value="212">212</option>
-									<option value="213">213</option>
-									<option value="214">214</option>
-									<option value="215">215</option>
-									<option value="216">216</option>
-									<option value="217">217</option>
-									<option value="218">218</option>
-									<option value="219">219</option>
-									<option value="220">220</option>
-									<option value="221">221</option>
-									<option value="222">222</option>
-									<option value="223">223</option>
-									<option value="224">224</option>
-									<option value="225">225</option>
-									<option value="226">226</option>
-									<option value="227">227</option>
-									<option value="228">228</option>
-									<option value="229">229</option>
-									<option value="230">230</option>
-									<option value="231">231</option>
-									<option value="232">232</option>
-									<option value="233">233</option>
-									<option value="234">234</option>
-									<option value="235">235</option>
-									<option value="236">236</option>
-									<option value="237">237</option>
-									<option value="238">238</option>
-									<option value="239">239</option>
-									<option value="240">240</option>
-									<option value="241">241</option>
-									</select>								
-                                </div>
      								
 						<label class="col-md-1 control-label">Tipo</label>
                                 <div class="col-sm-2">

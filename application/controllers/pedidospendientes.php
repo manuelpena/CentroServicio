@@ -44,7 +44,13 @@ class PedidosPendientes extends MX_Controller {
 			
 			
 		if($this->session->userdata('is_logged_in')){
-			$data['main_content'] = 'operaciones/pedidospendientes';
+			$acceso = $this->users_model->validar_acceso();
+			if($acceso==false){
+        	redirect('inicio/inicio');
+			}
+			$data['menus_autorizados'] = $this->users_model->menus_autorizados();
+			$data['paginas_autorizadas'] = $this->users_model->paginas_autorizadas();		
+			$data['main_content'] = 'bodega/pedidospendientes';
 			$data['usuario'] = $this->session->userdata('usuario');
 			$data['rol'] = $this->session->userdata('rol');
 			$data['imagen'] = $this->session->userdata('imagen');

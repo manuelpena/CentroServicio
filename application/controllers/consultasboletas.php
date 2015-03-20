@@ -21,6 +21,12 @@ class ConsultasBoletas extends MX_Controller {
     {
 
 		if($this->session->userdata('is_logged_in')){
+			$acceso = $this->users_model->validar_acceso();
+			if($acceso==false){
+        	redirect('inicio/inicio');
+			}
+			$data['menus_autorizados'] = $this->users_model->menus_autorizados();
+			$data['paginas_autorizadas'] = $this->users_model->paginas_autorizadas();		
 		//datatable para gerentes y buzones
 		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="boletas_tbl">' );
 		$this->table->set_template($tmpl); 

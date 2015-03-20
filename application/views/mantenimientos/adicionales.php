@@ -1,4 +1,4 @@
-			<section role="main" class="content-body">
+<section role="main" class="content-body">
                 <header class="page-header">
                     <h2>Mantenimiento Adicionales</h2>
 
