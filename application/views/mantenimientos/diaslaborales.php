@@ -51,54 +51,6 @@
 </section>
 		
 
-<script>
-			function mostrar_dias(){
-		
-				   $.ajax({
-				type : "POST",
-				url:'<?php echo base_url(); ?>'+'diaslaborales/dias_laborales/',
-				dataType : "json",
-				success : function (response) {
-				for(var i = 0; i < response.length; i++){ 
-				var json = '{"title": "Dia Laboral","start":"'+response[i].fecha+'"}'
 
-				obj = JSON.parse(json);
-
-				$('#calendar').fullCalendar('renderEvent', obj, true);
-
-				}
-
-				}
-
-				});
-			}
-			
-	function remover_dia(fecha){
-	
-
-
-	   $.ajax({
-            type: "POST",
-			url:'<?php echo base_url(); ?>'+'diaslaborales/remover_fecha/',
-            data: "fecha="+fecha,
-            success: function (html) {
-
-            }
-        });
-	}
-	
-		function guardar_dia(fecha){
-
-	   $.ajax({
-            type: "POST",
-			url:'<?php echo base_url(); ?>'+'diaslaborales/guardar_fecha/',
-            data: "fecha="+fecha,
-            success: function (html) {
-   
-            }
-        });
-			}	
-						
-</script>
 				
 				
