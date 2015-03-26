@@ -38,6 +38,22 @@ class DatosBoletas extends MX_Controller {
 
     }
 	
+	public function datos_consejera($codigo)
+    {
+		if ($this->input->is_ajax_request()) {
+
+    
+		$data = $this->ConsultasVarias->obtener_consejera($codigo);
+		if(count($data)>0){
+		echo json_encode($data);	 
+	}else{
+
+	}
+		}else {
+		redirect('404');
+		}
+    }
+	
 	public function guardar_boletas()
     {
 	

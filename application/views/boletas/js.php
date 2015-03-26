@@ -93,12 +93,15 @@
         var observacion3 = $('#observacion3').val();
 
         if (monto1 > 0) {
+		if(isNaN(monto1)==true){alert("verifique el monto ingresado");}		
             bancosDb.webdb.addBoleta(parseInt(pedido_id), parseInt(banco1), monto1, referencia1, fecha1, observacion1);
         }
         if (monto2 > 0) {
+		if(isNaN(monto2)==true){alert("verifique el monto ingresado");}				
             bancosDb.webdb.addBoleta(parseInt(pedido_id), parseInt(banco2), monto2, referencia2, fecha2, observacion2);
         }
         if (monto3 > 0) {
+		if(isNaN(monto3)==true){alert("verifique el monto ingresado");}				
             bancosDb.webdb.addBoleta(parseInt(pedido_id), parseInt(banco3), monto3, referencia3, fecha3, observacion3);
         }
     }

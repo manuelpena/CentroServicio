@@ -103,6 +103,22 @@ class ConsultasVarias extends CI_Model {
         return $query->result_array();
 		
     }	
+		
+	function obtener_consejera($codigo)
+    {
+	
+
+		$this->db->select('b.id pedido_id, a.`codigo` codigo,a.`nombres`,a.`direccion`,a.`zona`,a.`sector`,b.`cajas`,b.`campania`,b.`comentarios`,b.`cod`,b.`pod`');
+		$this->db->from('consejeras a');
+		$this->db->join('pedidos b', 'b.codigo = a.codigo', 'LEFT');
+		$this->db->where('a.codigo', $codigo);
+		$this->db->where('b.estado <', 3);
+		$query = $this->db->get();
+
+        return $query->result_array();
+		
+		
+    }	
 	
 }
 

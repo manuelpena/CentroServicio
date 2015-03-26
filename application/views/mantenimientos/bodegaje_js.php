@@ -97,6 +97,8 @@ function guardar_bodegaje(accion){
 	}else{
 	var info ="id="+bodegaje_id+"&cobro="+cobro+"&tipo_solicitud="+0+"&tipo_pedido="+0+"&dia="+0
 	}
+	
+	if(isNaN(cobro)==true){return;}
 	console.log(info)
 	
 		$.ajax({

@@ -1,6 +1,34 @@
 		<script>
 $( document ).ready(function() {
 
+        $("#cuadre_pilotos").validate({	
+		rules: {
+				fecha:{
+					required: true
+				},
+				pedidos:{
+					required: true,
+					number: true,
+				},
+				cajas:{
+					required: true,
+					number: true,
+				},
+				entrada:{
+					required: true,
+				},
+				salida:{
+					required: true,
+				},
+			},
+			messages: {
+				fecha: "Favor ingresar una fecha",
+				pedidos: "Favor ingresar cantidad de pedidos",
+				cajas: "Favor ingresar cantidad de cajas",
+				entrada: "Favor ingresar una hora de entrada",
+				salida: "Favor ingresar una hora de salida",
+			}});
+			
 $( "#busqueda" ).click(function() {
 
   var anio = $('#anio').val();
@@ -130,8 +158,7 @@ var entrada =$("#entrada").val();
 var salida =$("#salida").val();
 var observaciones =$("#observaciones").val();
 
-
-
+ if ($("#cuadre_pilotos").valid()) {
 var info ="anio="+anio+"&campania="+campania+"&zona="+zona+"&piloto="+piloto+"&agencia="+agencia+"&fecha="+fecha+"&pedidos="+pedidos+"&cajas="+cajas+"&entrada="+entrada+"&salida="+salida+"&observaciones="+observaciones
 console.log(info)
 
@@ -153,6 +180,7 @@ console.log(info)
 				});
 			}
 			});
+}
 }
 
 function guardar_adicionales(id){

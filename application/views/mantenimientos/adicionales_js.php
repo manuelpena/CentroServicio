@@ -79,6 +79,7 @@ function guardar_adicional(accion){
 	}else{
 	var info ="id="+adicional_id+"&descripcion="+descripcion+"&anio="+anio+"&campania="+campania
 	}
+	if(descripcion==""||anio==""){return;}
 	console.log(info)
 		$.ajax({
 			url:'<?php echo base_url(); ?>'+'adicionales/guardar_adicional/',

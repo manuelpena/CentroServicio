@@ -69,6 +69,9 @@ function guardar_banco(accion){
 	}else{
 	var info ="id="+banco_id+"&descripcion="+descripcion
 	}
+	
+	if(descripcion==""){return;}
+	
 	console.log(info)
 		$.ajax({
 			url:'<?php echo base_url(); ?>'+'bancos/guardar_banco/',

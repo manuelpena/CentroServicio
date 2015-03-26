@@ -59,7 +59,17 @@ class DesmanteladosModel extends CI_Model {
 				  COUNT(*) 
 				  from pedidos c
 				  where b.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
-				  ) as activos
+				  ) as activos,
+				  (SELECT 
+				  SUM(cod) 
+				  from pedidos c
+				  where b.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
+				  ) as cod,
+				  (SELECT 
+				  SUM(pod) 
+				  from pedidos c
+				  where b.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
+				  ) as pod					  
 				FROM
 				consejeras a 
 				JOIN pedidos b 

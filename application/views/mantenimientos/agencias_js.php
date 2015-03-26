@@ -69,6 +69,7 @@ function guardar_agencia(accion){
 	}else{
 	var info ="id="+agencia_id+"&descripcion="+descripcion
 	}
+	if(descripcion==""){return;}
 	console.log(info)
 		$.ajax({
 			url:'<?php echo base_url(); ?>'+'agencias/guardar_agencia/',

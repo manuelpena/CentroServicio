@@ -71,6 +71,7 @@
         </header>
         <div class="panel-body">
 		<form id="formBoletas">
+
 <div id="banco_div1">
             <div class="row form-group">
                 <label class="col-md-1 control-label">Banco</label>
@@ -189,7 +190,7 @@
 
         var codigo = consejera.value
         $.ajax({
-            url: '<?php echo base_url(); ?>' + 'solicitudesconsejeras/datos_consejera/' + codigo,
+            url: '<?php echo base_url(); ?>' + 'datosboletas/datos_consejera/' + codigo,
             dataType: 'json',
             type: 'POST',
             data: codigo,

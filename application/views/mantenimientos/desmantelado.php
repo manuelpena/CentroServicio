@@ -67,16 +67,18 @@
  </form>
  	
 						<label class="col-md-3 control-label"><h4>Generacion de Desmantelado</h4></label>   <hr class="separator" /><br>
-						<div class="col-md-5">
+						<div class="col-md-6">
 
 								<div class="table-responsive">
-										<table class="table mb-none" id="zonas_cargadas_tbl">
+										<table class="table table-hover mb-none" id="zonas_cargadas_tbl">
 											<thead>
 												<tr>
 													<th>Año</th>
 													<th>Campaña</th>
 													<th>Zona</th>
 													<th>Pedidos Activos</th>
+													<th>Total COD</th>
+													<th>Total Factura</th>
 													<th>Desmantelar</th>
 													<th>Revertir</th>
 												</tr>
@@ -145,7 +147,10 @@ function buscar_zonas(dato_anio, dato_campania, dato_zona){
 		table.empty();
 		for (var i = 0; i < respuesta.length; i++) {
 		table.append("<tr><td>"+respuesta[i].anio+"</td><td>"+respuesta[i].campania
-		+"</td><td>"+respuesta[i].zona+"</td><td>"+respuesta[i].activos
+		+"</td><td>"+respuesta[i].zona
+		+"</td><td>"+respuesta[i].activos
+		+"</td><td>$"+respuesta[i].cod
+		+"</td><td>$"+respuesta[i].pod
 		+"</td><td><a href='#' onclick='generar_desmantelado("+respuesta[i].anio+","+respuesta[i].campania+","+respuesta[i].zona+")'><i class='fa fa-dropbox'></i>desmantelar</a></td>"
 		+"<td><a href='#' onclick='revertir_desmantelado("+respuesta[i].anio+","+respuesta[i].campania+","+respuesta[i].zona+")'><i class='fa fa-dropbox'></i>revertir</a></td></tr>"
 		);

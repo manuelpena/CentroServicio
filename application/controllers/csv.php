@@ -93,6 +93,7 @@ class csv extends CI_Controller {
 						'anio'=>$anio,
 						'campania'=>$campania,
                         'cod'=>$row['monto_cod'],
+						'pod'=>$row['monto_facturado'],
 						'razon'=>utf8_decode($row['descripcion_razon']),
 						'comentarios'=>$row['descripcion'],
                         'fecha_ingreso'=>$fecha_ingreso,

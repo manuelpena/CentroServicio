@@ -73,7 +73,7 @@
 						</header>
 						<div class="panel-body">
 						<div class="table-responsive">
-							<table class="table mb-none"  id="tabla_roles">
+							<table class="table table-hover mb-none"  id="tabla_roles">
 								<thead>
 									<tr>
 										<th>ID</th>
@@ -127,7 +127,7 @@
 								</div>						
 						
 						<div class="table-responsive">
-							<table class="table mb-none"  id="tabla_paginas">
+							<table class="table table-hover mb-none"  id="tabla_paginas">
 								<thead>
 									<tr>
 										<th>ID</th>

@@ -113,7 +113,7 @@
             </header>
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table mb-none" id="tabla_usuarios">
+                    <table class="table table-hover mb-none" id="tabla_usuarios">
                         <thead>
                             <tr>
                                 <th>ID</th>

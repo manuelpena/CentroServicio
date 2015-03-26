@@ -36,7 +36,7 @@
                                 </div>                   
 								<label class="col-md-1 control-label">Solicitante</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" id="solicitante" name="solicitante">
+                                    <input type="text" class="form-control" id="solicitante" name="solicitante"/>
 
                                 </div> 	
 								<label class="col-md-1 control-label">Documento</label>

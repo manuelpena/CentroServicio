@@ -140,7 +140,7 @@
 								</header>							
 								<div class="panel-body">
 <div class="table-responsive">
-										<table class="table mb-none" id="tabla_pilotos">
+										<table class="table table-hover mb-none" id="tabla_pilotos">
 											<thead>
 												<tr>
 													<th>Piloto</th>
@@ -225,13 +225,13 @@
 					<div class="row form-group">								
 								<label class="col-md-1 control-label">Entrada</label>
                                 <div class="col-sm-2">
-                                    <input type="text" data-plugin-timepicker class="form-control" id="entrada">
+                                    <input type="text" data-plugin-timepicker class="form-control" id="entrada" name="entrada">
 
 
                                 </div>							
 								<label class="col-md-1 control-label">Salida</label>
                                 <div class="col-sm-2">
-                      <input type="text" data-plugin-timepicker class="form-control" id="salida">
+                      <input type="text" data-plugin-timepicker class="form-control" id="salida" name="salida">
                                 </div>   
 								<label class="col-md-2 control-label">Observaciones</label>
                                 <div class="col-sm-3">
