@@ -56,19 +56,19 @@ class DesmanteladosModel extends CI_Model {
 				  b.campania,
 				  a.zona,
 				  (SELECT 
-				  COUNT(*) 
+				  IFNULL(COUNT(*),0) 
 				  from pedidos c
-				  where b.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
+				  where c.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
 				  ) as activos,
 				  (SELECT 
-				  SUM(cod) 
+				  IFNULL(SUM(cod),0) 
 				  from pedidos c
-				  where b.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
+				  where c.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
 				  ) as cod,
 				  (SELECT 
-				  SUM(pod) 
+				  IFNULL(SUM(monto_facturado),0) 
 				  from pedidos c
-				  where b.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
+				  where c.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
 				  ) as pod					  
 				FROM
 				consejeras a 

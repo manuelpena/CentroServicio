@@ -65,7 +65,7 @@ $route['consultas/consultaconsejera'] = 'consultaconsejera/index';
 $route['boletas/datosboletas'] = 'datosboletas/index';
 $route['boletas/consultasboletas'] = 'consultasboletas/index';
 $route['pilotos/cuadrepilotos'] = 'cuadrepilotos/index';
-
+$route['pilotos/cargaseficiencias'] = 'cargaseficiencias/index';
 $route['mantenimientos/bancos'] = 'bancos/index';
 $route['mantenimientos/agencias'] = 'agencias/index';
 $route['mantenimientos/adicionales'] = 'adicionales/index';

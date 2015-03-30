@@ -159,6 +159,8 @@ function buscar_zonas(dato_anio, dato_campania, dato_zona){
 		
 			},
 			error: function(){
+		var table = $("#zonas_cargadas_tbl tbody");
+		table.empty();			
 				new PNotify({
 					title: 'Atención',
 					text: 'No hay zonas cargadas con los parametros ingresados',
