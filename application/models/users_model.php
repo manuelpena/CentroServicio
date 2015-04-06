@@ -19,6 +19,7 @@ class Users_model extends CI_Model {
 		$this->db->join('rol r', 'r.id = dt.id_rol', 'LEFT');
 		$this->db->where('u.usuario', $user_name);
 		$this->db->where('u.password', $password);
+		$this->db->where('u.estado',1);
         $query = $this->db->get();
 		
 		
