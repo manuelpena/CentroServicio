@@ -121,7 +121,6 @@ class PedidosPendientes extends MX_Controller {
     
 		$data = $this->SolicitudesModel->despachar($id);
 
-		echo 'Solicitud despachada con exito';	 
 	
 		}else {
 		redirect('404');

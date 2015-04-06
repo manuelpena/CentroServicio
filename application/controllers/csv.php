@@ -98,6 +98,7 @@ class csv extends CI_Controller {
 						'comentarios'=>$row['descripcion'],
                         'fecha_ingreso'=>$fecha_ingreso,
 						'cajas'=>$row['cajas'],
+						'los'=>$row['los'],
 						'monto_facturado'=>$row['monto_facturado'],
 						'ncaja'=>$row['clave'],
 						'creado_por'=>$this->session->userdata('usuario_id'),

@@ -58,10 +58,11 @@ class DesmanteladosModel extends CI_Model {
 				  (SELECT 
 				  IFNULL(COUNT(*),0) 
 				  from pedidos c
-				  where c.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
+				  INNER JOIN consejeras d ON d.codigo = c.codigo
+				  where d.zona = a.zona AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
 				  ) as activos,
 				  (SELECT 
-				  IFNULL(SUM(cod),0) 
+				  IFNULL(SUM(c.cod),0) 
 				  from pedidos c
 				  where c.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
 				  ) as cod,

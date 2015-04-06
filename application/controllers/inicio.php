@@ -8,7 +8,7 @@ class Inicio extends MX_Controller {
     public function __construct()
     {
         parent::__construct();
- /*       $this->load->model('products_model');*/
+    $this->load->model('InicioModel');
     }
  
     /**
@@ -32,6 +32,19 @@ class Inicio extends MX_Controller {
 
 
     }//index
+	
+	public function buscar_datos()
+    {
+		if ($this->input->is_ajax_request()) {
 
+    
+		$data = $this->InicioModel->datos_diarios();
+
+		echo json_encode($data);	 
+
+		}else {
+		redirect('404');
+		}
+    }
 
 }
