@@ -46,10 +46,12 @@ class csv extends CI_Controller {
  
             if ($this->csvimport->get_array($file_path)) {
                 $csv_array = $this->csvimport->get_array($file_path);
-				
+				$cajas= 1;
                 foreach ($csv_array as $row) {
-                    
-					
+              
+				
+
+				
 				$consejera_existente = $this->csv_model->busqueda_consejera($row['codigo_consejera']);	
 					
 
@@ -100,7 +102,7 @@ class csv extends CI_Controller {
 						'cajas'=>$row['cajas'],
 						'los'=>$row['los'],
 						'monto_facturado'=>$row['monto_facturado'],
-						'ncaja'=>$row['clave'],
+						'ncaja'=>$cajas,
 						'creado_por'=>$this->session->userdata('usuario_id'),
 						'fecha_creado'=>$fecha,
 						'tipo_pedido'=>$tipo_pedido,
@@ -109,6 +111,8 @@ class csv extends CI_Controller {
                     $this->csv_model->insert_csv_pedidos($datos_pedido);				
 				}	
 				$zona   = 	$row['codigo_zona'];
+				$cajas++;
+			
                 }
                 $this->session->set_flashdata('success', 'La información fue cargada exitosamente');
 				
