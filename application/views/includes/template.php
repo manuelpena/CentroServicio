@@ -6,7 +6,7 @@
 <?php $this->load->view('includes/header_user'); ?>
 <?php $this->load->view('includes/footer'); ?>
 <?php 
-if($this->uri->segment(1)=='mantenimientos'||$this->uri->segment(1)=='pilotos'||$this->uri->segment(1)=='reportes'){
+if($this->uri->segment(1)=='mantenimientos'||$this->uri->segment(1)=='pilotos'||$this->uri->segment(1)=='reportes'||$this->uri->segment(1)=='consultas'){
 $this->load->view($this->uri->segment(1).'/'.$this->uri->segment(2).'_js'); 
 }else{
 $this->load->view($this->uri->segment(1).'/js'); 

@@ -119,8 +119,8 @@
 					
 						</div> 
 						
-						<div class="col-md-5">		
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+						<div class="col-md-7" id="container">		
+
 					
 						</div>
 						

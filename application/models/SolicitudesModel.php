@@ -166,7 +166,7 @@ class SolicitudesModel extends CI_Model {
 	'bodegaje'=>$bodegaje,
 	'buzon_id'=>$buzon,
 	'estado'=>1,
-	'exoneracion'=>1,
+	'exoneracion'=>0,
 	'creado_por'=>$this->session->userdata('usuario_id'),
 	'fecha_creado'=>date('Y-m-d H:i:s'),
 	));

@@ -77,6 +77,47 @@ class ConsultasVarias extends CI_Model {
         return $query->result_array();
 		
     }	
+	function buscar_bodegaje()
+	
+    {
+		$desde = $this->input->post('desde');		
+		$fecha_inicio = date("Y-m-d", strtotime($desde));
+		$hasta = $this->input->post('hasta');		
+		$fecha_fin = date("Y-m-d", strtotime($hasta));
+		
+		$query= $this->db->query("SELECT 
+  b.`id`,
+  b.`descripcion`,
+  a.`fecha_creado`,
+  SUM(a.`exoneracion`) AS exoneracion,
+  SUM(
+    IF(
+      a.`tipo_solicitud` = 1,
+      a.`bodegaje`,
+      0
+    )
+  ) consejeras,
+  SUM(
+    IF(
+      a.`tipo_solicitud` = 2,
+      a.`bodegaje`,
+      0
+    )
+  ) gerentes 
+FROM
+  solicitudes a 
+  INNER JOIN usuarios b 
+    ON b.`id` = a.`creado_por` 
+WHERE DATE(a.`fecha_creado`) >= '$fecha_inicio'
+  AND DATE(a.`fecha_creado`) <= '$fecha_fin'	
+GROUP BY b.`id`,
+  b.`descripcion` 
+
+						");
+
+        return $query->result_array();
+		
+    }	
 
 	function consulta_pedido()
 	
