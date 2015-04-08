@@ -65,6 +65,7 @@ class SolicitudesModel extends CI_Model {
 	
 	$data = array(
                'estado' => 2,
+			   'comentarios' => $this->input->post('comentarios',true),
     );
 
 	$this->db->where('id', $this->input->post('pedido_id',true));
@@ -108,9 +109,9 @@ class SolicitudesModel extends CI_Model {
 	
 	}	
 
-	function despachar($id)
+	function despachar()
 	{
-	
+	$id = $this->input->post('id',true);
 	$data = array(
                'estado' => 2,
 			   'fecha_despachado' =>date('Y-m-d H:i:s'),

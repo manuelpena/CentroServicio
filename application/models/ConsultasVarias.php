@@ -81,8 +81,10 @@ class ConsultasVarias extends CI_Model {
 	
     {
 		$desde = $this->input->post('desde');		
+		$desde = str_replace('/', '-', $desde);
 		$fecha_inicio = date("Y-m-d", strtotime($desde));
-		$hasta = $this->input->post('hasta');		
+		$hasta = $this->input->post('hasta');	
+		$hasta = str_replace('/', '-', $hasta);		
 		$fecha_fin = date("Y-m-d", strtotime($hasta));
 		
 		$query= $this->db->query("SELECT 

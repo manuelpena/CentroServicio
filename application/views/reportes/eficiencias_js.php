@@ -82,7 +82,7 @@ function buscar_eficiencias(){
 		if(isFinite(porcentaje)){
 			porcentaje  = porcentaje
 		}else{
-		 	porcentaje = 0;
+		 	porcentaje = 100;
 		}
 		
 		eficiencia.push(parseFloat(porcentaje));

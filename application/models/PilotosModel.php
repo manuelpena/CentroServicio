@@ -114,6 +114,7 @@ class PilotosModel extends CI_Model {
     {
 	
 		$fecha_post = $this->input->post('fecha');		
+		$fecha_post = str_replace('/', '-', $fecha_post);
 		$fecha = date("Y-m-d", strtotime($fecha_post));	
 
 		$this->db->select('id');

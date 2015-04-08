@@ -22,6 +22,7 @@ class csv extends CI_Controller {
 		$fecha = date("Y-m-d H:i:s");
 		
 		$fecha_post = $this->input->post('fecha_ingreso');		
+		$fecha_post = str_replace('/', '-', $fecha_post);		
 		$fecha_ingreso = date("Y-m-d", strtotime($fecha_post));		
 	
        // $data['addressbook'] = $this->csv_model->get_addressbook();
@@ -94,7 +95,7 @@ class csv extends CI_Controller {
                         'codigo'=>$row['codigo_consejera'],
 						'anio'=>$anio,
 						'campania'=>$campania,
-                        'cod'=>$row['monto_cod'],
+                        'cod'=>$row['monto_cod']+$row['credit_check']+$row['monto_extrafin']+$row['monto_convenio_pago']+$row['monto_vea'],
 						'pod'=>$row['valor_aj'],
 						'razon'=>utf8_decode($row['descripcion_razon']),
 						'comentarios'=>$row['descripcion'],

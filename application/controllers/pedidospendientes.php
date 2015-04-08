@@ -114,12 +114,12 @@ class PedidosPendientes extends MX_Controller {
     }
 	
 	
-		public function despachar($id)
+		public function despachar()
     {
 		if ($this->input->is_ajax_request()) {
 
     
-		$data = $this->SolicitudesModel->despachar($id);
+		$this->SolicitudesModel->despachar();
 
 	
 		}else {

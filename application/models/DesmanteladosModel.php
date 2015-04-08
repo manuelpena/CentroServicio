@@ -57,20 +57,22 @@ class DesmanteladosModel extends CI_Model {
 				  a.zona,
 				  (SELECT 
 				  IFNULL(COUNT(*),0) 
-				  from pedidos c
+				  FROM pedidos c
 				  INNER JOIN consejeras d ON d.codigo = c.codigo
-				  where d.zona = a.zona AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
-				  ) as activos,
+				  WHERE d.zona = a.zona AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
+				  ) AS activos,
 				  (SELECT 
 				  IFNULL(SUM(c.cod),0) 
-				  from pedidos c
-				  where c.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
-				  ) as cod,
+				  FROM pedidos c
+				  INNER JOIN consejeras d ON d.codigo = c.codigo
+				  WHERE d.zona = a.zona AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
+				  ) AS cod,
 				  (SELECT 
 				  IFNULL(SUM(monto_facturado),0) 
-				  from pedidos c
-				  where c.codigo= a.codigo AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
-				  ) as pod					  
+				  FROM pedidos c
+				  INNER JOIN consejeras d ON d.codigo = c.codigo
+				  WHERE d.zona = a.zona AND c.campania = b.campania AND c.anio = b.anio AND c.estado = 1
+				  ) AS pod					  
 				FROM
 				consejeras a 
 				JOIN pedidos b 

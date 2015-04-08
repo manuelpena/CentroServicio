@@ -134,7 +134,7 @@
                         $('#pod').val(respuesta[i].pod)
                         calculo_bodegaje(1, respuesta[i].pedido_id)
                     }
-                    $('#nombres').focus();
+                    $('#solicitante').focus();
 
                 },
                 error: function() {
@@ -208,7 +208,6 @@
                 data: id,
                 success: function(respuesta) {
 
-                    alert(respuesta)
                     location.reload();
                 }
             });
@@ -219,13 +218,16 @@
 
     function despachar(id) {
 
+	var info = "id="+id
+	alert(info)
         $.ajax({
-            url: '<?php echo base_url(); ?>' + 'pedidospendientes/despachar/' + id,
+            url: '<?php echo base_url(); ?>' + 'pedidospendientes/despachar/',
             type: 'POST',
-            data: id,
+		    dataType: 'json',
+            data: info,
             success: function(respuesta) {
 
-                location.reload();
+
             }
         });
 

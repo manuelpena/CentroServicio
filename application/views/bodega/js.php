@@ -200,17 +200,19 @@
 
 		function despachar(id){
 		
-       			$.ajax({
-			url:'<?php echo base_url(); ?>'+'pedidospendientes/despachar/'+id,
-			type: 'POST',
-			data:id,
-			success: function(respuesta){
-		
-					alert(respuesta)
-					location.reload();
-			}
-			});
-	   
+	var info = "id="+id
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>' + 'pedidospendientes/despachar/',
+            type: 'POST',
+		    dataType: 'json',
+            data: info,
+            success: function(respuesta) {
+                            $('#solicitudes_consejeras_tbl').api().ajax.reload();
+							$('#solicitudes_despachadas_tbl').api().ajax.reload();
+
+            }
+        });
 		}
 
 		

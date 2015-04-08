@@ -39,12 +39,42 @@
                                     <input type="text" class="form-control" id="solicitante" name="solicitante"/>
 
                                 </div> 	
+							
 								<label class="col-md-1 control-label">Documento</label>
                                 <div class="col-sm-2">
                                     <input type="text" class="form-control" id="documento" name="documento">
 
                                 </div>      
 
+                            </div>                        
+							<div class="row form-group">
+       
+                                <label class="col-md-1 control-label">Autorizacion</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="autorizacion" name="autorizacion" >
+
+                                </div>	
+                     <label class="col-md-1 control-label">Bodegaje</label>
+                                <div class="col-sm-1">
+                                    <input type="text" class="form-control" id="bodegaje" name="bodegaje" readonly>
+
+                                </div> 
+<a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-default" href="#modalSM" id="BotonModal" hidden="hidden" style=" visibility: hidden;" ></a> 
+                                <label class="col-md-1 control-label">Exonerar Bodegaje</label>
+                                <div class="col-sm-1">
+								<div class="checkbox-custom checkbox-primary">
+															<input type="checkbox" value="1" id="exonerar_bodegaje" name="exonerar_bodegaje"></input>
+															<label for="exonerar_bodegaje"></label>
+														</div>
+
+
+
+                                </div>      
+								<div class="col-sm-3">
+									<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary btn-md btn-block" id="despachar">Enviar a Bodega</button>
+
+
+                                </div>								
                             </div>
                             <div class="row form-group">
                                 <label class="col-md-1 control-label">Nombres</label>
@@ -93,7 +123,7 @@
 
                                 <label class="col-md-1 control-label">Observaciones</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="comentarios" name="comentarios" readonly>
+                                    <input type="text" class="form-control" id="comentarios" name="comentarios">
 
                                 </div>
 
@@ -110,11 +140,7 @@
                                     <input type="text" class="form-control" id="pod" name="pod" readonly>
 
                                 </div>
-                                <label class="col-md-1 control-label">Autorizacion</label>
-                                <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="autorizacion" name="autorizacion" >
 
-                                </div>
 
                       		
                                 <label class="col-md-1 control-label">A pagar</label>
@@ -123,27 +149,7 @@
 
                                 </div> </div>								
  <div class="row form-group">		
-                     <label class="col-md-1 control-label">Bodegaje</label>
-                                <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="bodegaje" name="bodegaje" readonly>
 
-                                </div> 
-<a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-default" href="#modalSM" id="BotonModal" hidden="hidden" style=" visibility: hidden;" ></a> 
-                                <label class="col-md-1 control-label">Exonerar Bodegaje</label>
-                                <div class="col-sm-1">
-								<div class="checkbox-custom checkbox-primary">
-															<input type="checkbox" value="1" id="exonerar_bodegaje" name="exonerar_bodegaje"></input>
-															<label for="exonerar_bodegaje"></label>
-														</div>
-
-
-
-                                </div>      
-								<div class="col-sm-3">
-									<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary btn-lg btn-block" id="despachar">Enviar a Bodega</button>
-
-
-                                </div>
       </div>
 	  </form>
 		                     <div class="row form-group">		
