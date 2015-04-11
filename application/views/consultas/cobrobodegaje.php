@@ -67,6 +67,7 @@
                                 <th>Consejeras</th> 							
 								<th>Gerentes</th>	                             
 								<th>Total</th>
+								<th>Detalle</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,7 +82,24 @@
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 					
 						</div>
-						
+										 <div class="col-md-5">		
+                    <table class="table table-hover mb-none" id="tabla_detalle">
+                        <thead>
+                            <tr>
+								<th>Fecha</th>
+                                <th>Codigo</th>								
+                                <th>Nombre</th> 							
+								<th>Cobro</th>	                             
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+
+                    </table>
+					
+						</div> 
 						
 						</div>
 					</section>

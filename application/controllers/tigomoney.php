@@ -1,5 +1,5 @@
 <?php
-class CobroBodegaje extends MX_Controller {
+class TigoMoney extends MX_Controller {
  
     /**
     * Responsable for auto load the model
@@ -8,7 +8,8 @@ class CobroBodegaje extends MX_Controller {
     public function __construct()
     {
         parent::__construct();
-      $this->load->model('ConsultasVarias');
+      $this->load->model('EficienciasModel');
+		$this->load->library('Datatables');
     }
  
     /**
@@ -24,9 +25,15 @@ class CobroBodegaje extends MX_Controller {
 			if($acceso==false){
         	redirect('inicio/inicio');
 			}
+		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="boletas_tbl">' );
+		$this->table->set_template($tmpl); 
+		$this->table->set_heading('Fecha de Pago','Hora','Referencia','Monto','MSISDN','Estatus','Transaccion','record');
+        
+		$data['tabla_boletas'] = $this->table->generate();			
+		
 			$data['menus_autorizados'] = $this->users_model->menus_autorizados();
 			$data['paginas_autorizadas'] = $this->users_model->paginas_autorizadas();
-			$data['main_content'] = 'consultas/cobrobodegaje';
+			$data['main_content'] = 'boletas/tigomoney';
 			$data['usuario'] = $this->session->userdata('usuario');
 			$data['rol'] = $this->session->userdata('rol');
 			$data['imagen'] = $this->session->userdata('imagen');
@@ -37,36 +44,17 @@ class CobroBodegaje extends MX_Controller {
 
 
     }
+
 	
-	public function buscar_bodegaje()
+
+	function datatable_boletas()
     {
-		if ($this->input->is_ajax_request()) {
-
-    
-		$data = $this->ConsultasVarias->buscar_bodegaje();
-		if(count($data)>0){
-		echo json_encode($data);	 
-			}else{
-
-			}
-		}else {
-		redirect('404');
-		}
+        $this->datatables->select('fecha_pago,hora_pago, referencia, monto, MSISDN, estatus, transaccion, record')
+			->unset_column('id')
+            ->from('boletas_vista_tm');
+ 
+        echo $this->datatables->generate();
     }
-	public function detalle_bodegaje()
-    {
-		if ($this->input->is_ajax_request()) {
 
-    
-		$data = $this->ConsultasVarias->detalle_bodegaje();
-		if(count($data)>0){
-		echo json_encode($data);	 
-			}else{
-
-			}
-		}else {
-		redirect('404');
-		}
-    }
 
 }

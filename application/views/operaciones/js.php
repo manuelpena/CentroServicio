@@ -88,7 +88,7 @@
         $('#solicitudes_despachadas_tbl').dataTable({
             bProcessing: true,
             bJQueryUI: true,
-            sAjaxSource: '<?php echo base_url(); ?>' + 'pedidospendientes/datatable_despachaddespachadas',
+            sAjaxSource: '<?php echo base_url(); ?>' + 'pedidospendientes/datatable_despachadas',
             bServerSide: true,
             fnServerData: function(sSource, aoData, fnCallback) {
                 $.ajax({

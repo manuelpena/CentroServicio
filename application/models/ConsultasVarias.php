@@ -90,7 +90,7 @@ class ConsultasVarias extends CI_Model {
 		$query= $this->db->query("SELECT 
   b.`id`,
   b.`descripcion`,
-  a.`fecha_creado`,
+  a.`fecha_despachado`,
   SUM(a.`exoneracion`) AS exoneracion,
   SUM(
     IF(
@@ -110,10 +110,40 @@ FROM
   solicitudes a 
   INNER JOIN usuarios b 
     ON b.`id` = a.`creado_por` 
-WHERE DATE(a.`fecha_creado`) >= '$fecha_inicio'
-  AND DATE(a.`fecha_creado`) <= '$fecha_fin'	
+WHERE DATE(a.`fecha_despachado`) >= '$fecha_inicio'
+  AND DATE(a.`fecha_despachado`) <= '$fecha_fin'	
 GROUP BY b.`id`,
   b.`descripcion` 
+
+						");
+
+        return $query->result_array();
+		
+    }	
+
+
+	function detalle_bodegaje()
+	
+    {
+		$id = $this->input->post('id');		
+		$desde = $this->input->post('desde');		
+		$desde = str_replace('/', '-', $desde);
+		$fecha_inicio = date("Y-m-d", strtotime($desde));
+		$hasta = $this->input->post('hasta');	
+		$hasta = str_replace('/', '-', $hasta);		
+		$fecha_fin = date("Y-m-d", strtotime($hasta));
+		
+						$query= $this->db->query("SELECT 
+						c.`codigo`,
+						c.`nombres`,
+						  DATE(a.fecha_despachado) fecha,
+						  a.bodegaje
+						FROM
+						  solicitudes  a
+						  INNER JOIN pedidos b ON b.`id` = a.`pedido_id`
+						  INNER JOIN consejeras c ON c.`codigo` = b.`codigo`
+						WHERE DATE(a.fecha_despachado) >= '$fecha_inicio' 
+						  AND DATE(a.fecha_despachado) <= '$fecha_fin' 
 
 						");
 

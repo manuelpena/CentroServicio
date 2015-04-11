@@ -76,6 +76,7 @@ $route['mantenimientos/usuarios'] = 'usuarios/index';
 $route['reportes/eficiencias'] = 'eficiencias/index';
 $route['consultas/consultapilotos'] = 'consultapilotos/index';
 $route['consultas/cobrobodegaje'] = 'cobrobodegaje/index';
+$route['boletas/tigomoney'] = 'tigomoney/index';
 
 
 /* End of file routes.php */
