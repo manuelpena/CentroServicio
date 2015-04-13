@@ -208,8 +208,7 @@
 		    dataType: 'json',
             data: info,
             success: function(respuesta) {
-                            $('#solicitudes_consejeras_tbl').api().ajax.reload();
-							$('#solicitudes_despachadas_tbl').api().ajax.reload();
+location.reload()
 
             }
         });

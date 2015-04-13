@@ -81,7 +81,7 @@ class SolicitudesModel extends CI_Model {
 
 	
 	//Obtiene el ID del pedido de la solicitud
-		$this->db->select('pedido_id');
+		$this->db->select('pedido_id, tipo_solicitud');
 		$this->db->from('solicitudes');
 		$this->db->where('id', $id);
 		$query = $this->db->get();
@@ -90,10 +90,26 @@ class SolicitudesModel extends CI_Model {
 		{
 
 		$pedido_id =  $row->pedido_id;
+		$tipo_solicitud =  $row->tipo_solicitud;
 		}
 		
+	//si la solicitud es buzon, agrega al contador de pedido la devolucion
+	if($tipo_solicitud==3){
+	
+	
+	$data = array(
+               'devolucion_buzon' => 1,
+    );
+
+	$this->db->where('id', $pedido_id );
+	$this->db->update('pedidos', $data); 	
+	}
+	
+	
 	//Elimina la solicitud
 
+	
+	
 	$this->db->where('id', $id);
 	$this->db->delete('solicitudes'); 
 	
@@ -106,6 +122,9 @@ class SolicitudesModel extends CI_Model {
 
 	$this->db->where('id', $pedido_id );
 	$this->db->update('pedidos', $data); 
+	
+	
+	
 	
 	}	
 
