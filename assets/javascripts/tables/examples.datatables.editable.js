@@ -68,6 +68,7 @@ Theme Version: 	1.1.0
 
 			this.$table
 				.on('click', 'a.save-row', function( e ) {
+		if($('#buzones').val()==0){alert("Por favor seleccione una opcion de Envio"); return;}
 					e.preventDefault();
 					_self.rowSave( $(this).closest( 'tr' ) );
 				})
@@ -171,7 +172,7 @@ Theme Version: 	1.1.0
 				} else {
 	switch(i) {
     case 0:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="codigo_consejera" onchange="busqueda_consejera(this)"/>' );
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="codigo_consejera" onchange="busqueda_consejera(this)" tabindex="1"/>' );
         break;  
 	case 1:
   	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_nombre"/ readonly>' ); 
@@ -183,19 +184,20 @@ Theme Version: 	1.1.0
 	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="pedido_id" readonly/>' );		
 	break;
 	case 4:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="solicitante"/>' );		
-        break;
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_cod" readonly/>' );		
+	        break;	
 	case 5:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="consejera_cod" readonly/>' );				
-        break;	
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="solicitante"  tabindex="2"/>' );		
+        break;		
+
 	case 6:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="autorizacion"/ >' );					
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="autorizacion"  tabindex="3"/>' );					
         break;	
 	case 7:
-	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="observacion"/ > ' );						
+	$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '" id="observacion"  tabindex="4"/> ' );						
         break;
 	case 8:
-		$this.html('<select id="buzones" ><option>GERENTE</option></select>');						
+		$this.html('<select id="buzones" onchange="calculo_bodegaje();"><option value="0" selected>Seleccione Tipo</option><option value="gerente">GERENTE</option><option value="gerente exonerado">GERENTE EXONERADO</option></select>');						
 		break;
 	case 9:
 	$this.html( '<input type="text" class="form-control input-block" id="bodegaje" readonly/>' );						
@@ -208,6 +210,7 @@ Theme Version: 	1.1.0
 		},
 
 		rowSave: function( $row ) {
+
 			var _self     = this,
 				$actions,
 				values    = [];

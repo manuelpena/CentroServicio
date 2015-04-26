@@ -23,7 +23,7 @@ class PedidosPendientes extends MX_Controller {
 		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="solicitudes_consejeras_tbl">' );
 		$this->table->set_template($tmpl); 
 
-		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Tipo Solicitud','Estado','Accion');
+		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Tipo Solicitud','Observacion','Estado','Accion');
 
 		$data['tabla_consejeras'] = $this->table->generate();
 
@@ -32,14 +32,14 @@ class PedidosPendientes extends MX_Controller {
 		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="solicitudes_buzones_tbl">' );
 		$this->table->set_template($tmpl); 
 		
-		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Tipo Solicitud','Estado','Accion');
+		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Tipo Solicitud','Observacion','Estado','Accion');
 		$data['tabla_buzones'] = $this->table->generate();	
 
 		//datatable para pedidos despachados
 		$tmpl = array ( 'table_open'  => '<table class="table table-bordered table-striped mb-none" id="solicitudes_despachadas_tbl">' );
 		$this->table->set_template($tmpl); 
 		
-		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Tipo Solicitud','Estado','Accion');
+		$this->table->set_heading('Caja','Zona','Codigo','Nombre de Consejera','Tipo Solicitud','Observacion','Estado','Accion');
 		$data['tabla_despachadas'] = $this->table->generate();	
 			
 			
@@ -66,7 +66,7 @@ class PedidosPendientes extends MX_Controller {
 
 	 function datatable_consejeras()
     {
-        $this->datatables->select('id,ncaja,zona,codigo,nombres,descripcion_solicitud,estado')
+        $this->datatables->select('id,ncaja,zona,codigo,nombres,descripcion_solicitud,comentarios,estado')
             ->unset_column('id')
 			 ->where('tipo_solicitud',1)
 			 ->where('estado','Pendiente')
@@ -79,7 +79,7 @@ class PedidosPendientes extends MX_Controller {
 	
 	function datatable_buzones()
     {
-        $this->datatables->select('id,ncaja,zona,codigo,nombres,descripcion_solicitud,estado,tipo_solicitud')
+        $this->datatables->select('id,ncaja,zona,codigo,nombres,descripcion_solicitud,comentarios,estado,tipo_solicitud')
             ->unset_column('id')
 			->unset_column('tipo_solicitud')			
  			->where('tipo_solicitud >=',2)
@@ -92,7 +92,7 @@ class PedidosPendientes extends MX_Controller {
 	
 	function datatable_despachadas()
     {
-        $this->datatables->select('id,ncaja,zona,codigo,nombres,descripcion_solicitud,estado,tipo_solicitud')
+        $this->datatables->select('id,ncaja,zona,codigo,nombres,descripcion_solicitud,comentarios,estado,tipo_solicitud')
             ->unset_column('id')
 			->unset_column('tipo_solicitud')			
  			->where('estado','Despachado')
@@ -103,7 +103,7 @@ class PedidosPendientes extends MX_Controller {
 	
 		function datatable_buzones_desp()
     {
-        $this->datatables->select('id,ncaja,zona,codigo,nombres,descripcion_solicitud,estado,tipo_solicitud')
+        $this->datatables->select('id,ncaja,zona,codigo,nombres,descripcion_solicitud,comentarios,estado,tipo_solicitud')
             ->unset_column('id')
 			->unset_column('tipo_solicitud')			
  			->where('tipo_solicitud >=',2)

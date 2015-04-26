@@ -1,6 +1,6 @@
 <script>
     $(function() {
-
+		mostrar_solicitudes_buzones();			
         $("#form_solicitudes").validate({	
 		rules: {
 				solicitante:{
@@ -176,7 +176,7 @@
                                 type: 'success',
                                 icon: 'fa  fa-save'
                             });
-
+					location.reload();
                             $('#form_solicitudes')[0].reset();
                             $('#solicitudes_tbl').api().ajax.reload();
                         } else {
@@ -216,6 +216,24 @@
         } else {}
     }
 
+    function cancelar_solicitud_buzones(id) {
+
+        if (confirm("¿Desea Eliminar la Solicitud?") == true) {
+            $.ajax({
+                url: '<?php echo base_url(); ?>' + 'solicitudesconsejeras/cancelar_solicitud/' + id,
+                type: 'POST',
+                data: id,
+                success: function(respuesta) {
+		var table = $("#tabla_solicitudes_buzones tbody");
+		table.empty();
+			mostrar_solicitudes_buzones();
+                }
+            });
+
+
+        } else {}
+    }
+
     function despachar(id) {
 
 	var info = "id="+id
@@ -226,12 +244,43 @@
 		    dataType: 'json',
             data: info,
             success: function(respuesta) {
-
+location.reload();
 
             }
         });
 
     }
+function mostrar_solicitudes_buzones(){
+	
+        $.ajax({
+            url: '<?php echo base_url(); ?>' + 'solicitudesbuzones/mostrar_solicitudes_buzones/',
+            dataType: 'json',
+            type: 'POST',
+            success: function(respuesta) {
+		var table = $("#tabla_solicitudes_buzones tbody");
+
+		for (var i = 0; i < respuesta.length; i++) {
+		table.append("<tr><td>"+respuesta[i].ncaja+"</td><td>"+respuesta[i].zona
+		+"</td><td>"+respuesta[i].codigo+"</td><td>"+respuesta[i].nombres+"</td><td>"+respuesta[i].tipo_solicitud+"</td>"
+	 +"</td><td>"+respuesta[i].comentarios+"</td>"
+	+"</td><td>"+respuesta[i].estado+"</td>"
+					 +"<td class='actions'><a href='#' onclick='cancelar_solicitud_buzones("
+		+respuesta[i].id+")'><i class='fa fa-trash-o'></i></a></td></tr>"
+		);
+
+		}
+  			$('#tabla_solicitudes_buzones').bootstrapTable();
+	
+
+            },
+            error: function(error) {
+		var table = $("#tabla_solicitudes_buzones tbody");
+		table.empty();			
+console.log(error)
+            }
+        }); 	
+	
+}	
 </script>
 
 <script src="<?php echo base_url(); ?>assets/javascripts/tables/examples.datatables.default.js"></script>

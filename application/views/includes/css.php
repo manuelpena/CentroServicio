@@ -27,7 +27,8 @@
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/pnotify/pnotify.custom.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/select2/select2.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/jquery-datatables-bs3/assets/css/datatables.css" />
-		<!-- Theme CSS -->
+	    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/bootstrap-filter/bootstrap-table-filter.css" />
+			<!-- Theme CSS -->
 		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/stylesheets/theme.css" />
 
 		<!-- Skin CSS -->

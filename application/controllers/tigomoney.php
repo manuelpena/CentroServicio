@@ -52,7 +52,7 @@ class TigoMoney extends MX_Controller {
         $this->datatables->select('fecha_pago,hora_pago, referencia, monto, MSISDN, estatus, transaccion, record')
 			->unset_column('id')
             ->from('boletas_vista_tm');
- 
+
         echo $this->datatables->generate();
     }
 

@@ -78,13 +78,14 @@ function buscar_eficiencias(){
 		var table = $("#tabla_resultados tbody");
 		table.empty();
 		for (var i = 0; i < respuesta.length; i++) {
-		var porcentaje = (respuesta[i].eficiencia/respuesta[i].devolucion).toFixed(2);
-		if(isFinite(porcentaje)){
+	
+		var porcentaje = (100*((respuesta[i].eficiencia-respuesta[i].devolucion)/respuesta[i].eficiencia)).toFixed(2);
+	/*	if(isFinite(porcentaje)){
 			porcentaje  = porcentaje
 		}else{
-		 	porcentaje = 100;
+		 	porcentaje = 0;
 		}
-		
+		*/
 		eficiencia.push(parseFloat(porcentaje));
 		descripcion.push(respuesta[i].descripcion);
 		
@@ -113,6 +114,8 @@ function grafico(eficiencia,descripcion){
     $('#container').highcharts({
 	        chart: {
             type: 'column'
+        },tooltip: {
+            valueSuffix: '%'
         },
         title: {
 
@@ -125,7 +128,7 @@ function grafico(eficiencia,descripcion){
             title: {
                 text: 'Eficiencia (%)'
             },
-			max: 1,
+			max: 100,
         },
         labels: {
             items: [{

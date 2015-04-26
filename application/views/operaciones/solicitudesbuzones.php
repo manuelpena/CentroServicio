@@ -37,8 +37,8 @@
 										<th>Nombre</th>
 										<th>Zona</th>
 										<th>Pedido</th>
+										<th>COD</th>		
 										<th>Solicitante </th>
-										<th>COD</th>
 										<th>Autorizacion</th>
 										<th>Observacion</th>
 										<th>Envio</th>
@@ -75,7 +75,29 @@
                             <h2 class="panel-title">Solicitudes Buzones y Gerentes</h2>
                         </header>
                         <div class="panel-body">
- <?php echo $datatable_buzones ?>
+<table class="table-filter" id="tabla_solicitudes_buzones" data-show-columns="true" 
+	   data-search="true" data-show-refresh="true" 
+	   data-show-toggle="true" data-show-export="true" 
+	   data-show-filter="true"
+	   data-pagination="true" data-height="299" >
+
+    <thead>
+    <tr>
+        <th data-field="caja"  data-sortable="true">Caja</th>
+        <th data-field="zona"  data-sortable="true">Zona</th>
+        <th data-field="codigo"  data-sortable="true">Código</th>
+		<th data-field="nombre_consejera"  data-sortable="true">Nombre de Consejera</th>
+		<th data-field="tiposolicitud"  data-sortable="true">Tipo de Solicitud</th>
+		<th data-field="observacion"  data-sortable="true">Observación</th>
+		<th data-field="estado"  data-sortable="true">Estado</th>
+		<th data-field="accion"  data-sortable="true">Acción</th>
+		
+    </tr>
+    </thead>
+	<tbody>
+
+</tbody>
+</table>
  
  </div>
 					
@@ -100,8 +122,10 @@
 		$('#consejera_nombre').val(respuesta[i].nombres)
 		$('#consejera_zona').val(respuesta[i].zona)
 		$('#consejera_cod').val(respuesta[i].cod)
+		$('#observacion').val(respuesta[i].comentarios)
 		$('#pedido_id').val(respuesta[i].pedido_id)
-		calculo_bodegaje(2,respuesta[i].pedido_id)
+		$('#buzones').val(0)
+		$('#bodegaje').val(0)
 		listado_buzones(respuesta[i].zona)
 		}
 		
@@ -127,33 +151,41 @@
         for(var i=0;i<rows.length;i++){
 		var pedido_id  = $(rows[i]).find("td:eq(3)").html();
 		var solicitante = $(rows[i]).find("td:eq(4)").html();
-		var autorizacion = $(rows[i]).find("td:eq(7)").html();
-		var observacion = $(rows[i]).find("td:eq(8)").html();
+		var autorizacion = $(rows[i]).find("td:eq(6)").html();
+		var observacion = $(rows[i]).find("td:eq(7)").html();
 		var buzon = $(rows[i]).find("td:eq(8)").html();
 
-
 		//validacion de tipo de solicitud
-		if(buzon=='GERENTE'){
+		if(buzon=='gerente'){
 		var tipo_solicitud = 2;
 		var cobro = $(rows[i]).find("td:eq(9)").html();
+		var exoneracion = 0;
 		var buzon = 0;
+		}else if(buzon=='gerente exonerado'){
+		var tipo_solicitud = 2;
+		var exoneracion = 1;
+		var cobro = 0;
 		}else{
 		var tipo_solicitud = 3;
-		var cobro = 0;
+		var exoneracion = 0;
+		var cobro = 0;			
+			
 		}
 		
-		console.log("pedido_id="+pedido_id+"&solicitante="+solicitante+"&autorizacion="+autorizacion+"&buzon="+buzon+"&tipo_solicitud="+tipo_solicitud+"&cobro="+cobro)
-		$.ajax({
+		console.log("pedido_id="+pedido_id+"&solicitante="+solicitante+"&autorizacion="+autorizacion+"&buzon="+buzon+"&tipo_solicitud="+tipo_solicitud+"&cobro="+cobro+"&observacion="+observacion+"&exoneracion="+exoneracion)
+	$.ajax({
 			url:'<?php echo base_url(); ?>'+'solicitudesbuzones/guardar_solicitud_buzones/',
 			type: 'POST',
-			data:"pedido_id="+pedido_id+"&solicitante="+solicitante+"&autorizacion="+autorizacion+"&buzon="+buzon+"&tipo_solicitud="+tipo_solicitud+"&cobro="+cobro,
+			data:"pedido_id="+pedido_id+"&solicitante="+solicitante+"&autorizacion="+autorizacion+"&buzon="+buzon+"&tipo_solicitud="+tipo_solicitud+"&cobro="+cobro+"&observacion="+observacion+"&exoneracion="+exoneracion,
 			success: function(respuesta){
 
 				console.log(respuesta)
 		
 			}
 		});	
+		
 		location.reload();
+	
 }
 	        }
 
@@ -182,11 +214,14 @@
 		}
 		
 		
-		function calculo_bodegaje(tipo_solicitud,pedido_id){
+		function calculo_bodegaje(){
 		
-       	var info = "tipo_solicitud="+tipo_solicitud+"&pedido_id="+pedido_id
+		var tipo_solicitud = $('#buzones').val();
+		var pedido_id = $('#pedido_id').val();
+		if(tipo_solicitud=='gerente'){
+		
+       	var info = "tipo_solicitud="+2+"&pedido_id="+pedido_id
 
-	
 		$.ajax({
 			url:'<?php echo base_url(); ?>'+'solicitudesconsejeras/calculo_bodegaje/',
 			type: 'POST',
@@ -199,7 +234,10 @@
 		}
 			}
 			});
-	
+		}else{
+			$('#bodegaje').val(0);
+			
+		}
 		}
 		
 </script>				
