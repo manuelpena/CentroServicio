@@ -51,6 +51,25 @@ class ConsultasVarias extends CI_Model {
 		 return $query->result_array();
 		
     }	
+	function mostrar_solicitudes_buzones()
+    {
+		$query= $this->db->query("(SELECT
+					a.id,
+					a.codigo,
+					a.nombres,
+					a.zona,
+					a.ncaja,
+					a.comentarios,
+					a.estado,
+					a.descripcion_solicitud,
+					a.tipo_solicitud
+
+					FROM
+					solicitudes_vista a)
+				");
+		 return $query->result_array();
+		
+    }	
 	
 	function historial_consejera_pedidos()
 	

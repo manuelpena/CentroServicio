@@ -9,7 +9,12 @@
 		<script src="<?php echo base_url(); ?>assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
 		<script src="<?php echo base_url(); ?>assets/vendor/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
 		<!-- Specific Page Vendor -->
-			
+        <script src="https://rawgit.com/lukaskral/bootstrap-table/feature_lukaskral_bootstrap_table_filter_integration/src/bootstrap-table.js"></script>
+
+
+		<script src="<?php echo base_url(); ?>assets/vendor/bootstrap-filter/bootstrap-table-filter.js"></script>	
+		<script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/extensions/filter/bootstrap-table-filter.js"></script>		
+		<script src="<?php echo base_url(); ?>assets/vendor/bootstrap-filter/bs-table.js"></script>				
 		<script src="<?php echo base_url(); ?>assets/vendor/select2/select2.js"></script>
 
 		<script src="<?php echo base_url(); ?>assets/vendor/jquery-datatables/extras/TableTools/js/dataTables.tableTools.min.js"></script>		

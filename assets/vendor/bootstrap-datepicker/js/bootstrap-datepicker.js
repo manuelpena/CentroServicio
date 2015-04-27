@@ -1389,7 +1389,7 @@
 	};
 
 	var defaults = $.fn.datepicker.defaults = {
-		autoclose: false,
+		autoclose: true,
 		beforeShowDay: $.noop,
 		calendarWeeks: false,
 		clearBtn: false,
@@ -1407,7 +1407,7 @@
 		startDate: -Infinity,
 		startView: 0,
 		todayBtn: false,
-		todayHighlight: false,
+		todayHighlight: true,
 		weekStart: 0
 	};
 	var locale_opts = $.fn.datepicker.locale_opts = [

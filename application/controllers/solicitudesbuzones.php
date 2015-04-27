@@ -76,6 +76,23 @@ class SolicitudesBuzones extends MX_Controller {
 	
 	}
 	
+	
+	public function mostrar_solicitudes_buzones()
+    {
+	
+
+		if ($this->input->is_ajax_request()) {		
+		
+		
+		$data = $this->ConsultasVarias->mostrar_solicitudes_buzones();
+		
+		echo json_encode($data);	
+	
+    }
+	
+	
+	}
+	
 
 
 }

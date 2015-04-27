@@ -14,7 +14,11 @@
 | path to your installation.
 |
 */
+<<<<<<< HEAD
 $config['base_url']	= 'http://192.168.1.3:8080/CentroServicio';
+=======
+$config['base_url']	= 'http://192.168.1.8:8080/CentroServicio';
+>>>>>>> origin/master
 
 /*
 |--------------------------------------------------------------------------

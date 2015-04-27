@@ -208,9 +208,13 @@
 		    dataType: 'json',
             data: info,
             success: function(respuesta) {
-location.reload()
+location.reload();
 
-            }
+            },
+			error : function(error){
+				location.reload();
+				
+			}
         });
 		}
 

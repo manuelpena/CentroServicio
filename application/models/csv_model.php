@@ -8,19 +8,11 @@ class csv_model extends CI_Model {
  
     function carga_csv() {     
 
-		$anio = $this->session->flashdata('anio');
-		$campania = $this->session->flashdata('campania');
-		$zona = $this->session->flashdata('zona');
-		$fecha_ingreso = $this->session->flashdata('fecha_ingreso');
-	
         $this->db->select('b.ncaja, b.`campania`, a.`zona` zona, a.`codigo`, a.`nombres`, b.`cod`, a.los, b.cajas');
         $this->db->from('consejeras a');
         $this->db->join('pedidos b', 'b.codigo = a.codigo', 'LEFT');
-		$this->db->where('a.zona', $zona);
-		$this->db->where('b.campania', $campania);
-		$this->db->where('b.anio', $anio);
-		$this->db->where('b.fecha_ingreso', $fecha_ingreso);
-
+		$this->db->where('a.fecha_creado >= DATE_SUB(NOW(),INTERVAL 100 SECOND)');
+		$this->db->where('a.fecha_creado <=now() ');
 		
 		/*
 		$this->db->join('sistema st', 'st.id = dt.id', 'LEFT');

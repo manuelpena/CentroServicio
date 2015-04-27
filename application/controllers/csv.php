@@ -90,7 +90,10 @@ class csv extends CI_Controller {
 				if($pedido_existente>0){
 
 				}else{
-				
+				if($tipo_pedido==2){
+				$cajas = 'Tardio';
+					
+				}
                 $datos_pedido = array(
                         'codigo'=>$row['codigo_consejera'],
 						'anio'=>$anio,

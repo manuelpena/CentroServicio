@@ -54,27 +54,12 @@
                                     <input type="text" class="form-control" id="autorizacion" name="autorizacion" >
 
                                 </div>	
-                     <label class="col-md-1 control-label">Bodegaje</label>
-                                <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="bodegaje" name="bodegaje" readonly>
 
-                                </div> 
-<a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-default" href="#modalSM" id="BotonModal" hidden="hidden" style=" visibility: hidden;" ></a> 
-                                <label class="col-md-1 control-label">Exonerar Bodegaje</label>
-                                <div class="col-sm-1">
-								<div class="checkbox-custom checkbox-primary">
-															<input type="checkbox" value="1" id="exonerar_bodegaje" name="exonerar_bodegaje"></input>
-															<label for="exonerar_bodegaje"></label>
-														</div>
+                                <label class="col-md-1 control-label">Observaciones</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="comentarios" name="comentarios">
 
-
-
-                                </div>      
-								<div class="col-sm-3">
-									<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary btn-md btn-block" id="despachar">Enviar a Bodega</button>
-
-
-                                </div>								
+                                </div>							
                             </div>
                             <div class="row form-group">
                                 <label class="col-md-1 control-label">Nombres</label>
@@ -100,17 +85,37 @@
                             </div>                    
 							<div class="row form-group">
                                 <label class="col-md-1 control-label">Direccion</label>
-                                <div class="col-sm-5">
+                                <div class="col-sm-3">
                    <textarea class="form-control" rows="2" id="direccion" name="direccion" readonly></textarea>
 
 
                                 </div>
+                     <label class="col-md-1 control-label">Bodegaje</label>
+                                <div class="col-sm-1">
+                                    <input type="text" class="form-control" id="bodegaje" name="bodegaje" readonly>
 
+                                </div> 
+<a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-default" href="#modalSM" id="BotonModal" hidden="hidden" style=" visibility: hidden;" ></a> 
+                                <label class="col-md-1 control-label">Exonerar Bodegaje</label>
+                                <div class="col-sm-1">
+								<div class="checkbox-custom checkbox-primary">
+															<input type="checkbox" value="1" id="exonerar_bodegaje" name="exonerar_bodegaje"></input>
+															<label for="exonerar_bodegaje"></label>
+														</div>
+
+
+
+                                </div>      
+								<div class="col-sm-3">
+									<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary btn-md btn-block" id="despachar">Enviar a Bodega</button>
+
+
+                                </div>	
                             </div>
 		                     <div class="row form-group">		
 <label class="col-md-2 control-label"><h4>Datos del Pedido</h4></label>        
                         <div class="col-sm-1">
-                                    <input type="text" class="form-control" id="pedido_id" name="pedido_id" readonly>
+                                    <input type="text" class="form-control" id="pedido_id" name="pedido_id" style="visibility: hidden">
 
                                 </div>
  </div>
@@ -120,15 +125,6 @@
                                     <input type="text" class="form-control" id="cajas" name="cajas" readonly>
 
                                 </div>
-
-                                <label class="col-md-1 control-label">Observaciones</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="comentarios" name="comentarios">
-
-                                </div>
-
-                            </div>
-							<div class="row form-group">
                                 <label class="col-md-1 control-label">COD</label>
                                 <div class="col-sm-1">
                                     <input type="text" class="form-control" id="cod" name="cod" readonly>
@@ -147,6 +143,10 @@
                                 <div class="col-sm-2">
                                     <input type="text" class="form-control" id="total_pagar" name="total_pagar" readonly>
 
+
+                            </div>
+							<div class="row form-group">
+
                                 </div> </div>								
  <div class="row form-group">		
 
@@ -156,7 +156,29 @@
 <label class="col-md-6 control-label"><h4>Historial de Solicitudes <? echo date('Y-m-d')?></h4></label>
  </div>		  
            
-<?php echo $this->table->generate(); ?>
+<table class="table-filter" id="tabla_solicitudes_buzones" data-show-columns="true" 
+	   data-search="true" data-show-refresh="true" 
+	   data-show-toggle="true" data-show-export="true" 
+	   data-show-filter="true"
+	   data-pagination="true" data-height="299" >
+
+    <thead>
+    <tr>
+        <th data-field="caja"  data-sortable="true">Caja</th>
+        <th data-field="zona"  data-sortable="true">Zona</th>
+        <th data-field="codigo"  data-sortable="true">Código</th>
+		<th data-field="nombre_consejera"  data-sortable="true">Nombre de Consejera</th>
+		<th data-field="tiposolicitud"  data-sortable="true">Tipo de Solicitud</th>
+		<th data-field="observacion"  data-sortable="true">Observación</th>
+		<th data-field="estado"  data-sortable="true">Estado</th>
+		<th data-field="accion"  data-sortable="true">Acción</th>
+		
+    </tr>
+    </thead>
+	<tbody>
+
+</tbody>
+</table>
 
 
 				<div id="modalSM" class="modal-block modal-block-sm mfp-hide">
