@@ -4591,6 +4591,7 @@ insert  into `zonas`(`id`,`zona`,`division`) values (23,228,'MAQUILISHUAT');
 insert  into `zonas`(`id`,`zona`,`division`) values (24,229,'MAQUILISHUAT');
 insert  into `zonas`(`id`,`zona`,`division`) values (25,230,'MAQUILISHUAT');
 insert  into `zonas`(`id`,`zona`,`division`) values (26,234,'MAQUILISHUAT');
+insert  into `zonas`(`id`,`zona`,`division`) values (26,241,'MAQUILISHUAT');
 insert  into `zonas`(`id`,`zona`,`division`) values (27,201,'OLIVO');
 insert  into `zonas`(`id`,`zona`,`division`) values (28,202,'OLIVO');
 insert  into `zonas`(`id`,`zona`,`division`) values (29,204,'OLIVO');
